@@ -3,478 +3,887 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashutosh Shukla</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>Ashutosh Shukla — PM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─── RESET & ROOT ───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 :root {
-  --bg:    #FAFAF8;
-  --ink:   #111110;
-  --muted: #888880;
-  --rule:  #E2E0DB;
-  --blue:  #1A3A5C;
-  --red:   #C8391A;
-  --chip:  #EDF2F7;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --mono:  'DM Mono', monospace;
-  --sans:  'DM Sans', system-ui, sans-serif;
+  --bg:      #0A0908;
+  --surf:    #141210;
+  --surf2:   #1C1916;
+  --ink:     #F2EDE4;
+  --muted:   #7A7470;
+  --dim:     #3A3632;
+  --accent:  #E8622A;
+  --amber:   #F5A623;
+  --border:  #252220;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --sans:    'Syne', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', monospace;
 }
-
-html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  cursor: none;
 }
 
-/* ── NAV ─────────────────────────────────────────── */
-nav {
-  position: sticky; top: 0; z-index: 99;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px; height: 48px;
-  background: rgba(250,250,248,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
+/* ─── CUSTOM CURSOR ──────────────────────────── */
+.cursor {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .1s, width .2s, height .2s, background .2s;
+  mix-blend-mode: normal;
 }
-.nav-name { font-family: var(--mono); font-size: 12px; letter-spacing: .5px; color: var(--ink); }
-.nav-links { display: flex; gap: 28px; }
+.cursor-ring {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(232,98,42,.35);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .18s ease-out, width .2s, height .2s;
+}
+body:has(a:hover) .cursor { width: 12px; height: 12px; background: var(--amber); }
+body:has(a:hover) .cursor-ring { width: 44px; height: 44px; border-color: rgba(245,166,35,.5); }
+
+/* ─── GRAIN OVERLAY ──────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .028;
+}
+
+/* ─── NAV ────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 52px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(10,9,8,.85);
+  backdrop-filter: blur(12px);
+  transition: border-color .3s;
+}
+.nav-id {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; color: var(--muted);
+  text-transform: uppercase;
+}
+.nav-id span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; }
 .nav-links a {
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--muted); text-decoration: none; transition: color .15s;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color .2s;
 }
 .nav-links a:hover { color: var(--ink); }
-
-/* ── HERO ────────────────────────────────────────── */
-.hero {
-  padding: 80px 40px 72px;
-  max-width: 900px; margin: 0 auto;
-  border-bottom: 1px solid var(--rule);
+.nav-status {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10px; color: var(--muted);
 }
-.hero-label {
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #3DBA6F;
+  box-shadow: 0 0 6px rgba(61,186,111,.6);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 6px rgba(61,186,111,.6)} 50%{opacity:.6;box-shadow:0 0 12px rgba(61,186,111,.9)} }
+
+/* ─── HERO ───────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative; overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; right: -20px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--display);
+  font-size: clamp(120px, 18vw, 240px);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242,237,228,.04);
+  white-space: nowrap;
+  user-select: none; pointer-events: none;
+  line-height: 1;
+}
+.hero-wrap { max-width: 960px; position: relative; z-index: 1; }
+.hero-kicker {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 20px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 28px;
+  opacity: 0; transform: translateY(10px);
+  animation: rise .6s .1s forwards;
 }
 .hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(36px, 5.5vw, 60px);
-  line-height: 1.1; letter-spacing: -.5px;
-  margin-bottom: 20px; color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(48px, 7.5vw, 96px);
+  font-weight: 600; line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--ink);
+  margin-bottom: 32px;
+  opacity: 0; transform: translateY(16px);
+  animation: rise .7s .25s forwards;
 }
-.hero h1 i { font-style: italic; color: var(--muted); }
-.hero-sub {
-  max-width: 540px;
-  font-size: 16px; line-height: 1.65;
-  color: var(--muted); margin-bottom: 40px;
-  font-weight: 300;
+.hero h1 em {
+  font-style: italic; font-weight: 400;
+  color: var(--muted);
 }
-.hero-nums {
-  display: flex; flex-wrap: wrap; gap: 0;
-  border: 1px solid var(--rule); border-radius: 4px;
-  overflow: hidden; max-width: 680px;
+.hero-body {
+  max-width: 480px;
+  font-size: 16px; line-height: 1.7;
+  color: var(--muted); font-weight: 400;
+  margin-bottom: 52px;
+  opacity: 0; transform: translateY(10px);
+  animation: rise .6s .45s forwards;
 }
-.hero-num {
-  flex: 1; min-width: 140px;
-  padding: 18px 22px;
-  border-right: 1px solid var(--rule);
-}
-.hero-num:last-child { border-right: none; }
-.hero-num .n {
-  font-family: var(--mono); font-size: 26px; font-weight: 500;
-  color: var(--blue); line-height: 1;
-}
-.hero-num .l {
-  font-size: 11px; color: var(--muted); margin-top: 4px;
-  letter-spacing: .3px;
-}
+.hero-body strong { color: var(--ink); font-weight: 500; }
 
-/* ── SECTION WRAPPER ─────────────────────────────── */
-.wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
-.sec { padding: 64px 0; border-bottom: 1px solid var(--rule); }
-.sec-label {
+/* STATS ROW */
+.hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  opacity: 0; transform: translateY(10px);
+  animation: rise .6s .6s forwards;
+}
+.hstat {
+  padding: 20px 32px 20px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 32px;
+}
+.hstat:last-child { border-right: none; margin-right: 0; }
+.hstat-n {
+  font-family: var(--display);
+  font-size: 42px; font-weight: 700;
+  color: var(--ink); line-height: 1;
+}
+.hstat-n span { color: var(--accent); }
+.hstat-l {
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 32px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted); margin-top: 5px;
 }
 
-/* ── WORK CARDS ──────────────────────────────────── */
-.card {
-  border: 1px solid var(--rule); border-radius: 4px;
-  overflow: hidden; margin-bottom: 20px;
-}
-.card:last-child { margin-bottom: 0; }
-
-.card-top {
-  display: flex; align-items: flex-start;
-  justify-content: space-between; flex-wrap: wrap;
-  gap: 12px;
-  padding: 24px 28px 20px;
-  border-bottom: 1px solid var(--rule);
-}
-.card-co {
+/* SCROLL HINT */
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 48px;
+  display: flex; align-items: center; gap: 12px;
   font-family: var(--mono); font-size: 10px;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 5px;
+  color: var(--dim);
+  opacity: 0; animation: rise .5s 1.2s forwards;
 }
-.card-title {
-  font-family: var(--serif); font-size: 20px;
+.scroll-line {
+  width: 40px; height: 1px; background: var(--dim);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; left: -100%; top: 0;
+  width: 100%; height: 100%; background: var(--accent);
+  animation: scanline 2s 1.5s ease-in-out infinite;
+}
+@keyframes scanline { 0%{left:-100%} 50%,100%{left:100%} }
+
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+/* ─── SECTION SYSTEM ─────────────────────────── */
+.section { padding: 96px 48px; max-width: 1060px; margin: 0 auto; }
+.section-divider {
+  border: none; border-top: 1px solid var(--border);
+  margin: 0 48px;
+}
+.s-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.s-title {
+  font-family: var(--display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 600; line-height: 1.1;
+  letter-spacing: -.5px; color: var(--ink);
+  margin-bottom: 56px;
+}
+.s-title em { font-style: italic; color: var(--muted); }
+
+/* ─── WORK CARDS ─────────────────────────────── */
+.work-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color .25s, transform .25s;
+  will-change: transform;
+}
+.work-card:hover { border-color: var(--dim); transform: translateY(-2px); }
+
+.wc-top {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; align-items: start;
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.wc-org {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.wc-title {
+  font-family: var(--display); font-size: 22px; font-weight: 600;
   line-height: 1.25; color: var(--ink);
 }
-.tag {
+.wc-badge {
   font-family: var(--mono); font-size: 9px;
   letter-spacing: 1.5px; text-transform: uppercase;
-  background: var(--blue); color: #fff;
-  padding: 4px 10px; border-radius: 2px;
-  align-self: flex-start; white-space: nowrap;
+  padding: 5px 11px; border-radius: 2px;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  color: var(--muted);
 }
-.tag.red { background: var(--red); }
-.tag.muted { background: transparent; color: var(--muted); border: 1px solid var(--rule); }
+.wc-badge.accent { background: rgba(232,98,42,.12); border-color: rgba(232,98,42,.3); color: var(--accent); }
+.wc-badge.amber  { background: rgba(245,166,35,.1);  border-color: rgba(245,166,35,.25); color: var(--amber); }
 
-.card-body { display: grid; grid-template-columns: 1fr 1fr; }
-
-.card-col {
-  padding: 20px 28px 24px;
+/* QUOTE PROBLEM */
+.wc-problem {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  margin-left: 0;
+  background: rgba(232,98,42,.04);
 }
-.card-col:first-child { border-right: 1px solid var(--rule); }
-
-.col-label {
+.wc-problem-label {
   font-family: var(--mono); font-size: 9px;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--red); margin-bottom: 10px;
+  color: var(--accent); margin-bottom: 10px;
 }
-.card-col p {
-  font-size: 13.5px; color: var(--ink);
-  line-height: 1.65;
+.wc-problem p {
+  font-family: var(--display); font-style: italic;
+  font-size: 18px; line-height: 1.6;
+  color: var(--ink);
 }
 
-.card-nums {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  padding: 16px 28px 20px;
-  border-top: 1px solid var(--rule);
-  background: #F7F6F3;
-}
-.num-chip {
-  font-family: var(--mono); font-size: 11.5px;
-  color: var(--blue);
-  background: #fff; border: 1px solid var(--rule);
-  padding: 5px 12px; border-radius: 3px;
-}
-.num-chip b { font-weight: 500; }
-
-/* ── PROJECT CARDS ───────────────────────────────── */
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.proj {
-  border: 1px solid var(--rule); border-radius: 4px;
-  padding: 24px; display: flex; flex-direction: column;
-}
-.proj-icon {
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 14px;
-}
-.proj h3 {
-  font-family: var(--serif); font-size: 17px;
-  line-height: 1.25; margin-bottom: 8px;
-}
-.proj .proj-sub {
-  font-size: 12.5px; color: var(--muted);
-  line-height: 1.6; flex: 1; margin-bottom: 18px;
-}
-.proj-stats {
+/* BODY 2-COL */
+.wc-body {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--rule);
-  border: 1px solid var(--rule); border-radius: 3px;
-  overflow: hidden; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
-.proj-stat {
-  background: var(--bg); padding: 10px 12px;
+.wc-col {
+  padding: 22px 32px;
 }
-.proj-stat .sn {
-  font-family: var(--mono); font-size: 18px; font-weight: 500;
-  color: var(--blue); line-height: 1;
+.wc-col:first-child { border-right: 1px solid var(--border); }
+.wc-col-label {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
 }
-.proj-stat .sl {
-  font-size: 10px; color: var(--muted); margin-top: 2px;
+.wc-col p { font-size: 13.5px; color: var(--ink); line-height: 1.7; opacity: .82; }
+
+/* METRICS */
+.wc-metrics {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 18px 32px 20px;
+  background: var(--surf2);
 }
-.proj-link {
+.metric {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--amber);
+  background: rgba(245,166,35,.07);
+  border: 1px solid rgba(245,166,35,.18);
+  padding: 5px 13px; border-radius: 3px;
+}
+.metric b { font-weight: 500; }
+
+/* ─── PRINCIPLES ─────────────────────────────── */
+.principles {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden;
+}
+.principle {
+  background: var(--surf);
+  padding: 32px;
+  transition: background .2s;
+}
+.principle:hover { background: var(--surf2); }
+.p-num {
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: .5px; color: var(--muted);
-  text-decoration: none; border: 1px solid var(--rule);
-  padding: 6px 12px; border-radius: 3px;
-  display: inline-block; transition: all .15s;
-  align-self: flex-start;
+  color: var(--accent); letter-spacing: 2px;
+  margin-bottom: 14px;
 }
-.proj-link:hover { color: var(--blue); border-color: var(--blue); }
-
-/* ── DOMAIN STRIP ────────────────────────────────── */
-.domain-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.p-text {
+  font-family: var(--display); font-style: italic;
+  font-size: 19px; line-height: 1.5;
+  color: var(--ink);
 }
-.domain-item { padding: 20px 0; border-top: 2px solid var(--ink); }
-.domain-item .d-num {
-  font-family: var(--mono); font-size: 28px; font-weight: 500;
-  color: var(--ink); line-height: 1; margin-bottom: 6px;
-}
-.domain-item .d-label {
-  font-size: 12px; color: var(--muted); line-height: 1.45;
+.p-sub {
+  font-size: 12.5px; color: var(--muted);
+  margin-top: 10px; line-height: 1.6;
 }
 
-/* ── FOOTER ──────────────────────────────────────── */
-footer {
-  padding: 40px;
-  max-width: 900px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
+/* ─── PROJECTS ───────────────────────────────── */
+.proj-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
-.footer-name {
-  font-family: var(--serif); font-size: 18px; color: var(--ink);
+.proj-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 26px;
+  display: flex; flex-direction: column;
+  transition: border-color .25s, transform .25s;
+  position: relative; overflow: hidden;
 }
-.footer-links {
-  display: flex; flex-wrap: wrap; gap: 20px;
+.proj-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
 }
-.footer-links a {
-  font-family: var(--mono); font-size: 11px;
+.proj-card:hover { border-color: var(--dim); transform: translateY(-2px); }
+.proj-card:hover::before { transform: scaleX(1); }
+
+.pc-tag {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.pc-tag::before {
+  content: ''; width: 14px; height: 1px; background: var(--accent);
+}
+.pc-title {
+  font-family: var(--display); font-size: 19px; font-weight: 600;
+  line-height: 1.25; color: var(--ink); margin-bottom: 10px;
+}
+.pc-desc {
+  font-size: 13px; color: var(--muted);
+  line-height: 1.65; margin-bottom: 20px; flex: 1;
+}
+.pc-desc strong { color: var(--ink); font-weight: 500; }
+.pc-nums {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 20px;
+}
+.pc-num {
+  background: var(--surf2);
+  border: 1px solid var(--border);
+  border-radius: 3px; padding: 10px 12px;
+}
+.pc-num .nn {
+  font-family: var(--mono); font-size: 17px; font-weight: 500;
+  color: var(--amber); line-height: 1;
+}
+.pc-num .nl {
+  font-size: 10px; color: var(--muted); margin-top: 3px;
+}
+.pc-link {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 1px; text-transform: uppercase;
   color: var(--muted); text-decoration: none;
-  letter-spacing: .5px; transition: color .15s;
+  display: flex; align-items: center; gap: 8px;
+  transition: color .2s;
 }
-.footer-links a:hover { color: var(--ink); }
+.pc-link::after { content: '↗'; font-size: 12px; }
+.pc-link:hover { color: var(--accent); }
 
-/* ── RESPONSIVE ──────────────────────────────────── */
-@media (max-width: 680px) {
+/* ─── DOMAIN MARQUEE ─────────────────────────── */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  background: var(--surf);
+}
+.marquee-track {
+  display: flex; white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track span {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); padding: 0 24px;
+}
+.marquee-track span.accent { color: var(--accent); }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ─── CONTACT ────────────────────────────────── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: start;
+}
+.contact-headline {
+  font-family: var(--display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 600; line-height: 1.1;
+  letter-spacing: -.5px;
+}
+.contact-headline em { font-style: italic; color: var(--muted); }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.contact-link:hover { border-color: var(--dim); background: var(--surf2); }
+.cl-left { display: flex; flex-direction: column; gap: 3px; }
+.cl-type {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted);
+}
+.cl-val {
+  font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.cl-arrow {
+  font-size: 18px; color: var(--dim);
+  transition: color .2s, transform .2s;
+}
+.contact-link:hover .cl-arrow { color: var(--accent); transform: translate(2px,-2px); }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-l {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-l span { color: var(--accent); }
+.footer-r {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--dim);
+}
+
+/* ─── REVEAL ANIMATIONS ──────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 700px) {
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 48px 20px 48px; }
-  .wrap { padding: 0 20px; }
-  .card-body { grid-template-columns: 1fr; }
-  .card-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+  .nav-links, .nav-status { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .section { padding: 64px 20px; }
+  .section-divider { margin: 0 20px; }
+  .wc-body { grid-template-columns: 1fr; }
+  .wc-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
   .proj-grid { grid-template-columns: 1fr; }
-  .domain-grid { grid-template-columns: 1fr 1fr; }
-  footer { padding: 32px 20px; }
+  .principles { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { padding: 24px 20px; }
+  .scroll-hint { left: 20px; }
+  .wc-top { grid-template-columns: 1fr; }
+  .hstat { padding: 16px 24px 16px 0; }
+  .hero-bg-text { display: none; }
 }
 </style>
 </head>
 <body>
 
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
 <!-- NAV -->
 <nav>
-  <span class="nav-name">Ashutosh Shukla</span>
+  <span class="nav-id">AS <span>//</span> Portfolio</span>
   <div class="nav-links">
     <a href="#work">Work</a>
+    <a href="#thinking">Thinking</a>
     <a href="#projects">Projects</a>
-    <a href="#domain">Domain</a>
     <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    Vancouver, Canada
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <p class="hero-label">Product Manager &nbsp;·&nbsp; Digital Portfolio Lead &nbsp;·&nbsp; Vancouver, Canada</p>
-  <h1>I govern digital portfolios.<br><i>Outcomes, not output.</i></h1>
-  <p class="hero-sub">15 years in telecom and regulated systems. MBA from UBC Sauder. Three open-source projects built against real standards. Based in Vancouver, eligible to work in Canada.</p>
-  <div class="hero-nums">
-    <div class="hero-num"><div class="n">$2.5M+</div><div class="l">Costs & penalties prevented</div></div>
-    <div class="hero-num"><div class="n">1M+</div><div class="l">Users on platforms I owned</div></div>
-    <div class="hero-num"><div class="n">−50%</div><div class="l">Fleet idle time, YVR</div></div>
-    <div class="hero-num"><div class="n">332</div><div class="l">Tests passing, open source</div></div>
+<section class="hero">
+  <div class="hero-bg-text">PM</div>
+  <div class="hero-wrap">
+    <p class="hero-kicker">Product Manager &nbsp;·&nbsp; Digital Portfolio Lead</p>
+    <h1>I find the problem<br>that's costing you.<br><em>Then I fix it.</em></h1>
+    <p class="hero-body">
+      Not a features guy. Not a roadmap guy. A <strong>problems guy.</strong><br>
+      15 years in telecom and regulated systems. MBA from UBC Sauder.<br>
+      I work on things where being wrong is expensive.
+    </p>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-n"><span class="count" data-target="2.5" data-suffix="M+">0</span></div>
+        <div class="hstat-l">Costs & penalties prevented</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n"><span class="count" data-target="1" data-suffix="M+">0</span></div>
+        <div class="hstat-l">Users on platforms I owned</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">−<span class="count" data-target="50" data-suffix="%">0</span></div>
+        <div class="hstat-l">Fleet idle time, YVR</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n"><span class="count" data-target="332" data-suffix="">0</span></div>
+        <div class="hstat-l">Tests passing, open source</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="accent">3GPP TR 38.901</span><span>·</span>
+    <span>O-RAN E2SM-RC</span><span>·</span>
+    <span class="accent">CAMARA Fall25</span><span>·</span>
+    <span>ITU-R P.838-3</span><span>·</span>
+    <span class="accent">Kubernetes</span><span>·</span>
+    <span>CI/CD</span><span>·</span>
+    <span class="accent">IMS Core</span><span>·</span>
+    <span>API-First Platforms</span><span>·</span>
+    <span class="accent">CSPO · CSM · PMP</span><span>·</span>
+    <span>AWS · KCNA · Terraform</span><span>·</span>
+    <span class="accent">UBC Sauder MBA</span><span>·</span>
+    <span>SQL · Tableau · Figma</span><span>·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="accent">3GPP TR 38.901</span><span>·</span>
+    <span>O-RAN E2SM-RC</span><span>·</span>
+    <span class="accent">CAMARA Fall25</span><span>·</span>
+    <span>ITU-R P.838-3</span><span>·</span>
+    <span class="accent">Kubernetes</span><span>·</span>
+    <span>CI/CD</span><span>·</span>
+    <span class="accent">IMS Core</span><span>·</span>
+    <span>API-First Platforms</span><span>·</span>
+    <span class="accent">CSPO · CSM · PMP</span><span>·</span>
+    <span>AWS · KCNA · Terraform</span><span>·</span>
+    <span class="accent">UBC Sauder MBA</span><span>·</span>
+    <span>SQL · Tableau · Figma</span><span>·</span>
   </div>
 </div>
 
 <!-- WORK -->
-<div class="wrap">
-<section class="sec" id="work">
-  <p class="sec-label">Work</p>
+<hr class="section-divider">
+<section class="section" id="work">
+  <p class="s-label">Work</p>
+  <h2 class="s-title">Three problems.<br><em>Real outcomes.</em></h2>
 
   <!-- YVR -->
-  <div class="card">
-    <div class="card-top">
+  <div class="work-card reveal">
+    <div class="wc-top">
       <div>
-        <div class="card-co">Vancouver Airport Authority &nbsp;·&nbsp; 2025–2026</div>
-        <div class="card-title">Fleet intelligence where no decision system existed</div>
+        <div class="wc-org">Vancouver Airport Authority &nbsp;·&nbsp; 2025–2026</div>
+        <div class="wc-title">Fleet intelligence where no decision system existed</div>
       </div>
-      <span class="tag">Portfolio Governance</span>
+      <span class="wc-badge accent">Portfolio Governance</span>
     </div>
-    <div class="card-body">
-      <div class="card-col">
-        <div class="col-label">Problem</div>
-        <p>Airside operators had Maximo data but no product translating it into decisions. Peak-period asset allocation ran on judgment alone — no visibility, no escalation model, no ownership clarity.</p>
+    <div class="wc-problem">
+      <div class="wc-problem-label">The problem</div>
+      <p>"Operators had the data. They just had no way to act on it. Every peak period was a negotiation between judgment calls and incomplete signals. The tools existed. The product didn't."</p>
+    </div>
+    <div class="wc-body">
+      <div class="wc-col">
+        <div class="wc-col-label">What I found</div>
+        <p>Maximo data was there, fragmented across systems. Operators were running airside fleet allocation on instinct during peaks — idle assets, missed signals, unclear who owned the call. No escalation model. No ownership clarity. The data was available; nobody had built the decision layer.</p>
       </div>
-      <div class="card-col">
-        <div class="col-label">Outcome</div>
-        <p>Built decision-support product + SOPs from scratch. Integrated AI agents with existing data. Defined intake, prioritization, and escalation model. No new staff, no new systems.</p>
+      <div class="wc-col">
+        <div class="wc-col-label">What I built</div>
+        <p>Spent time airside first, before writing a line of spec. Integrated AI agents with existing Maximo data. Defined a decision-support product, intake process, and SOPs. Built escalation paths. Aligned operators, vendors, and executives without adding a single new system or headcount.</p>
       </div>
     </div>
-    <div class="card-nums">
-      <div class="num-chip"><b>−50%</b> fleet idle time (20%→10%)</div>
-      <div class="num-chip"><b>$500K</b> downtime prevented</div>
-      <div class="num-chip"><b>99%</b> continuity at peak</div>
-      <div class="num-chip"><b>0</b> additional headcount</div>
+    <div class="wc-metrics">
+      <div class="metric"><b>−50%</b> fleet idle time (20%→10%)</div>
+      <div class="metric"><b>$500K</b> downtime prevented</div>
+      <div class="metric"><b>99%</b> continuity at peak load</div>
+      <div class="metric"><b>0</b> new headcount required</div>
+      <div class="metric"><b>KPI:</b> asset throughput · idle % · escalation response</div>
     </div>
   </div>
 
-  <!-- Mavenir -->
-  <div class="card">
-    <div class="card-top">
+  <!-- Mavenir T-Mobile -->
+  <div class="work-card reveal reveal-d1">
+    <div class="wc-top">
       <div>
-        <div class="card-co">Mavenir Systems &nbsp;·&nbsp; T-Mobile &nbsp;·&nbsp; 2019–2024</div>
-        <div class="card-title">Shifted 1M-user telecom platform from calendar to readiness-based release</div>
+        <div class="wc-org">Mavenir Systems &nbsp;·&nbsp; T-Mobile Digits &nbsp;·&nbsp; 2019–2024</div>
+        <div class="wc-title">Shifted 1M-user platform from shipping-by-calendar to shipping-by-readiness</div>
       </div>
-      <span class="tag red">Product Lifecycle</span>
+      <span class="wc-badge amber">Product Lifecycle</span>
     </div>
-    <div class="card-body">
-      <div class="card-col">
-        <div class="col-label">Problem</div>
-        <p>Release decisions driven by calendar pressure, not operational readiness. Incident risk rising. SLA exposure growing. Engineering, sales, and ops solving different versions of the same problem.</p>
+    <div class="wc-problem">
+      <div class="wc-problem-label">The problem</div>
+      <p>"The release calendar was the product strategy. Nobody was asking whether the platform was actually ready to ship — they were asking whether the date was approaching. That's a dangerous place for a million-user communication platform to be."</p>
+    </div>
+    <div class="wc-body">
+      <div class="wc-col">
+        <div class="wc-col-label">What I found</div>
+        <p>12-week release cycles driven by calendar pressure, not readiness signals. Incident risk rising. SLA exposure growing. Engineering, sales, and ops were each solving a different version of the same problem with no shared frame for trade-offs. API contract misalignment creating silent failures downstream.</p>
       </div>
-      <div class="card-col">
-        <div class="col-label">Outcome</div>
-        <p>Owned PRDs, roadmaps, API contracts, release sequencing. Defined operational metrics. Built AAARRR funnels. Made explicit scope trade-offs. Enabled 30% incremental revenue via simplified platform contracts.</p>
+      <div class="wc-col">
+        <div class="wc-col-label">What I built</div>
+        <p>Defined a small set of operational metrics to surface failure modes early. Built AAARRR funnels and observability standards. Owned API contracts and rollout sequencing. Made explicit scope trade-offs during peak demand. Enabled 30% incremental revenue through simplified platform contracts for enterprise and SMB.</p>
       </div>
     </div>
-    <div class="card-nums">
-      <div class="num-chip"><b>−25%</b> release cycle (12→9 wk)</div>
-      <div class="num-chip"><b>−15%</b> downtime</div>
-      <div class="num-chip"><b>$2M+</b> SLA exposure avoided</div>
-      <div class="num-chip"><b>+30%</b> incremental revenue</div>
+    <div class="wc-metrics">
+      <div class="metric"><b>−25%</b> release cycle (12→9 wks)</div>
+      <div class="metric"><b>−15%</b> downtime</div>
+      <div class="metric"><b>$2M+</b> SLA exposure avoided</div>
+      <div class="metric"><b>+30%</b> incremental revenue</div>
+      <div class="metric"><b>KPI:</b> HEART · AAARRR · MTTR · SLA compliance</div>
     </div>
   </div>
 
   <!-- Rakuten -->
-  <div class="card">
-    <div class="card-top">
+  <div class="work-card reveal reveal-d2">
+    <div class="wc-top">
       <div>
-        <div class="card-co">Mavenir Systems &nbsp;·&nbsp; Rakuten Mobile &nbsp;·&nbsp; 2017–2021</div>
-        <div class="card-title">Cloud-native UCaaS delivery — millions of sessions, Kubernetes at scale</div>
+        <div class="wc-org">Mavenir Systems &nbsp;·&nbsp; Rakuten Link &nbsp;·&nbsp; 2017–2021</div>
+        <div class="wc-title">Cloud-native UCaaS at scale — millions of sessions, zero tolerance for failure</div>
       </div>
-      <span class="tag muted">Platform Engineering → PM</span>
+      <span class="wc-badge">Platform Engineering</span>
     </div>
-    <div class="card-body">
-      <div class="card-col">
-        <div class="col-label">Problem</div>
-        <p>Delivery programs lacked clear acceptance criteria. Late-stage churn during customer validation. No telemetry. Integration failures increasing as platform scaled.</p>
+    <div class="wc-problem">
+      <div class="wc-problem-label">The problem</div>
+      <p>"Programs were shipping without clear acceptance criteria. We'd discover problems during customer validation — the most expensive place to find them. Late-stage churn is what happens when nobody owns the definition of done."</p>
+    </div>
+    <div class="wc-body">
+      <div class="wc-col">
+        <div class="wc-col-label">What I found</div>
+        <p>Delivery decisions lacking clear acceptance criteria. Late-stage churn during customer validation. No telemetry on production systems. Integration failures increasing as platform scaled. Each team optimizing locally, nobody owning the end-to-end behaviour.</p>
       </div>
-      <div class="card-col">
-        <div class="col-label">Outcome</div>
-        <p>Led Kubernetes microservices at scale. Implemented telemetry and alerting. Enforced backward compatibility and phased rollouts. SOPs that persisted three years in production.</p>
+      <div class="wc-col">
+        <div class="wc-col-label">What I built</div>
+        <p>Led Kubernetes microservices architecture scaling millions of sessions. Implemented telemetry and alerting that transformed reactive firefighting into proactive management. Enforced backward compatibility, phased rollouts, and SOPs that survived three years in production. 99.99% uptime via MLOps + human-in-the-loop.</p>
       </div>
     </div>
-    <div class="card-nums">
-      <div class="num-chip"><b>99.99%</b> uptime</div>
-      <div class="num-chip"><b>−20%</b> integration failures</div>
-      <div class="num-chip"><b>−20%</b> support tickets</div>
-      <div class="num-chip"><b>+30%</b> freed engineering capacity</div>
+    <div class="wc-metrics">
+      <div class="metric"><b>99.99%</b> uptime</div>
+      <div class="metric"><b>−20%</b> integration failures</div>
+      <div class="metric"><b>−20%</b> support tickets</div>
+      <div class="metric"><b>+30%</b> freed engineering capacity</div>
     </div>
   </div>
 
+</section>
+
+<!-- THINKING -->
+<hr class="section-divider">
+<section class="section" id="thinking">
+  <p class="s-label">How I think</p>
+  <h2 class="s-title">The stuff that doesn't<br><em>fit on a résumé.</em></h2>
+
+  <div class="principles">
+    <div class="principle reveal">
+      <div class="p-num">01</div>
+      <p class="p-text">"The data was already there. Someone just had to care enough to look at it."</p>
+      <p class="p-sub">At YVR, Maximo had the signals. At Mavenir, the production logs had the failure patterns. I didn't build new instrumentation first — I understood what existed, then decided what was missing.</p>
+    </div>
+    <div class="principle reveal reveal-d1">
+      <div class="p-num">02</div>
+      <p class="p-text">"Most dashboards tell you what happened. I build the ones that tell you what to do next."</p>
+      <p class="p-sub">A metric that tells you idle time is high is not a product. A role-specific signal that tells an operator which asset to move, and when, is a product. The gap between them is the actual PM work.</p>
+    </div>
+    <div class="principle reveal reveal-d2">
+      <div class="p-num">03</div>
+      <p class="p-text">"If you're shipping features nobody uses, you don't have a product problem. You have a listening problem."</p>
+      <p class="p-sub">I spent time on the airside before writing a spec. I interviewed T-Mobile ops teams before defining metrics. First principles means starting with the person doing the job, not the job description.</p>
+    </div>
+    <div class="principle reveal reveal-d3">
+      <div class="p-num">04</div>
+      <p class="p-text">"The network already knew. Nobody was asking the right question."</p>
+      <p class="p-sub">SIM swaps, cell tower location, phone number mismatches — carriers have all of it. Canadian developers couldn't access it. I built the sandbox so they could. Sometimes the product is just removing the obstacle.</p>
+    </div>
+  </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="sec" id="projects">
-  <p class="sec-label">Open Source &nbsp;·&nbsp; I learn by building against real specs</p>
+<hr class="section-divider">
+<section class="section" id="projects">
+  <p class="s-label">Open Source &nbsp;·&nbsp; I learn by building against real specs</p>
+  <h2 class="s-title">Three problems I built<br><em>solutions for on my own time.</em></h2>
 
   <div class="proj-grid">
 
-    <!-- WeatherRAN -->
-    <div class="proj">
-      <div class="proj-icon">TelcoEdge &nbsp;·&nbsp; Python / O-RAN</div>
-      <h3>WeatherRAN — predictive signal adaptation</h3>
-      <p class="proj-sub">O-RAN xApp that reads Canadian weather forecasts and pre-adjusts 5G radio settings before the rain hits. Sovereign data only. No API key, no cloud, no US endpoints.</p>
-      <div class="proj-stats">
-        <div class="proj-stat"><div class="sn">5.3%</div><div class="sl">BER improvement, prairie</div></div>
-        <div class="proj-stat"><div class="sn">332</div><div class="sl">Tests passing</div></div>
-        <div class="proj-stat"><div class="sn">4</div><div class="sl">Canadian terrains</div></div>
-        <div class="proj-stat"><div class="sn">9</div><div class="sl">3GPP/O-RAN/ITU-R specs</div></div>
+    <div class="proj-card reveal">
+      <div class="pc-tag">TelcoEdge &nbsp;·&nbsp; Python / O-RAN</div>
+      <h3 class="pc-title">WeatherRAN</h3>
+      <p class="pc-desc">Rural Canadian 5G drops calls in bad weather because the tower waits for the signal to fail, then reacts. <strong>WeatherRAN reads the forecast and adapts before the rain hits.</strong> Sovereign data only — Environment Canada, no API key, no US endpoints. Built against 3GPP TR 38.901, O-RAN E2SM-RC, ITU-R specs.</p>
+      <div class="pc-nums">
+        <div class="pc-num"><div class="nn">5.3%</div><div class="nl">BER improvement, prairie</div></div>
+        <div class="pc-num"><div class="nn">332</div><div class="nl">Tests passing</div></div>
+        <div class="pc-num"><div class="nn">4</div><div class="nl">Canadian terrains modelled</div></div>
+        <div class="pc-num"><div class="nn">9</div><div class="nl">Standards cited</div></div>
       </div>
-      <a href="https://kachajugaad.github.io/TelcoEdge/" class="proj-link" target="_blank">kachajugaad.github.io/TelcoEdge ↗</a>
+      <a href="https://kachajugaad.github.io/TelcoEdge/" class="pc-link" target="_blank">kachajugaad.github.io/TelcoEdge</a>
     </div>
 
-    <!-- AnomEdge -->
-    <div class="proj">
-      <div class="proj-icon">AEdge &nbsp;·&nbsp; Rust / Edge AI</div>
-      <h3>AnomEdge — vehicle anomaly detection</h3>
-      <p class="proj-sub">Edge AI for fleet vehicles. 3-tier inference (deep learning → statistical ML → expert rules) with graceful degradation. Runs offline. Turns sensor noise into plain-English driver alerts.</p>
-      <div class="proj-stats">
-        <div class="proj-stat"><div class="sn">&lt;100ms</div><div class="sl">Signal to alert (p99)</div></div>
-        <div class="proj-stat"><div class="sn">145</div><div class="sl">Tests passing</div></div>
-        <div class="proj-stat"><div class="sn">18</div><div class="sl">Detection rules</div></div>
-        <div class="proj-stat"><div class="sn">0</div><div class="sl">Cloud dependencies</div></div>
+    <div class="proj-card reveal reveal-d1">
+      <div class="pc-tag">AEdge &nbsp;·&nbsp; Rust / Edge AI</div>
+      <h3 class="pc-title">AnomEdge</h3>
+      <p class="pc-desc">Fleet vehicles fail. Drivers find out after it's expensive. <strong>AnomEdge runs anomaly detection on the vehicle itself</strong> — no cloud, no dead zones, no 30-second latency. Three-tier AI with graceful degradation: deep learning → statistical ML → expert rules. It never fails silently. Plain-English driver alerts, not engine codes.</p>
+      <div class="pc-nums">
+        <div class="pc-num"><div class="nn">&lt;100ms</div><div class="nl">Signal to alert (p99)</div></div>
+        <div class="pc-num"><div class="nn">145</div><div class="nl">Tests passing</div></div>
+        <div class="pc-num"><div class="nn">18</div><div class="nl">Detection rules</div></div>
+        <div class="pc-num"><div class="nn">0</div><div class="nl">Cloud dependencies</div></div>
       </div>
-      <a href="https://kachajugaad.github.io/AEdge/" class="proj-link" target="_blank">kachajugaad.github.io/AEdge ↗</a>
+      <a href="https://kachajugaad.github.io/AEdge/" class="pc-link" target="_blank">kachajugaad.github.io/AEdge</a>
     </div>
 
-    <!-- CAMARA -->
-    <div class="proj">
-      <div class="proj-icon">camara-dev &nbsp;·&nbsp; Python / FastAPI</div>
-      <h3>Canada's open CAMARA API sandbox</h3>
-      <p class="proj-sub">SIM swap detection, number verification, location verification — against Rogers, Bell, Telus simulation profiles. CAMARA Fall25 spec-compliant. No carrier agreement needed to develop and test.</p>
-      <div class="proj-stats">
-        <div class="proj-stat"><div class="sn">3</div><div class="sl">CAMARA API surfaces</div></div>
-        <div class="proj-stat"><div class="sn">53</div><div class="sl">Tests passing</div></div>
-        <div class="proj-stat"><div class="sn">3</div><div class="sl">Carrier profiles (Rogers/Bell/Telus)</div></div>
-        <div class="proj-stat"><div class="sn">90s</div><div class="sl">First API call</div></div>
+    <div class="proj-card reveal reveal-d2">
+      <div class="pc-tag">camara-dev &nbsp;·&nbsp; Python / FastAPI</div>
+      <h3 class="pc-title">CAMARA Sandbox</h3>
+      <p class="pc-desc">Canadian developers can't test SIM swap detection, number verification, or location signals without a carrier agreement. That's why fraud goes undetected. <strong>This is Canada's open CAMARA API sandbox</strong> — Rogers, Bell, Telus simulation profiles, CAMARA Fall25 spec-compliant. First API call in 90 seconds. No agreement, no approval, no cost.</p>
+      <div class="pc-nums">
+        <div class="pc-num"><div class="nn">3</div><div class="nl">CAMARA API surfaces</div></div>
+        <div class="pc-num"><div class="nn">53</div><div class="nl">Tests passing</div></div>
+        <div class="pc-num"><div class="nn">3</div><div class="nl">Carrier profiles</div></div>
+        <div class="pc-num"><div class="nn">90s</div><div class="nl">To first API call</div></div>
       </div>
-      <a href="https://github.com/KachaJugaad/camara-dev" class="proj-link" target="_blank">github.com/KachaJugaad/camara-dev ↗</a>
+      <a href="https://github.com/KachaJugaad/camara-dev" class="pc-link" target="_blank">github.com/KachaJugaad/camara-dev</a>
     </div>
 
-  </div>
-</section>
-
-<!-- DOMAIN -->
-<section class="sec" id="domain">
-  <p class="sec-label">Domain</p>
-  <div class="domain-grid">
-    <div class="domain-item">
-      <div class="d-num">15 yrs</div>
-      <div class="d-label">IMS core → UCaaS → API-first telecom platforms. Built on what Nokia makes.</div>
-    </div>
-    <div class="domain-item">
-      <div class="d-num">3GPP</div>
-      <div class="d-label">TR 38.901 · TS 38.214 · TR 38.821 · O-RAN E2SM-RC · CAMARA Fall25 · ITU-R P.838</div>
-    </div>
-    <div class="domain-item">
-      <div class="d-num">MBA</div>
-      <div class="d-label">UBC Sauder, Tech & Analytics track. Data analytics, scenario analysis, supply chain optimization.</div>
-    </div>
-    <div class="domain-item">
-      <div class="d-num">6 certs</div>
-      <div class="d-label">CSPO · CSM · PMP · AWS Associate · KCNA · Terraform Associate</div>
-    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="sec" id="contact" style="border-bottom:none;">
-  <p class="sec-label">Contact</p>
-  <p style="font-family:var(--serif);font-size:28px;line-height:1.2;margin-bottom:28px;max-width:500px;">Available for the right problem in Canada.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:12px;">
-    <a href="mailto:ashukla.nitrr@gmail.com" class="proj-link">ashukla.nitrr@gmail.com</a>
-    <a href="https://linkedin.com/in/ashutoshukla" class="proj-link" target="_blank">LinkedIn ↗</a>
-    <a href="https://github.com/KachaJugaad" class="proj-link" target="_blank">GitHub ↗</a>
-    <a href="https://jugaadvaale.com" class="proj-link" target="_blank">jugaadvaale.com ↗</a>
+<hr class="section-divider">
+<section class="section" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="s-label">Contact</p>
+      <h2 class="contact-headline">If there's a hard<br>problem, <em>I'm<br>interested.</em></h2>
+    </div>
+    <div class="contact-links reveal reveal-d1">
+      <a href="mailto:ashukla.nitrr@gmail.com" class="contact-link">
+        <div class="cl-left">
+          <span class="cl-type">Email</span>
+          <span class="cl-val">ashukla.nitrr@gmail.com</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="tel:6722723207" class="contact-link">
+        <div class="cl-left">
+          <span class="cl-type">Phone</span>
+          <span class="cl-val">672.272.3207</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/ashutoshukla" class="contact-link" target="_blank">
+        <div class="cl-left">
+          <span class="cl-type">LinkedIn</span>
+          <span class="cl-val">linkedin.com/in/ashutoshukla</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://github.com/KachaJugaad" class="contact-link" target="_blank">
+        <div class="cl-left">
+          <span class="cl-type">GitHub</span>
+          <span class="cl-val">github.com/KachaJugaad</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://jugaadvaale.com" class="contact-link" target="_blank">
+        <div class="cl-left">
+          <span class="cl-type">Website</span>
+          <span class="cl-val">jugaadvaale.com</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
   </div>
 </section>
-</div>
 
+<!-- FOOTER -->
 <footer>
-  <span class="footer-name">Ashutosh Shukla</span>
-  <div class="footer-links">
-    <a href="tel:6722723207">672.272.3207</a>
-    <a href="mailto:ashukla.nitrr@gmail.com">ashukla.nitrr@gmail.com</a>
-    <a href="https://github.com/KachaJugaad" target="_blank">github.com/KachaJugaad</a>
-    <a href="https://kachajugaad.github.io/TelcoEdge/" target="_blank">WeatherRAN</a>
-    <a href="https://kachajugaad.github.io/AEdge/" target="_blank">AnomEdge</a>
-  </div>
+  <span class="footer-l">Ashutosh Shukla <span>//</span> Vancouver, Canada</span>
+  <span class="footer-r">Built with intent. Tested against real specs.</span>
 </footer>
 
+<!-- JS: cursor, scroll reveal, count-up -->
+<script>
+/* Custom cursor */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  rx += (mx - rx) * .12; ry += (my - ry) * .12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+/* Scroll reveal */
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+
+/* Count-up on hero stats */
+function countUp(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const isDecimal = String(target).includes('.');
+  const duration = 1400;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = target * eased;
+    el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statsEl = document.querySelector('.hero-stats');
+let counted = false;
+const statsObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    document.querySelectorAll('.count').forEach(el => countUp(el));
+  }
+}, { threshold: 0.5 });
+statsObserver.observe(statsEl);
+</script>
 </body>
 </html>

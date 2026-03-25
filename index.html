@@ -21,6 +21,13 @@ html{scroll-behavior:smooth}
 }
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
 
+/* AVAILABILITY BADGE */
+.avail-badge{display:inline-block;margin-top:16px;padding:6px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--green);border:1px solid var(--green);border-radius:20px;background:rgba(26,122,74,.06)}
+
+/* LOGO STRIP */
+.logo-strip{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)}
+.logo-item{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+
 /* CURSOR */
 #cur,#ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
 #cur{width:7px;height:7px;background:var(--red);transition:width .15s,height .15s,background .15s}
@@ -206,13 +213,13 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <a href="#work">Work</a><a href="#projects">Projects</a>
     <a href="#thinking">Thinking</a><a href="#contact">Contact</a>
   </div>
-  <div class="nav-dot"><div class="dot"></div>Vancouver</div>
+  <div class="nav-dot"><div class="dot"></div>Canada</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-watermark">PM</div>
-  <p class="hero-kicker">Product Manager &nbsp;·&nbsp; Digital Portfolio Lead</p>
+  <p class="hero-kicker">Senior Product Manager &nbsp;·&nbsp; B2B Platforms &nbsp;·&nbsp; 15 Years</p>
   <h1>
     I find the expensive<br>
     problem hiding in<br>
@@ -225,6 +232,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     15 years. Three industries. Same pattern every time.<br>
     UBC Sauder MBA. Roots in engineering. Brain in product.
   </p>
+  <div class="avail-badge">Open to opportunities · Canada</div>
   <div class="stats">
     <div class="stat">
       <div class="stat-n">$<span class="cnt" data-t="2.5" data-d="1" data-s="M+">0</span></div>
@@ -244,6 +252,17 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
   </div>
   <div class="hint"><div class="hint-line"></div>Scroll</div>
+</div>
+
+<!-- LOGO STRIP -->
+<div class="logo-strip">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:20px 0">
+    <span class="logo-item">T-Mobile</span>
+    <span class="logo-item">Mavenir</span>
+    <span class="logo-item">Vancouver Airport Authority</span>
+    <span class="logo-item">Rakuten</span>
+    <span class="logo-item">UBC Sauder</span>
+  </div>
 </div>
 
 <!-- DOMAIN MARQUEE — breadth signals, not spec signals -->
@@ -411,8 +430,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
 <div class="wrap">
 <section class="sec" id="projects">
-  <p class="sec-label">Open Source</p>
-  <h2 class="sec-head">I learn by building against<br><i>real specs on my own time.</i></h2>
+  <p class="sec-label">What I Build</p>
+  <h2 class="sec-head">I learn by shipping against<br><i>real specs on my own time.</i></h2>
   <div class="pgrid">
 
     <div class="pcard rev">
@@ -514,7 +533,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <div class="rev">
       <p class="sec-label">Contact</p>
       <h2 class="chead">If there's a hard<br>problem, <i>I'm<br>interested.</i></h2>
-      <p class="csub">Based in Vancouver. Eligible to work in Canada. Open to tech, platform, cloud, B2B, B2B2C, and regulated environments. Ambiguous problems with expensive consequences — that's the work I do best.</p>
+      <p class="csub">Based in Canada. Eligible to work across Canada. Looking for Senior or Staff PM roles in platform, cloud, B2B, or regulated environments. Ambiguous problems with expensive consequences — that's the work I do best.</p>
     </div>
     <div class="clinks rev d1">
       <a href="mailto:ashukla.nitrr@gmail.com" class="cl">
@@ -544,7 +563,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 </div>
 
 <footer>
-  <span class="ftl">Ashutosh Shukla <span>//</span> Vancouver, Canada</span>
+  <span class="ftl">Ashutosh Shukla <span>//</span> Canada</span>
   <span class="ftr">Built with intent. Deployed on GitHub Pages.</span>
 </footer>
 

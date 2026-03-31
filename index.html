@@ -188,7 +188,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 /* REVEAL */
 .rev{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .rev.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* RESPONSIVE */
 @media(max-width:720px){
@@ -468,6 +468,20 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
 
     <div class="pcard rev d1">
+      <div class="pc-tag">TelcoEdge · Python / RF Propagation</div>
+      <h3 class="pc-title">Signal Forecast</h3>
+      <p class="pc-prob">Canadians have no carrier-independent way to know if their next call will drop.</p>
+      <p class="pc-desc">Predicts cellular call reliability by fusing ISED's tower registry (32,756 sites) with Environment Canada live weather data. RF propagation modelling estimates signal strength per postal code; weather scenarios — clear skies through ice storms — show how conditions degrade coverage. Fully sovereign: all data stays in Canada, no carrier agreement needed. Open-source alternative to carrier coverage maps that actually accounts for weather.</p>
+      <div class="pnums">
+        <div class="pnum"><div class="nn">32,756</div><div class="nl">Tower sites indexed</div></div>
+        <div class="pnum"><div class="nn">6</div><div class="nl">Weather scenarios</div></div>
+        <div class="pnum"><div class="nn">100%</div><div class="nl">Canadian postal codes</div></div>
+        <div class="pnum"><div class="nn">0</div><div class="nl">Carrier dependencies</div></div>
+      </div>
+      <a href="https://kachajugaad.github.io/TelcoEdge/signal-forecast/" class="plink" target="_blank">Live tool ↗</a>
+    </div>
+
+    <div class="pcard rev d2">
       <div class="pc-tag">AEdge · Rust / Edge AI</div>
       <h3 class="pc-title">AnomEdge</h3>
       <p class="pc-prob">Fleet vehicles fail expensively. Drivers find out after the damage is done.</p>
@@ -481,7 +495,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <a href="https://kachajugaad.github.io/AEdge/" class="plink" target="_blank">Live site ↗</a>
     </div>
 
-    <div class="pcard rev d2">
+    <div class="pcard rev d3">
       <div class="pc-tag">camara-dev · Python / FastAPI</div>
       <h3 class="pc-title">CAMARA Sandbox</h3>
       <p class="pc-prob">Canadian developers can't test carrier APIs without a procurement agreement.</p>
@@ -495,7 +509,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <a href="https://github.com/KachaJugaad/camara-dev" class="plink" target="_blank">GitHub ↗</a>
     </div>
 
-    <div class="pcard rev d3">
+    <div class="pcard rev d4">
       <div class="pc-tag">realEngine · Next.js / Android / AI Detection</div>
       <h3 class="pc-title">realEngine.ca</h3>
       <p class="pc-prob">People can't tell if the content they're consuming is AI-generated or real.</p>

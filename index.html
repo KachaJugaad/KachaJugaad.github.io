@@ -239,6 +239,19 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .tq{font-family:var(--display);font-style:italic;font-size:18px;line-height:1.5;color:var(--ink);margin-bottom:10px}
 .ta{font-size:13px;color:var(--muted);line-height:1.65}
 
+/* NEXT — OPEN NETWORKING MEMO */
+.memo{background:var(--bg2);border:1px solid var(--rule);border-radius:6px;padding:36px 36px 32px;max-width:780px}
+.memo-kicker{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.memo h3{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.25;margin-bottom:18px}
+.memo p,.memo li{font-size:14px;line-height:1.75;color:var(--muted)}
+.memo p{margin-bottom:14px}
+.memo strong{color:var(--ink);font-weight:500}
+.memo ul{list-style:none;padding:0;margin:0 0 18px}
+.memo li{padding-left:20px;position:relative;margin-bottom:8px}
+.memo li::before{content:'—';position:absolute;left:0;color:var(--red);font-weight:700}
+.memo-divider{width:40px;height:1px;background:var(--rule);margin:20px 0}
+.memo .aside{font-family:var(--display);font-style:italic;font-size:16px;color:var(--ink);line-height:1.55;margin:20px 0;padding:16px 20px;border-left:3px solid var(--red);background:rgba(200,78,28,.03)}
+
 /* CONTACT */
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .chead{font-family:var(--display);font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
@@ -298,7 +311,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
   <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> PM</span>
   <div class="nav-links">
     <a href="#work">Work</a><a href="#projects">Projects</a>
-    <a href="#thinking">Thinking</a><a href="#contact">Contact</a>
+    <a href="#thinking">Thinking</a><a href="#next">Next</a><a href="#contact">Contact</a>
   </div>
   <div class="nav-dot"><div class="dot"></div>Canada</div>
 </nav>
@@ -645,6 +658,53 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
   </div>
 </section>
+</div>
+
+<!-- WHAT'S NEXT -->
+<div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
+<div class="wrap">
+<section class="sec" id="next">
+  <p class="sec-label">What's next</p>
+  <h2 class="sec-head">The problem I want<br><i>to work on next.</i></h2>
+
+  <div class="memo rev">
+    <div class="memo-kicker">Open Networking · OVN · Heterogeneous Infrastructure</div>
+    <h3>Canada's data centers are running on whatever hardware they can get. Nobody's making the pieces talk to each other.</h3>
+
+    <p><strong>Here's what's happening.</strong> Nearly half of US data centers planned for 2026 are canceled or delayed. Tariffs hit networking gear 10-36%. DRAM prices up 70-100%. NIC shortages holding up entire rack buildouts. And 86% of CIOs are pulling workloads back from cloud to on-prem — right when sourcing hardware is hardest.</p>
+
+    <p>The result? Organizations buy what's available. A Broadcom whitebox here. Last year's Cisco there. An NVIDIA Spectrum switch because it was the only thing in stock. Three generations of gear, three config models, three CLI languages. The EVPN/VXLAN interop that vendors promise doesn't actually work across defaults.</p>
+
+    <div class="memo-divider"></div>
+
+    <p><strong>The tool that solved this — Juniper Apstra — got acquired by HPE.</strong> It's proprietary now. The open-source multi-vendor fabric manager doesn't exist. Meanwhile, SONiC is real — Gartner says 40%+ of large networks will run it by 2026, $5B+ market — but Day 2 operations tooling is immature, and the gap between SONiC and the Cisco/Arista gear already in the rack is nobody's problem.</p>
+
+    <p><strong>OVN</strong> (Open Virtual Network) handles the virtual layer — logical switches, distributed routers, ACLs, load balancing. It's the default in OpenShift now. But it has 15 open issues nobody's assigned, scaling bottlenecks at flow explosion, missing SRv6 support, DHCP reliability problems, and no clean story for connecting to physical networks with mixed hardware underneath.</p>
+
+    <div class="aside">The data exists. The hardware exists. The open-source NOS exists. Nobody's built the integration layer that makes a mixed-generation, mixed-vendor fabric actually usable by a team that doesn't have 40 network engineers.</div>
+
+    <p><strong>What I want to build:</strong></p>
+    <ul>
+      <li>Auto-discovery that normalizes SONiC, Arista EOS, and Cisco NX-OS devices into a single inventory — ASIC type, firmware vintage, SAI completeness, interop readiness</li>
+      <li>A "fabric readiness score" — can these devices form a working fabric together, and where are the gaps?</li>
+      <li>Intent-based config generation that handles the EVPN default mismatches nobody documents — you declare the fabric, it generates vendor-specific configs that actually interop</li>
+      <li>Supply chain awareness — when a device hits EOL and replacements are scarce, surface compatible alternatives already in the ecosystem</li>
+      <li>Contribute upstream to OVN — scaling fixes, physical network integration, the operational tooling that's missing between "it works in the lab" and "it runs in production"</li>
+    </ul>
+
+    <div class="memo-divider"></div>
+
+    <p><strong>Why this matters to Canada.</strong> Bill C-8 now mandates supply chain risk management for critical infrastructure. 97% of mid-market organizations are repatriating workloads for sovereignty. Canadian data centers are expanding — 27MW in Toronto, 90MW in Calgary, 150MW in Saskatchewan — and every one of them faces the same integration problem with whatever hardware they can source through tariff walls.</p>
+
+    <p>92% of organizations say open-source networking is critical to their future. The tooling to operationalize it doesn't exist yet.</p>
+
+    <div class="aside">I've spent 15 years in the space between "the system works" and "people can actually use it." Cisco firmware. Mavenir telecom platforms. Airport fleet systems. The pattern is always the same — the technology exists, the integration layer doesn't, and someone has to care enough to build it. That's the work I want to do.</div>
+
+    <p style="color:var(--ink);font-size:13px;margin-bottom:0">I'm between roles right now. Job search has been — funny, lately. But the problems don't wait for your employment status to sort itself out. If this is a space you're working in, or if you see something I'm missing, I'd genuinely like to hear from you.</p>
+  </div>
+
+</section>
+</div>
 </div>
 
 <!-- CONTACT -->

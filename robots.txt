@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kachajugaad.github.io/sitemap.xml

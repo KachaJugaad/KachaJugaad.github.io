@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashutosh Shukla — Product Manager</title>
 <meta name="description" content="PM who finds the expensive problem hiding in your platform. 15 years. Three industries. Same pattern every time.">
+<meta property="og:title" content="Ashutosh Shukla — Product Manager">
+<meta property="og:description" content="I find the expensive problem hiding in your platform. 15 years. Three industries. Same pattern every time.">
+<meta property="og:image" content="https://kachajugaad.github.io/headshot.jpg">
+<meta property="og:url" content="https://kachajugaad.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ashutosh Shukla — Product Manager">
+<meta name="twitter:description" content="I find the expensive problem hiding in your platform. 15 years. Three industries. Same pattern every time.">
+<meta name="twitter:image" content="https://kachajugaad.github.io/headshot.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,6 +49,20 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .logo-item{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--ink);text-transform:uppercase;white-space:nowrap;opacity:.55;transition:opacity .2s}
 .logo-item:hover{opacity:1}
 .logo-sep{color:var(--dim);font-size:10px}
+
+/* CREDS STRIP */
+.creds-strip{border-bottom:1px solid var(--rule);padding:16px 0;background:var(--surf)}
+.creds-strip .wrap{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.cred{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:4px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--bg2);white-space:nowrap;transition:border-color .15s,color .15s}
+.cred:hover{border-color:var(--dim);color:var(--ink)}
+
+/* TESTIMONIALS */
+.tquote-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.tquote{background:var(--bg2);padding:28px 30px;transition:background .15s}
+.tquote:hover{background:var(--surf)}
+.tquote blockquote{font-family:var(--display);font-style:italic;font-size:17px;line-height:1.55;color:var(--ink);margin-bottom:14px}
+.tquote cite{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--muted);font-style:normal;display:block}
+.tquote cite strong{color:var(--ink);font-weight:500}
 
 /* CURSOR */
 #cur,#ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -241,13 +264,13 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
   </h1>
   <p class="hero-body">
     <strong>The one nobody named yet.</strong><br>
-    I've found it in telecom networks, airport operations,<br>
-    cloud infrastructure, and IoT systems.<br>
-    15 years. Three industries. Same pattern every time.<br>
-    UBC Sauder MBA. Roots in engineering. Brain in product.
+    Telecom networks. Airport tarmacs. Cloud infrastructure. IoT on the edge.<br>
+    Same pattern every time — the data existed, nobody wired it to a decision.<br>
+    Engineering roots. UBC Sauder MBA. Brain in product.
   </p>
   <div class="avail-badge">Open to opportunities · Canada</div>
   <a href="#contact" class="hero-cta">Get in touch ↗</a>
+  <a href="Ashutosh_Shukla_Resume.pdf" class="hero-cta" style="background:var(--bg2);color:var(--ink);border:1px solid var(--rule);margin-left:8px" download>Download resume ↓</a>
   <div class="stats">
     <div class="stat">
       <div class="stat-n">$<span class="cnt" data-t="2.5" data-d="1" data-s="M+">0</span></div>
@@ -283,6 +306,19 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <span class="logo-item">UBC Sauder</span>
     <span class="logo-sep">|</span>
     <span class="logo-item">ProductBC Build-a-thon 2026</span>
+  </div>
+</div>
+
+<!-- CREDENTIALS -->
+<div class="creds-strip">
+  <div class="wrap">
+    <span class="cred">CSPO</span>
+    <span class="cred">CSM</span>
+    <span class="cred">PMP</span>
+    <span class="cred">KCNA</span>
+    <span class="cred">AWS Certified</span>
+    <span class="cred">Terraform Associate</span>
+    <span class="cred">UBC Sauder MBA</span>
   </div>
 </div>
 
@@ -351,7 +387,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div class="wrap">
 <section class="sec" id="work">
   <p class="sec-label">Work</p>
-  <h2 class="sec-head">Three problems.<br><i>Real outcomes. Real numbers.</i></h2>
+  <h2 class="sec-head">Three problems.<br><i>Real numbers. No hedging.</i></h2>
 
   <div class="wcard rev">
     <div class="wc-head">
@@ -452,7 +488,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div class="wrap">
 <section class="sec" id="projects">
   <p class="sec-label">What I Build</p>
-  <h2 class="sec-head">I learn by shipping against<br><i>real specs on my own time.</i></h2>
+  <h2 class="sec-head">Shipped on my own time.<br><i>Real specs. Real data. Tests pass.</i></h2>
   <div class="pgrid">
 
     <div class="pcard rev">
@@ -538,23 +574,23 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
   <div class="tgrid">
     <div class="tcell rev">
       <div class="tnum">01</div>
-      <p class="tq">"The data was already there. Someone just had to care enough to look at it."</p>
-      <p class="ta">At YVR, Maximo had the signals. At Mavenir, the production logs had the failure patterns. I didn't build new instrumentation first — I understood what existed, then decided what was actually missing.</p>
+      <p class="tq">"Data exists. Listening is the leverage."</p>
+      <p class="ta">Every system I've walked into had the signals buried somewhere — Maximo logs, production traces, carrier registries. The problem was never missing data. It was that nobody built the thing that turned it into a decision.</p>
     </div>
     <div class="tcell rev d1">
       <div class="tnum">02</div>
-      <p class="tq">"Most dashboards tell you what happened. I build the ones that tell you what to do next."</p>
-      <p class="ta">A metric reporting high idle time is not a product. A signal telling an operator which asset to move and when is a product. The gap between them is the actual PM work. I live in that gap.</p>
+      <p class="tq">"Metrics tell you what happened. Products tell you what to do next."</p>
+      <p class="ta">A dashboard showing high idle time isn't a product. A signal telling an operator which asset to move and when — that's a product. The gap between reporting and action is where the PM work actually lives.</p>
     </div>
     <div class="tcell rev d2">
       <div class="tnum">03</div>
-      <p class="tq">"If you're shipping features nobody uses, you don't have a product problem. You have a listening problem."</p>
-      <p class="ta">I spent time airside before writing the YVR spec. I interviewed T-Mobile ops teams before defining metrics. First principles means starting with the person doing the job — not the job description.</p>
+      <p class="tq">"Talk to operators before writing specs."</p>
+      <p class="ta">Not users. Not stakeholders. The person doing the job. Airside at YVR before the first wireframe. On calls with T-Mobile ops before defining a single metric. The job description lies. The operator doesn't.</p>
     </div>
     <div class="tcell rev d3">
       <div class="tnum">04</div>
-      <p class="tq">"The network already knew. Nobody was asking it the right question."</p>
-      <p class="ta">Carriers have SIM swap data, location signals, number verification — Canadian developers couldn't access any of it. I built the sandbox because the procurement process was the product problem. Sometimes the job is removing the obstacle.</p>
+      <p class="tq">"Sometimes the job is removing the obstacle."</p>
+      <p class="ta">Canadian developers couldn't test carrier APIs without a procurement agreement. The technology existed. The friction was the product problem. So I built the sandbox. Not every problem needs a feature — some just need someone to get out of the way.</p>
     </div>
   </div>
 </section>
@@ -568,7 +604,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <div class="rev">
       <p class="sec-label">Contact</p>
       <h2 class="chead">If there's a hard<br>problem, <i>I'm<br>interested.</i></h2>
-      <p class="csub">Based in Canada. Eligible to work across Canada. Looking for Senior or Staff PM roles in platform, cloud, B2B, or regulated environments. Ambiguous problems with expensive consequences — that's the work I do best.</p>
+      <p class="csub">Canada. Eligible to work anywhere in the country. Senior or Staff PM — platform, cloud, B2B, regulated ops. The messier the problem, the more I want in.</p>
     </div>
     <div class="clinks rev d1">
       <a href="mailto:ashukla.nitrr@gmail.com" class="cl">
@@ -599,7 +635,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 
 <footer>
   <span class="ftl">Ashutosh Shukla <span>//</span> Canada</span>
-  <span class="ftr">Built with intent. Deployed on GitHub Pages.</span>
+  <span class="ftr">Built with intent.</span>
 </footer>
 
 <script>

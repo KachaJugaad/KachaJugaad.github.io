@@ -6,7 +6,6 @@
 <title>Ashutosh Shukla — Product Builder · Vancouver, Canada</title>
 <meta name="description" content="Ashutosh Shukla — Product Builder in Vancouver, Canada. 15 years across B2B SaaS, API platforms, cloud-native telecom, IoT, and regulated operations. Senior PM, Product Lead, Program Lead. Open to work.">
 <link rel="canonical" href="https://kachajugaad.github.io/">
-<meta name="keywords" content="Ashutosh Shukla, product manager, senior product manager, product lead, program lead, program manager, staff product manager, product & program leader, Vancouver, British Columbia, Canada, B2B SaaS, API platforms, cloud-native, IoT, telecom, Kubernetes, AWS, Terraform, agile, scrum, hire product manager, open to work, platform PM, roadmap, cross-functional, data-driven, UBC MBA">
 <meta property="og:title" content="Ashutosh Shukla — Product Builder · Vancouver, Canada">
 <meta property="og:description" content="Product Builder. 15 years across B2B SaaS, API platforms, cloud-native telecom, IoT, and regulated ops. Open to work in Canada.">
 <meta property="og:image" content="https://kachajugaad.github.io/headshot.jpg">
@@ -272,6 +271,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .memo-divider{width:40px;height:1px;background:var(--rule);margin:20px 0}
 .memo .aside{font-family:var(--display);font-style:italic;font-size:16px;color:var(--ink);line-height:1.55;margin:20px 0;padding:16px 20px;border-left:3px solid var(--red);background:rgba(200,78,28,.03)}
 
+/* MEMO ACCORDION */
+.memo-collapsible{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.memo-collapsible.open{max-height:3000px}
+.memo-toggle{font-family:var(--mono);font-size:11px;letter-spacing:.5px;color:var(--red);background:none;border:1px solid var(--rule);padding:8px 16px;border-radius:3px;cursor:pointer;transition:border-color .15s,background .15s;display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.memo-toggle:hover{border-color:var(--red);background:rgba(200,78,28,.04)}
+.memo-toggle .arrow{transition:transform .3s;display:inline-block}
+.memo-toggle.open .arrow{transform:rotate(180deg)}
+
 /* CONTACT */
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .chead{font-family:var(--display);font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
@@ -328,7 +335,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div id="cur"></div><div id="ring"></div>
 
 <nav>
-  <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> PM</span>
+  <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> Senior PM · Staff PM · Product Lead</span>
   <div class="nav-links">
     <a href="#work">Work</a><a href="#projects">Projects</a>
     <a href="#thinking">Thinking</a><a href="#writing">Writing</a><a href="#next">Next</a><a href="#contact">Contact</a>
@@ -357,19 +364,19 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
   <a href="Ashutosh_Shukla_Resume.pdf" class="hero-cta" style="background:var(--bg2);color:var(--ink);border:1px solid var(--rule);margin-left:8px" download>Download resume ↓</a>
   <div class="stats">
     <div class="stat">
-      <div class="stat-n">$<span class="cnt" data-t="2.5" data-d="1" data-s="M+">0</span></div>
+      <div class="stat-n">$<span class="cnt" data-t="2.5" data-d="1" data-s="M+">2.5M+</span></div>
       <div class="stat-l">Costs prevented</div>
     </div>
     <div class="stat">
-      <div class="stat-n"><span class="cnt" data-t="1" data-d="0" data-s="M+">0</span></div>
+      <div class="stat-n"><span class="cnt" data-t="1" data-d="0" data-s="M+">1M+</span></div>
       <div class="stat-l">Users on platforms I owned</div>
     </div>
     <div class="stat">
-      <div class="stat-n">−<span class="cnt" data-t="50" data-d="0" data-s="%">0</span></div>
+      <div class="stat-n">−<span class="cnt" data-t="50" data-d="0" data-s="%">50%</span></div>
       <div class="stat-l">Fleet idle time, YVR</div>
     </div>
     <div class="stat">
-      <div class="stat-n"><span class="cnt" data-t="332" data-d="0" data-s="">0</span></div>
+      <div class="stat-n"><span class="cnt" data-t="477" data-d="0" data-s="">477</span></div>
       <div class="stat-l">Tests in open source</div>
     </div>
   </div>
@@ -789,6 +796,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <li>Contribute upstream to OVN — scaling fixes, physical network integration, the operational tooling that's missing between "it works in the lab" and "it runs in production"</li>
     </ul>
 
+    <button class="memo-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">↓</span> Read the full problem brief</button>
+    <div class="memo-collapsible">
     <div class="memo-divider"></div>
 
     <p><strong>Why this matters to Canada.</strong> Bill C-8 now mandates supply chain risk management for critical infrastructure. 97% of mid-market organizations are repatriating workloads for sovereignty. Canadian data centers are expanding — 27MW in Toronto, 90MW in Calgary, 150MW in Saskatchewan — and every one of them faces the same integration problem with whatever hardware they can source through tariff walls.</p>
@@ -798,6 +807,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <div class="aside">I've spent 15 years in the space between "the system works" and "people can actually use it." Cisco firmware. Mavenir telecom platforms. Airport fleet systems. The pattern is always the same — the technology exists, the integration layer doesn't, and someone has to care enough to build it. That's the work I want to do.</div>
 
     <p style="color:var(--ink);font-size:13px;margin-bottom:0">If this is a space you're working in, or if you see something I'm missing, I'd genuinely like to hear from you.</p>
+    </div>
   </div>
 
   <div class="memo rev" style="margin-top:24px">
@@ -825,15 +835,18 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <li><strong>Built for the Canadian reality.</strong> TFSA/RRSP/FHSA optimization. Newcomer financial onboarding that doesn't assume Canadian credit history. Career path modelling that accounts for credential recognition timelines. Bilingual. Sovereign data — nothing leaves Canada.</li>
     </ul>
 
+    <button class="memo-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">↓</span> Read the full problem brief</button>
+    <div class="memo-collapsible">
     <div class="memo-divider"></div>
 
     <p><strong>Why now.</strong> 86% of CIOs repatriating workloads. 45%+ of Canadians struggling to meet financial obligations. Household debt at 180% of income. Mortgage renewal cliff hitting $300B+ in loans repricing 30-40% higher. A generation of skilled immigrants underemployed by $15 billion a year. And an AI agent ecosystem that's finally capable enough to do something about it — but pointed at booking pickleball courts instead.</p>
 
     <p>The barbell strategy says keep 85% safe and put 15% into high-convexity bets. I think your career is the highest-convexity asset you own. And nobody's built the product that helps you manage it like one.</p>
 
-    <div class="aside">I've been on both sides of this. The immigrant who navigated credential recognition. The PM who shipped platforms for millions of users. And now — the guy between roles, watching savings tick down while sending applications into the void. The job search has been funny, lately. But the problem is real, and it's not just mine. If you've felt it too — you're not alone.</div>
+    <div class="aside">I've been on both sides of this. The immigrant who navigated credential recognition. The PM who shipped platforms for millions of users. And now — the PM who's lived this problem from both sides. The gap between job searches isn't a pause. It's the expensive problem nobody built a product for yet. If you've felt it too — you're not alone.</div>
 
     <p style="color:var(--ink);font-size:13px;margin-bottom:0">If you're building in this space, or if you've lived this problem, I want to hear your story.</p>
+    </div>
   </div>
 
 </section>
@@ -871,8 +884,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 
 <footer>
   <span class="ftl">Ashutosh Shukla <span>//</span> Vancouver, Canada</span>
-  <span class="ftr">Built with intent.</span>
-  <p style="font-family:var(--mono);font-size:9px;color:var(--dim);width:100%;margin-top:10px;line-height:1.8;letter-spacing:.3px">Product Builder · Senior Product Manager · Product Lead · Program Lead · Staff Product Manager · Program Manager · Vancouver, British Columbia, Canada · Open to work · Hire product manager · B2B SaaS · API-first platforms · Cloud-native · IoT · Telecom · Agile · Scrum · Data-driven · Roadmap · PRD · Cross-functional · Stakeholder management · Platform PM · UBC Sauder MBA · PMP · CSPO · CSM · KCNA · AWS · Terraform · Kubernetes · Edge AI · O-RAN · SONiC · OVN · T-Mobile · Cisco · Mavenir · Vancouver Airport Authority · Rakuten</p>
+  <span class="ftr" title="Jugaad: frugal innovation under constraint. The best product thinking starts with what you don't have.">KachaJugaad — find the constraint. Build the fix. Ship before perfect.</span>
 </footer>
 
 <script>
@@ -902,7 +914,7 @@ function cu(el){
 }
 let done=false;
 new IntersectionObserver(e=>{
-  if(e[0].isIntersecting&&!done){done=true;document.querySelectorAll('.cnt').forEach(el=>cu(el));}
+  if(e[0].isIntersecting&&!done){done=true;document.querySelectorAll('.cnt').forEach(el=>{el.textContent='0';cu(el);});}
 },{threshold:.5}).observe(document.querySelector('.stats'));
 </script>
 </body>

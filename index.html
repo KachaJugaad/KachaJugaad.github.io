@@ -786,6 +786,33 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
   </div>
 
   <div class="memo rev" style="margin-top:24px">
+    <div class="memo-kicker">Defense Edge · Frugal Compute · Sovereign AI</div>
+    <h3>Canada has $38.6B for NORAD modernization and warehouses full of old servers. Nobody's connecting the two.</h3>
+
+    <p><strong>The math is simple.</strong> Enterprise hardware gets decommissioned when the warranty expires, not when it stops working. Racks of perfectly functional GPUs, CPUs, and NICs sitting in surplus because procurement cycles say "buy new." Meanwhile, defense and sovereignty programs need edge compute at remote sites where you can't ship a $400K NVIDIA DGX — and wouldn't want to, because the power envelope doesn't exist and the supply chain can't guarantee delivery.</p>
+
+    <p><strong>What I want to build:</strong></p>
+    <ul>
+      <li><strong>Edge inference runtime that auto-profiles available hardware</strong> — GPU generation, VRAM, compute capability — and selects the right model quantization level. Run the best model the hardware can handle, not the best model money can buy.</li>
+      <li><strong>Commodity hardware fleet manager for defense edge</strong> — discovers, normalizes, and orchestrates mixed-vintage compute nodes into a mesh. Same pattern as the Open Networking idea above, but for compute instead of networking.</li>
+      <li><strong>Sovereign data processing pipeline</strong> — sensor data stays at the edge, processed locally, summaries forwarded up-chain. Nothing crosses borders. PIPEDA/Protected B compliant by architecture, not policy.</li>
+      <li><strong>Hardware lifecycle extension toolkit</strong> — when "end of life" enterprise gear gets decommissioned, score it for defense edge reuse: can it run inference? What models? What latency? What power envelope?</li>
+    </ul>
+
+    <details>
+      <summary>Read the full problem brief ↓</summary>
+
+      <p>The frugal compute thesis is straightforward: the gap between "best available hardware" and "hardware that actually works for the job" is where most of the money goes. A 3-year-old server running a properly quantized model at the edge beats a bleeding-edge GPU sitting in a data center 2,000 km away — because latency, sovereignty, and availability matter more than raw FLOPS when the use case is real-time sensor processing at a forward operating base or a remote Arctic monitoring station.</p>
+
+      <div class="aside">Canada's defense modernization doesn't have a technology problem. It has an integration problem. The hardware exists. The models exist. The sovereignty requirements are clear. Nobody's built the layer that turns surplus compute into a deployable, scoreable, orchestratable edge fleet.</div>
+
+      <p>This is the same pattern as every other problem I've worked on. The data existed at YVR — nobody turned it into decisions. The API existed at the carriers — nobody removed the procurement friction. The hardware exists in warehouses across Canada — nobody's scoring it for reuse and wiring it into a mesh that runs inference at the edge.</p>
+
+      <p style="color:var(--ink);font-size:13px;margin-bottom:0">If you work in defense tech, sovereign compute, or hardware lifecycle — I'd like to compare notes.</p>
+    </details>
+  </div>
+
+  <div class="memo rev" style="margin-top:24px">
     <div class="memo-kicker">Consumer · Career Insurance · AI Agents · Personal Finance</div>
     <h3>Your career is your most expensive asset. Nobody treats it like one.</h3>
 

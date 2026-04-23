@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashutosh Shukla — Product Builder · Vancouver, Canada</title>
-<meta name="description" content="Ashutosh Shukla — Senior Product Manager in Vancouver, Canada. AI product manager with 15 years across telecom, airport operations, cloud infrastructure, and IoT. Technical PM. 0-to-1 builder. UBC Sauder MBA. Open to work, remote Canada.">
+<title>Ashutosh Shukla — Product Builder · Canada</title>
+<meta name="description" content="Ashutosh Shukla — Senior Product Manager, anywhere in Canada. AI product manager with 15 years across telecom, airport operations, cloud infrastructure, and IoT. Technical PM. 0-to-1 builder. UBC Sauder MBA. Open to work, remote Canada.">
 <link rel="canonical" href="https://kachajugaad.github.io/">
-<meta property="og:title" content="Ashutosh Shukla — Product Builder · Vancouver, Canada">
+<meta property="og:title" content="Ashutosh Shukla — Product Builder · Canada">
 <meta property="og:description" content="Product Builder. 15 years across B2B SaaS, API platforms, cloud-native telecom, IoT, and regulated ops. Open to work in Canada.">
 <meta property="og:image" content="https://kachajugaad.github.io/headshot.jpg">
 <meta property="og:url" content="https://kachajugaad.github.io">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ashutosh Shukla — Product Builder · Vancouver, Canada">
+<meta name="twitter:title" content="Ashutosh Shukla — Product Builder · Canada">
 <meta name="twitter:description" content="Product Builder. 15 years across B2B SaaS, API platforms, cloud-native telecom, IoT, and regulated ops. Open to work in Canada.">
 <meta name="twitter:image" content="https://kachajugaad.github.io/headshot.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -250,6 +250,17 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 .idea-tile .memo-divider{width:30px;height:1px;background:var(--rule);margin:12px 0}
 @media(max-width:720px){.idea-grid{grid-template-columns:1fr}}
 
+/* COLLAPSIBLE SECTIONS */
+.sec-collapse{border:none;margin:0;padding:0}
+.sec-collapse>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sec-collapse>summary::-webkit-details-marker{display:none}
+.sec-collapse>summary::marker{display:none;content:''}
+.sec-collapse>summary::after{content:'＋';font-family:var(--mono);font-size:18px;color:var(--dim);transition:transform .3s,color .2s;flex-shrink:0}
+.sec-collapse[open]>summary::after{content:'−';color:var(--red)}
+.sec-collapse>summary:hover::after{color:var(--ink)}
+.sec-collapse .sec-content{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
 /* CONTACT */
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .chead{font-family:var(--display);font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
@@ -318,10 +329,10 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div class="hero">
   <div class="hero-watermark">PM</div>
   <img src="headshot.jpg" alt="Ashutosh Shukla" class="hero-avatar">
-  <p class="hero-kicker">Product Builder &nbsp;·&nbsp; B2B Platforms &nbsp;·&nbsp; Vancouver, Canada &nbsp;·&nbsp; Open to Work</p>
+  <p class="hero-kicker">Product Builder &nbsp;·&nbsp; B2B Platforms &nbsp;·&nbsp; Anywhere in Canada &nbsp;·&nbsp; Open to Work</p>
   <p class="hero-kicker" style="margin-top:-16px;margin-bottom:24px">Senior PM &nbsp;·&nbsp; Staff PM &nbsp;·&nbsp; Product Lead &nbsp;·&nbsp; 8+ years</p>
   <h1>
-    <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Ashutosh Shukla — Product Builder, Senior Product Manager, Product Lead, Program Lead, Vancouver, Canada. </span>I find the expensive<br>
+    <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Ashutosh Shukla — Product Builder, Senior Product Manager, Product Lead, Program Lead, Canada. </span>I find the expensive<br>
     problem hiding in<br>
     your <span id="rword" style="color:var(--red)">platform</span><i>.</i>
   </h1>
@@ -409,9 +420,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec">
-  <p class="sec-label rev">The Pattern</p>
-  <h2 class="sec-head rev">Three industries.<br><i>One problem, different address.</i></h2>
-  <div class="rev">
+  <details class="sec-collapse" open>
+  <summary>
+    <div><p class="sec-label">The Pattern</p>
+    <h2 class="sec-head" style="margin-bottom:0">Three industries.<br><i>One problem, different address.</i></h2></div>
+  </summary>
+  <div class="sec-content rev" style="margin-top:52px">
     <div class="thread-grid">
       <div class="thread-col">
         <div class="tc-domain">Airport Operations</div>
@@ -444,6 +458,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       </div>
     </div>
   </div>
+  </details>
 </section>
 </div>
 </div>
@@ -451,8 +466,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <!-- WORK -->
 <div class="wrap">
 <section class="sec" id="work">
-  <p class="sec-label">Work</p>
-  <h2 class="sec-head">Three problems.<br><i>Real numbers. No hedging.</i></h2>
+  <details class="sec-collapse" open>
+  <summary>
+    <div><p class="sec-label">Work</p>
+    <h2 class="sec-head" style="margin-bottom:0">Three problems.<br><i>Real numbers. No hedging.</i></h2></div>
+  </summary>
+  <div class="sec-content" style="margin-top:52px">
 
   <div class="wcard rev">
     <div class="wc-head">
@@ -545,6 +564,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <div class="mc"><b>+30%</b> freed engineering capacity</div>
     </div>
   </div>
+  </div>
+  </details>
 </section>
 </div>
 
@@ -552,8 +573,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
 <div class="wrap">
 <section class="sec" id="projects">
-  <p class="sec-label">What I Build</p>
-  <h2 class="sec-head">Shipped on my own time.<br><i>Real specs. Real data. Tests pass.</i></h2>
+  <details class="sec-collapse">
+  <summary>
+    <div><p class="sec-label">What I Build</p>
+    <h2 class="sec-head" style="margin-bottom:0">Shipped on my own time.<br><i>Real specs. Real data. Tests pass.</i></h2></div>
+  </summary>
+  <div class="sec-content" style="margin-top:52px">
   <div class="pgrid">
 
     <div class="pcard rev">
@@ -627,6 +652,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
 
   </div>
+  </div>
+  </details>
 </section>
 </div>
 </div>
@@ -634,8 +661,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <!-- THINKING -->
 <div class="wrap">
 <section class="sec" id="thinking">
-  <p class="sec-label">How I think</p>
-  <h2 class="sec-head">The stuff that doesn't<br><i>fit on a résumé.</i></h2>
+  <details class="sec-collapse">
+  <summary>
+    <div><p class="sec-label">How I think</p>
+    <h2 class="sec-head" style="margin-bottom:0">The stuff that doesn't<br><i>fit on a résumé.</i></h2></div>
+  </summary>
+  <div class="sec-content" style="margin-top:52px">
   <div class="tgrid">
     <div class="tcell rev">
       <div class="tnum">01</div>
@@ -658,6 +689,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <p class="ta">Canadian developers couldn't test carrier APIs without a procurement agreement. The technology existed. The friction was the product problem. So I built the sandbox. Not every problem needs a feature — some just need someone to get out of the way.</p>
     </div>
   </div>
+  </div>
+  </details>
 </section>
 </div>
 
@@ -665,8 +698,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec" id="writing">
-  <p class="sec-label">Writing</p>
-  <h2 class="sec-head">I think out loud.<br><i>Sometimes people read it.</i></h2>
+  <details class="sec-collapse">
+  <summary>
+    <div><p class="sec-label">Writing</p>
+    <h2 class="sec-head" style="margin-bottom:0">I think out loud.<br><i>Sometimes people read it.</i></h2></div>
+  </summary>
+  <div class="sec-content" style="margin-top:52px">
   <div class="wgrid rev">
 
     <a href="https://ashutoshukla.substack.com/p/the-broken-bone-economy" class="wrow" target="_blank">
@@ -752,6 +789,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 
   </div>
   <a href="https://ashutoshukla.substack.com" target="_blank" class="plink" style="margin-top:16px">All writing on Substack ↗</a>
+  </div>
+  </details>
 </section>
 </div>
 </div>
@@ -760,9 +799,12 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec" id="next">
-  <p class="sec-label">What's next</p>
-  <h2 class="sec-head">The problems I want<br><i>to work on next.</i></h2>
-
+  <details class="sec-collapse">
+  <summary>
+    <div><p class="sec-label">What's next</p>
+    <h2 class="sec-head" style="margin-bottom:0">The problems I want<br><i>to work on next.</i></h2></div>
+  </summary>
+  <div class="sec-content" style="margin-top:52px">
   <div class="idea-grid">
 
     <div class="idea-tile rev">
@@ -821,7 +863,8 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
 
   </div>
-
+  </div>
+  </details>
 </section>
 </div>
 </div>
@@ -834,7 +877,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     <div class="rev">
       <p class="sec-label">Contact</p>
       <h2 class="chead">If there's a hard<br>problem, <i>I'm<br>interested.</i></h2>
-      <p class="csub">Vancouver, British Columbia. Remote Canada or hybrid. AI product manager, technical PM, Product Lead, Senior or Staff PM — platform, cloud, B2B SaaS, regulated ops. Product strategy through product analytics. The messier the problem, the more I want in.</p>
+      <p class="csub">Anywhere in Canada — remote, hybrid, or on-site. AI product manager, technical PM, Product Lead, Senior or Staff PM — platform, cloud, B2B SaaS, regulated ops. Product strategy through product analytics. The messier the problem, the more I want in.</p>
     </div>
     <div class="clinks rev d1">
       <a href="https://linkedin.com/in/ashutoshukla" class="cl" target="_blank">
@@ -856,7 +899,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 </div>
 
 <footer>
-  <span class="ftl">Ashutosh Shukla <span>//</span> Vancouver, Canada</span>
+  <span class="ftl">Ashutosh Shukla <span>//</span> Canada</span>
   <span class="ftr">Built with intent. · KachaJugaad — find the constraint. Build the fix. Ship before perfect.</span>
 </footer>
 

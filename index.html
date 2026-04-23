@@ -107,7 +107,7 @@ nav{position:sticky;top:3px;z-index:100;display:flex;align-items:center;justify-
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(26,122,74,.4)}50%{box-shadow:0 0 0 4px rgba(26,122,74,0)}}
 
 /* HERO */
-.hero{padding:100px 48px 88px;max-width:1080px;margin:0 auto;position:relative;overflow:hidden}
+.hero{padding:64px 48px 48px;max-width:1080px;margin:0 auto;position:relative;overflow:hidden}
 .hero-watermark{position:absolute;right:-60px;top:50%;transform:translateY(-55%);font-family:var(--display);font-size:clamp(160px,22vw,280px);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(26,23,20,.04);line-height:1;user-select:none;pointer-events:none;letter-spacing:-4px}
 .hero-kicker{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;opacity:0;animation:up .5s .1s forwards}
 .hero-kicker:first-of-type{color:var(--red)}
@@ -115,7 +115,7 @@ nav{position:sticky;top:3px;z-index:100;display:flex;align-items:center;justify-
 .hero h1 i{font-style:italic;font-weight:400;color:var(--muted)}
 #rword{color:var(--red);display:inline-block;transition:opacity .25s,transform .25s;font-style:normal;font-weight:700}
 #rword.out{opacity:0;transform:translateY(-10px)}
-.hero-body{max-width:480px;font-size:16px;line-height:1.75;color:var(--muted);margin-bottom:52px;font-weight:300;opacity:0;animation:up .6s .4s forwards}
+.hero-body{max-width:480px;font-size:16px;line-height:1.75;color:var(--muted);margin-bottom:28px;font-weight:300;opacity:0;animation:up .6s .4s forwards}
 .hero-body strong{color:var(--ink);font-weight:500}
 
 /* STATS */
@@ -142,10 +142,11 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 
 /* SECTION SYSTEM */
 .wrap{max-width:1080px;margin:0 auto;padding:0 48px}
-.sec{padding:80px 0}
-.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:14px}
-.sec-head{font-family:var(--display);font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:52px}
+.sec{padding:48px 0}
+.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.sec-head{font-family:var(--display);font-size:clamp(22px,2.6vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.5px;margin-bottom:28px}
 .sec-head i{font-style:italic;font-weight:400;color:var(--muted)}
+.sec-content{margin-top:0!important}
 
 /* THE THREAD */
 .thread-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
@@ -165,69 +166,76 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 .tb-tag{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:3px;background:rgba(249,246,241,.08);color:rgba(249,246,241,.55);border:1px solid rgba(249,246,241,.15)}
 
 /* WORK CARDS */
-.wcard{border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-bottom:14px;background:var(--bg2);transition:border-color .2s,transform .2s}
+.wcard{border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-bottom:12px;background:var(--bg2);transition:border-color .2s,transform .2s}
 .wcard:hover{border-color:var(--dim);transform:translateY(-2px)}
-.wc-head{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:flex-start;padding:24px 28px 20px;border-bottom:1px solid var(--rule)}
-.wc-org{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.wc-title{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.25}
+.wc-head{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:flex-start;padding:18px 22px 14px}
+.wc-org{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.wc-title{font-family:var(--display);font-size:18px;font-weight:700;line-height:1.25}
 .badge{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:2px;white-space:nowrap;align-self:flex-start}
 .br{background:rgba(200,78,28,.1);border:1px solid rgba(200,78,28,.3);color:var(--red)}
 .bn{background:rgba(27,48,84,.08);border:1px solid rgba(27,48,84,.2);color:var(--navy)}
 .bm{background:var(--surf);border:1px solid var(--rule);color:var(--muted)}
-.wc-story{padding:20px 28px;border-bottom:1px solid var(--rule);background:rgba(200,78,28,.03);border-left:3px solid var(--red)}
-.wc-sl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
-.wc-story p{font-family:var(--display);font-style:italic;font-size:17px;line-height:1.65;color:var(--ink)}
-.wc-body{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
-.wc-col{padding:18px 28px}
+.wc-story{padding:16px 22px;border-bottom:1px solid var(--rule);background:rgba(200,78,28,.03);border-left:3px solid var(--red)}
+.wc-sl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.wc-story p{font-family:var(--display);font-style:italic;font-size:15px;line-height:1.55;color:var(--ink)}
+.wc-body{display:grid;grid-template-columns:1fr 1fr}
+.wc-col{padding:14px 22px}
 .wc-col:first-child{border-right:1px solid var(--rule)}
-.wc-cl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.wc-col p{font-size:13px;color:var(--ink);line-height:1.7;opacity:.85}
-.wc-nums{display:flex;flex-wrap:wrap;gap:7px;padding:15px 28px 18px;background:var(--surf)}
-.mc{font-family:var(--mono);font-size:11px;color:var(--navy);background:var(--bg2);border:1px solid var(--rule);padding:5px 11px;border-radius:3px}
+.wc-cl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.wc-col p{font-size:12.5px;color:var(--ink);line-height:1.65;opacity:.85}
+.wc-nums{display:flex;flex-wrap:wrap;gap:6px;padding:0 22px 14px;background:var(--bg2)}
+.mc{font-family:var(--mono);font-size:10.5px;color:var(--navy);background:var(--surf);border:1px solid var(--rule);padding:5px 10px;border-radius:3px}
 .mc b{font-weight:500;color:var(--amber)}
 
 /* PROJECTS */
-.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.pcard{background:var(--bg2);border:1px solid var(--rule);border-radius:6px;padding:24px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pcard{background:var(--bg2);border:1px solid var(--rule);border-radius:6px;padding:18px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
 .pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .pcard:hover{border-color:var(--dim);transform:translateY(-2px)}
 .pcard:hover::after{transform:scaleX(1)}
-.pc-tag{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.pc-tag{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .pc-tag::before{content:'';width:12px;height:1px;background:var(--red);flex-shrink:0}
-.pc-title{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.2}
-.pc-prob{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.55}
-.pc-desc{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;flex:1}
-.pnums{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px}
-.pnum{background:var(--surf);border:1px solid var(--rule);border-radius:3px;padding:9px 11px}
-.pnum .nn{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--navy);line-height:1}
-.pnum .nl{font-size:10px;color:var(--muted);margin-top:3px}
+.pc-title{font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;line-height:1.2}
+.pc-prob{font-size:12.5px;font-weight:500;color:var(--ink);margin-bottom:6px;line-height:1.5}
+.pc-desc{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:-webkit-line-clamp .2s}
+.pcard:hover .pc-desc{-webkit-line-clamp:unset}
+.pnums{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.pnum{background:var(--surf);border:1px solid var(--rule);border-radius:3px;padding:7px 9px}
+.pnum .nn{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--navy);line-height:1}
+.pnum .nl{font-size:9.5px;color:var(--muted);margin-top:3px}
 .plink{font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;border:1px solid var(--rule);padding:6px 12px;border-radius:3px;display:inline-flex;align-items:center;gap:6px;transition:color .15s,border-color .15s;align-self:flex-start}
 .plink:hover{color:var(--red);border-color:var(--red)}
 
 /* THINKING */
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
-.tcell{background:var(--bg2);padding:28px 30px;transition:background .15s}
+.tcell{background:var(--bg2);padding:20px 22px;transition:background .15s}
 .tcell:hover{background:var(--surf)}
-.tnum{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px}
-.tq{font-family:var(--display);font-style:italic;font-size:18px;line-height:1.5;color:var(--ink);margin-bottom:10px}
-.ta{font-size:13px;color:var(--muted);line-height:1.65}
+.tnum{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.tq{font-family:var(--display);font-style:italic;font-size:16px;line-height:1.45;color:var(--ink);margin-bottom:8px}
+.ta{font-size:12.5px;color:var(--muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;transition:-webkit-line-clamp .2s}
+.tcell:hover .ta{-webkit-line-clamp:unset}
 
 /* WRITING */
 .wgrid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
-.wrow{display:grid;grid-template-columns:90px 1fr;gap:0;background:var(--bg2);border-bottom:1px solid var(--rule);text-decoration:none;transition:background .15s}
+.wrow{display:grid;grid-template-columns:84px 1fr;gap:0;background:var(--bg2);border-bottom:1px solid var(--rule);text-decoration:none;transition:background .15s}
 .wrow:last-child{border-bottom:none}
 .wrow:hover{background:var(--surf)}
-.wr-date{font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--muted);padding:18px 16px;border-right:1px solid var(--rule);display:flex;align-items:flex-start;padding-top:20px}
-.wr-body{padding:18px 20px}
-.wr-title{font-family:var(--display);font-size:16px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:4px}
-.wr-sub{font-size:12px;color:var(--muted);line-height:1.55}
+.wgrid .wrow:nth-child(n+7){display:none}
+.wgrid.show-all .wrow{display:grid}
+.wr-date{font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--muted);padding:14px 14px;border-right:1px solid var(--rule);display:flex;align-items:flex-start}
+.wr-body{padding:12px 18px}
+.wr-title{font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:4px}
+.wr-sub{font-size:11.5px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wrow:hover .wr-sub{-webkit-line-clamp:unset}
+.wmore{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--muted);background:none;border:1px solid var(--rule);padding:6px 12px;border-radius:3px;cursor:pointer;transition:color .15s,border-color .15s}
+.wmore:hover{color:var(--red);border-color:var(--red)}
 .wr-arrow{font-size:14px;color:var(--dim);transition:color .15s,transform .15s;position:absolute;right:20px;top:50%;transform:translateY(-50%)}
 .wrow:hover .wr-arrow{color:var(--red);transform:translateY(-50%) translate(2px,-2px)}
 .wrow{position:relative}
 
 /* NEXT — IDEA TILES */
-.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.idea-tile{background:var(--bg2);border:1px solid var(--rule);border-radius:6px;padding:24px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.idea-tile{background:var(--bg2);border:1px solid var(--rule);border-radius:6px;padding:20px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
 .idea-tile::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .idea-tile:hover{border-color:var(--dim);transform:translateY(-2px)}
 .idea-tile:hover::after{transform:scaleX(1)}
@@ -250,16 +258,14 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 .idea-tile .memo-divider{width:30px;height:1px;background:var(--rule);margin:12px 0}
 @media(max-width:720px){.idea-grid{grid-template-columns:1fr}}
 
-/* COLLAPSIBLE SECTIONS */
-.sec-collapse{border:none;margin:0;padding:0}
-.sec-collapse>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.sec-collapse>summary::-webkit-details-marker{display:none}
-.sec-collapse>summary::marker{display:none;content:''}
-.sec-collapse>summary::after{content:'＋';font-family:var(--mono);font-size:18px;color:var(--dim);transition:transform .3s,color .2s;flex-shrink:0}
-.sec-collapse[open]>summary::after{content:'−';color:var(--red)}
-.sec-collapse>summary:hover::after{color:var(--ink)}
-.sec-collapse .sec-content{animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+/* WORK CARD COMPACT EXPANDER */
+.wc-expand{border-top:1px solid var(--rule);background:var(--surf)}
+.wc-expand>summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:12px 28px;transition:color .15s,background .15s}
+.wc-expand>summary::-webkit-details-marker{display:none}
+.wc-expand>summary::marker{display:none;content:''}
+.wc-expand>summary::after{content:' ↓';color:var(--dim)}
+.wc-expand[open]>summary::after{content:' ↑';color:var(--red)}
+.wc-expand>summary:hover{color:var(--ink);background:var(--bg2)}
 
 /* CONTACT */
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
@@ -317,7 +323,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div id="cur"></div><div id="ring"></div>
 
 <nav>
-  <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> Senior PM · Staff PM · Product Lead</span>
+  <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> Product Builder</span>
   <div class="nav-links">
     <a href="#work">Work</a><a href="#projects">Projects</a>
     <a href="#thinking">Thinking</a><a href="#writing">Writing</a><a href="#next">Next</a><a href="#contact">Contact</a>
@@ -329,8 +335,7 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div class="hero">
   <div class="hero-watermark">PM</div>
   <img src="headshot.jpg" alt="Ashutosh Shukla" class="hero-avatar">
-  <p class="hero-kicker">Product Builder &nbsp;·&nbsp; B2B Platforms &nbsp;·&nbsp; Anywhere in Canada &nbsp;·&nbsp; Open to Work</p>
-  <p class="hero-kicker" style="margin-top:-16px;margin-bottom:24px">Senior PM &nbsp;·&nbsp; Staff PM &nbsp;·&nbsp; Product Lead &nbsp;·&nbsp; 8+ years</p>
+  <p class="hero-kicker">Senior / Staff PM &nbsp;·&nbsp; Product Lead &nbsp;·&nbsp; B2B Platforms &nbsp;·&nbsp; Anywhere in Canada &nbsp;·&nbsp; Open to Work</p>
   <h1>
     <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Ashutosh Shukla — Product Builder, Senior Product Manager, Product Lead, Program Lead, Canada. </span>I find the expensive<br>
     problem hiding in<br>
@@ -420,12 +425,9 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec">
-  <details class="sec-collapse" open>
-  <summary>
-    <div><p class="sec-label">The Pattern</p>
-    <h2 class="sec-head" style="margin-bottom:0">Three industries.<br><i>One problem, different address.</i></h2></div>
-  </summary>
-  <div class="sec-content rev" style="margin-top:52px">
+    <p class="sec-label">The Pattern</p>
+    <h2 class="sec-head">Three industries. <i>One problem, different address.</i></h2>
+  <div class="sec-content rev">
     <div class="thread-grid">
       <div class="thread-col">
         <div class="tc-domain">Airport Operations</div>
@@ -458,7 +460,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       </div>
     </div>
   </div>
-  </details>
 </section>
 </div>
 </div>
@@ -466,12 +467,9 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <!-- WORK -->
 <div class="wrap">
 <section class="sec" id="work">
-  <details class="sec-collapse" open>
-  <summary>
-    <div><p class="sec-label">Work</p>
-    <h2 class="sec-head" style="margin-bottom:0">Three problems.<br><i>Real numbers. No hedging.</i></h2></div>
-  </summary>
-  <div class="sec-content" style="margin-top:52px">
+    <p class="sec-label">Work</p>
+    <h2 class="sec-head">Three problems. <i>Real numbers. No hedging.</i></h2>
+  <div class="sec-content">
 
   <div class="wcard rev">
     <div class="wc-head">
@@ -481,20 +479,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       </div>
       <span class="badge br">Digital Portfolio Governance</span>
     </div>
-    <div class="wc-story">
-      <div class="wc-sl">The problem, in plain language</div>
-      <p>"Operators were running multi-million-dollar asset allocation during peak periods on gut instinct. The data existed. Nobody had built the product that turned it into decisions."</p>
-    </div>
-    <div class="wc-body">
-      <div class="wc-col">
-        <div class="wc-cl">What I found</div>
-        <p>Maximo data fragmented across systems. No escalation model. No ownership clarity. Zero decision layer between the data and the operator. Spent time airside before writing a single spec — map the real decision points first, then build.</p>
-      </div>
-      <div class="wc-col">
-        <div class="wc-cl">What I built</div>
-        <p>Decision-support product integrating AI agents with Maximo data — model evaluation against operator workflows, prompt design for field conditions. SOPs. Intake and prioritization. Escalation paths across operators, vendors, and executives. Net-new digital capability — no new staff, no new systems, no budget added.</p>
-      </div>
-    </div>
     <div class="wc-nums">
       <div class="mc"><b>−50%</b> fleet idle time (20%→10%)</div>
       <div class="mc"><b>$500K</b> downtime prevented</div>
@@ -502,6 +486,23 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <div class="mc"><b>0</b> additional headcount</div>
       <div class="mc">KPI: asset throughput · idle % · escalation response</div>
     </div>
+    <details class="wc-expand">
+      <summary>The story · what I found · what I built</summary>
+      <div class="wc-story">
+        <div class="wc-sl">The problem, in plain language</div>
+        <p>"Operators were running multi-million-dollar asset allocation during peak periods on gut instinct. The data existed. Nobody had built the product that turned it into decisions."</p>
+      </div>
+      <div class="wc-body">
+        <div class="wc-col">
+          <div class="wc-cl">What I found</div>
+          <p>Maximo data fragmented across systems. No escalation model. No ownership clarity. Zero decision layer between the data and the operator. Spent time airside before writing a single spec — map the real decision points first, then build.</p>
+        </div>
+        <div class="wc-col">
+          <div class="wc-cl">What I built</div>
+          <p>Decision-support product integrating AI agents with Maximo data — model evaluation against operator workflows, prompt design for field conditions. SOPs. Intake and prioritization. Escalation paths across operators, vendors, and executives. Net-new digital capability — no new staff, no new systems, no budget added.</p>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div class="wcard rev d1">
@@ -512,20 +513,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       </div>
       <span class="badge bn">Product Lifecycle &amp; Release Governance</span>
     </div>
-    <div class="wc-story">
-      <div class="wc-sl">The problem, in plain language</div>
-      <p>"The release calendar was the product strategy. Nobody was asking whether the platform was ready — they were asking whether the date was approaching. On a million-user platform, that's a dangerous way to make decisions."</p>
-    </div>
-    <div class="wc-body">
-      <div class="wc-col">
-        <div class="wc-cl">What I found</div>
-        <p>12-week cycles driven by dates not readiness signals. SLA exposure rising. Engineering, sales, and ops solving three versions of the same problem with no shared frame. API contract misalignment creating silent downstream failures.</p>
-      </div>
-      <div class="wc-col">
-        <div class="wc-cl">What I built</div>
-        <p>Product analytics and operational metrics to surface failure modes early. AAARRR funnels, A/B testing on core workflows, and observability standards. API contract ownership. Explicit scope trade-offs at peak demand. Simplified platform contracts that unlocked 30% incremental revenue without adding operational load.</p>
-      </div>
-    </div>
     <div class="wc-nums">
       <div class="mc"><b>−25%</b> release cycle (12→9 wks)</div>
       <div class="mc"><b>−15%</b> downtime</div>
@@ -533,6 +520,23 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       <div class="mc"><b>+30%</b> incremental revenue</div>
       <div class="mc">KPI: HEART · AAARRR · OKRs · MTTR · SLA compliance</div>
     </div>
+    <details class="wc-expand">
+      <summary>The story · what I found · what I built</summary>
+      <div class="wc-story">
+        <div class="wc-sl">The problem, in plain language</div>
+        <p>"The release calendar was the product strategy. Nobody was asking whether the platform was ready — they were asking whether the date was approaching. On a million-user platform, that's a dangerous way to make decisions."</p>
+      </div>
+      <div class="wc-body">
+        <div class="wc-col">
+          <div class="wc-cl">What I found</div>
+          <p>12-week cycles driven by dates not readiness signals. SLA exposure rising. Engineering, sales, and ops solving three versions of the same problem with no shared frame. API contract misalignment creating silent downstream failures.</p>
+        </div>
+        <div class="wc-col">
+          <div class="wc-cl">What I built</div>
+          <p>Product analytics and operational metrics to surface failure modes early. AAARRR funnels, A/B testing on core workflows, and observability standards. API contract ownership. Explicit scope trade-offs at peak demand. Simplified platform contracts that unlocked 30% incremental revenue without adding operational load.</p>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div class="wcard rev d2">
@@ -543,29 +547,31 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
       </div>
       <span class="badge bm">Platform Engineering → Product</span>
     </div>
-    <div class="wc-story">
-      <div class="wc-sl">The problem, in plain language</div>
-      <p>"Programs shipped without clear acceptance criteria. Problems appeared during customer validation — the most expensive place to find them. Late-stage churn is what happens when nobody defines done."</p>
-    </div>
-    <div class="wc-body">
-      <div class="wc-col">
-        <div class="wc-cl">What I found</div>
-        <p>No telemetry on production systems. Integration failures rising as platform scaled. Each team optimizing locally. Nobody owning end-to-end behaviour. Late-stage churn in customer validation that should have been caught at design review.</p>
-      </div>
-      <div class="wc-col">
-        <div class="wc-cl">What I built</div>
-        <p>Kubernetes microservices architecture scaling millions of sessions. Telemetry and alerting that turned reactive firefighting into proactive management. Backward compatibility enforcement. Phased rollouts. SOPs that survived three years in production unchanged.</p>
-      </div>
-    </div>
     <div class="wc-nums">
       <div class="mc"><b>99.99%</b> uptime</div>
       <div class="mc"><b>−20%</b> integration failures</div>
       <div class="mc"><b>−20%</b> support tickets</div>
       <div class="mc"><b>+30%</b> freed engineering capacity</div>
     </div>
+    <details class="wc-expand">
+      <summary>The story · what I found · what I built</summary>
+      <div class="wc-story">
+        <div class="wc-sl">The problem, in plain language</div>
+        <p>"Programs shipped without clear acceptance criteria. Problems appeared during customer validation — the most expensive place to find them. Late-stage churn is what happens when nobody defines done."</p>
+      </div>
+      <div class="wc-body">
+        <div class="wc-col">
+          <div class="wc-cl">What I found</div>
+          <p>No telemetry on production systems. Integration failures rising as platform scaled. Each team optimizing locally. Nobody owning end-to-end behaviour. Late-stage churn in customer validation that should have been caught at design review.</p>
+        </div>
+        <div class="wc-col">
+          <div class="wc-cl">What I built</div>
+          <p>Kubernetes microservices architecture scaling millions of sessions. Telemetry and alerting that turned reactive firefighting into proactive management. Backward compatibility enforcement. Phased rollouts. SOPs that survived three years in production unchanged.</p>
+        </div>
+      </div>
+    </details>
   </div>
   </div>
-  </details>
 </section>
 </div>
 
@@ -573,12 +579,9 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
 <div class="wrap">
 <section class="sec" id="projects">
-  <details class="sec-collapse">
-  <summary>
-    <div><p class="sec-label">What I Build</p>
-    <h2 class="sec-head" style="margin-bottom:0">Shipped on my own time.<br><i>Real specs. Real data. Tests pass.</i></h2></div>
-  </summary>
-  <div class="sec-content" style="margin-top:52px">
+    <p class="sec-label">What I Build</p>
+    <h2 class="sec-head">Shipped on my own time. <i>Real specs. Real data. Tests pass.</i></h2>
+  <div class="sec-content">
   <div class="pgrid">
 
     <div class="pcard rev">
@@ -653,7 +656,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 
   </div>
   </div>
-  </details>
 </section>
 </div>
 </div>
@@ -661,12 +663,9 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <!-- THINKING -->
 <div class="wrap">
 <section class="sec" id="thinking">
-  <details class="sec-collapse">
-  <summary>
-    <div><p class="sec-label">How I think</p>
-    <h2 class="sec-head" style="margin-bottom:0">The stuff that doesn't<br><i>fit on a résumé.</i></h2></div>
-  </summary>
-  <div class="sec-content" style="margin-top:52px">
+    <p class="sec-label">How I think</p>
+    <h2 class="sec-head">The stuff that doesn't <i>fit on a résumé.</i></h2>
+  <div class="sec-content">
   <div class="tgrid">
     <div class="tcell rev">
       <div class="tnum">01</div>
@@ -690,7 +689,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </div>
   </div>
   </div>
-  </details>
 </section>
 </div>
 
@@ -698,13 +696,19 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec" id="writing">
-  <details class="sec-collapse">
-  <summary>
-    <div><p class="sec-label">Writing</p>
-    <h2 class="sec-head" style="margin-bottom:0">I think out loud.<br><i>Sometimes people read it.</i></h2></div>
-  </summary>
-  <div class="sec-content" style="margin-top:52px">
-  <div class="wgrid rev">
+    <p class="sec-label">Writing</p>
+    <h2 class="sec-head">I think out loud. <i>Sometimes people read it.</i></h2>
+  <div class="sec-content">
+  <div class="wgrid rev" id="wgrid">
+
+    <a href="https://ashutoshukla.substack.com/p/one-word-costs-five-things" class="wrow" target="_blank">
+      <div class="wr-date">Apr 2026</div>
+      <div class="wr-body">
+        <div class="wr-title">One Word Costs Five Things</div>
+        <div class="wr-sub">Every prompt you ship costs money five different ways. Most teams account for one and bleed on the other four.</div>
+      </div>
+      <span class="wr-arrow">↗</span>
+    </a>
 
     <a href="https://ashutoshukla.substack.com/p/the-broken-bone-economy" class="wrow" target="_blank">
       <div class="wr-date">Apr 2026</div>
@@ -788,9 +792,11 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
     </a>
 
   </div>
-  <a href="https://ashutoshukla.substack.com" target="_blank" class="plink" style="margin-top:16px">All writing on Substack ↗</a>
+  <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+    <button type="button" class="wmore" onclick="document.getElementById('wgrid').classList.toggle('show-all');this.textContent=this.textContent.includes('Show')?'Show fewer ↑':'Show all 10 posts ↓'">Show all 10 posts ↓</button>
+    <a href="https://ashutoshukla.substack.com" target="_blank" class="plink">All writing on Substack ↗</a>
   </div>
-  </details>
+  </div>
 </section>
 </div>
 </div>
@@ -799,12 +805,9 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2)">
 <div class="wrap">
 <section class="sec" id="next">
-  <details class="sec-collapse">
-  <summary>
-    <div><p class="sec-label">What's next</p>
-    <h2 class="sec-head" style="margin-bottom:0">The problems I want<br><i>to work on next.</i></h2></div>
-  </summary>
-  <div class="sec-content" style="margin-top:52px">
+    <p class="sec-label">What's next</p>
+    <h2 class="sec-head">The problems I want <i>to work on next.</i></h2>
+  <div class="sec-content">
   <div class="idea-grid">
 
     <div class="idea-tile rev">
@@ -864,7 +867,6 @@ footer{border-top:1px solid var(--rule);padding:24px 48px;display:flex;align-ite
 
   </div>
   </div>
-  </details>
 </section>
 </div>
 </div>

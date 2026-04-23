@@ -85,6 +85,23 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
 .hero-cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--copper);box-shadow:none}
 .hero-cta.secondary:hover{background:transparent;border-color:var(--gold);color:var(--gold);box-shadow:0 0 20px rgba(212,160,23,.12)}
 
+/* LEADERSHIP STRIP — VP credibility signal */
+.lead-strip{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 0;background:var(--surf)}
+.lead-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.lead-item{font-family:var(--serif);font-size:13px;color:var(--muted);line-height:1.5}
+.lead-item b{display:block;font-family:var(--display);font-size:20px;font-weight:700;color:var(--gold);line-height:1.2;margin-bottom:4px}
+@media(max-width:720px){.lead-strip .wrap{grid-template-columns:1fr 1fr}}
+
+/* MOBILE FLOATING CTA */
+.mobile-cta{display:none}
+@media(max-width:720px){
+  .mobile-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;padding:12px 16px;gap:8px;background:rgba(26,20,16,.96);backdrop-filter:blur(12px);border-top:1px solid var(--rule);box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+  .mobile-cta a{flex:1;text-align:center;padding:12px 0;font-family:var(--sans);font-size:13px;font-weight:600;border-radius:6px;text-decoration:none;letter-spacing:.03em}
+  .mobile-cta .m-primary{background:var(--gold);color:var(--bg)}
+  .mobile-cta .m-secondary{background:transparent;color:var(--ink);border:1px solid var(--copper)}
+  body{padding-bottom:64px}
+}
+
 /* LOGO STRIP */
 .logo-strip{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg2);padding:24px 0}
 .logo-strip .wrap{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
@@ -383,7 +400,7 @@ footer{border-top:1px solid var(--rule);padding:28px 48px;display:flex;align-ite
     Cisco firmware to Mavenir platforms to UBC Sauder MBA. The MBA isn't a toolbox — it's a Rosetta Stone.
     <span class="secondary">Then I build the thing that solves it — clearly, carefully, and in a way the team can own after I leave.</span>
   </p>
-  <div class="avail-badge">Open to opportunities · Canada</div>
+  <div class="avail-badge">Available now · Anywhere in Canada · Remote / Hybrid / On-site</div>
   <a href="#contact" class="hero-cta">Get in touch ↗</a>
   <a href="Ashutosh_Shukla_Resume.pdf" class="hero-cta secondary" style="margin-left:8px" download>Download resume ↓</a>
   <div class="stats">
@@ -405,6 +422,16 @@ footer{border-top:1px solid var(--rule);padding:28px 48px;display:flex;align-ite
     </div>
   </div>
   <div class="hint"><div class="hint-line"></div>Scroll</div>
+</div>
+
+<!-- LEADERSHIP STRIP — VP/exec credibility in 3 seconds -->
+<div class="lead-strip">
+  <div class="wrap">
+    <div class="lead-item"><b>1M+</b>users on platforms I owned</div>
+    <div class="lead-item"><b>$2.5M+</b>costs & SLA exposure prevented</div>
+    <div class="lead-item"><b>3 industries</b>telecom · airport ops · cloud</div>
+    <div class="lead-item"><b>15 years</b>Cisco → Mavenir → YVR → UBC MBA</div>
+  </div>
 </div>
 
 <!-- LOGO STRIP -->
@@ -849,7 +876,7 @@ footer{border-top:1px solid var(--rule);padding:28px 48px;display:flex;align-ite
 <div class="wrap">
 <section class="sec" id="next">
     <p class="sec-label">What's next</p>
-    <h2 class="sec-head">The problems I want <i>to work on next.</i></h2>
+    <h2 class="sec-head">Problems I want <i>to own next.</i></h2>
   <div class="sec-content">
   <div class="idea-grid">
 
@@ -978,5 +1005,12 @@ new IntersectionObserver(e=>{
   if(e[0].isIntersecting&&!done){done=true;document.querySelectorAll('.cnt').forEach(el=>{el.textContent='0';cu(el);});}
 },{threshold:.5}).observe(document.querySelector('.stats'));
 </script>
+
+<!-- MOBILE FLOATING CTA -->
+<div class="mobile-cta">
+  <a href="Ashutosh_Shukla_Resume.pdf" class="m-secondary" download>Resume ↓</a>
+  <a href="#contact" class="m-primary">Get in touch ↗</a>
+</div>
+
 </body>
 </html>

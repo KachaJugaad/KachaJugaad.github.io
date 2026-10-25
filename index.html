@@ -273,6 +273,17 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 .wr-title{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:4px;transition:color .2s}
 .wrow:hover .wr-title{color:var(--gold)}
 .wr-sub{font-family:var(--serif);font-size:13px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bcard{display:grid;grid-template-columns:220px 1fr;gap:0;background:var(--bg2);border:1px solid var(--rule);border-left:3px solid var(--copper-muted);border-radius:0 8px 8px 0;overflow:hidden;transition:border-left-color .3s,transform .3s}
+.bcard:hover{border-left-color:var(--gold);transform:translateX(4px)}
+.bthumb{display:block;background:var(--bg);border-right:1px solid var(--rule)}
+.bthumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.bbody{padding:18px 22px}
+.btag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--copper-light);margin-bottom:8px}
+.btitle{font-family:var(--display);font-size:19px;font-weight:600;color:var(--ink);line-height:1.3;margin:0 0 8px;text-decoration:none;display:block}
+.btitle:hover{color:var(--gold)}
+.bsub{font-family:var(--serif);font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 12px}
+.blinks{display:flex;flex-wrap:wrap;gap:8px}
+@media(max-width:720px){.bcard{grid-template-columns:1fr}.bthumb{border-right:0;border-bottom:1px solid var(--rule);max-height:260px;overflow:hidden}}
 .wrow:hover .wr-sub{-webkit-line-clamp:unset}
 .wr-arrow{font-size:14px;color:var(--copper);padding:16px 18px;align-self:center;transition:color .2s,transform .2s}
 .wrow:hover .wr-arrow{color:var(--gold);transform:translate(3px,-2px)}
@@ -378,7 +389,7 @@ footer{border-top:1px solid var(--rule);padding:28px 48px;display:flex;align-ite
   <span class="nav-name"><img src="headshot.jpg" alt="Ashutosh Shukla" class="nav-avatar">Ashutosh Shukla <em>//</em> Product Builder</span>
   <div class="nav-links">
     <a href="#work">Work</a><a href="#projects">Projects</a>
-    <a href="#thinking">Thinking</a><a href="#writing">Writing</a><a href="#next">Next</a><a href="#contact">Contact</a>
+    <a href="#thinking">Thinking</a><a href="#writing">Writing</a><a href="#briefs">Briefs</a><a href="#next">Next</a><a href="#contact">Contact</a>
   </div>
   <div class="nav-dot"><div class="dot"></div>Canada</div>
 </nav>
@@ -883,6 +894,30 @@ footer{border-top:1px solid var(--rule);padding:28px 48px;display:flex;align-ite
   </div>
 </section>
 </div>
+</div>
+
+<!-- BRIEFS -->
+<div class="wave-div" aria-hidden="true"><svg viewBox="0 0 1200 20" preserveAspectRatio="none" class="sec-divider"><path d="M0,10 C200,0 400,20 600,10 C800,0 1000,20 1200,10"/></svg></div>
+<div class="wrap">
+<section class="sec" id="briefs">
+    <p class="sec-label">Learning in public</p>
+    <h2 class="sec-head">I read the spec. <i>Then I write down the gap.</i></h2>
+  <div class="sec-content">
+    <div class="bcard rev">
+      <a class="bthumb" href="briefs/ue-nic-profile/" aria-label="Open the brief"><img src="briefs/ue-nic-profile/ue-nic-profile-gap-dark.png" alt="One-page brief: one cable, two directions. The switch holds the evidence for NIC-to-switch errors; for switch-to-NIC errors the NIC holds it and no published profile reads it." loading="lazy"></a>
+      <div class="bbody">
+        <div class="btag">Oct 2026 · Proposal · UE Spec 1.1, Ch. 7</div>
+        <a class="btitle" href="briefs/ue-nic-profile/">UEC 1.1 points NIC management at a profile nobody has published</a>
+        <p class="bsub">An operator knows a link had trouble, not which part failed. The NIC's receive counters know, but no published Redfish profile I could find asks the BMC for them. A one-page proposal, with every claim tied to a spec page.</p>
+        <div class="blinks">
+          <a href="briefs/ue-nic-profile/" class="plink">Read the brief ↗</a>
+          <a href="briefs/ue-nic-profile/ue-nic-profile-gap-a4.pdf" class="plink">A4 PDF ↗</a>
+          <a href="briefs/ue-nic-profile/factcheck.md" class="plink">Fact check ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- WHAT'S NEXT -->

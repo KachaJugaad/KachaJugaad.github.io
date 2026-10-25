@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UE NIC Profile Gap</title>
+<meta name="description" content="A proposal: publish the UE NIC profile so a BMC can report LLR, CBFC and FEC counters.">
+<meta property="og:title" content="UEC 1.1 points NIC management at a profile nobody has published">
+<meta property="og:description" content="A one-page proposal on NIC link counters, UE Specification 1.1 Chapter 7. By Ashutosh Shukla.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kachajugaad.github.io/briefs/ue-nic-profile/">
+<meta property="og:image" content="https://kachajugaad.github.io/briefs/ue-nic-profile/ue-nic-profile-gap.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg">
+<style>
+  :root {
+    --bg:#f6f5f1; --card:#ffffff; --ink:#151515; --mute:#5c5c60; --rule:#d5d4cf;
+    --hot:#151515; --hot-ink:#ffffff; --good:#2f6b3a; --bad:#a3322a; --soft:#eeede8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#0e0e0f; --card:#161617; --ink:#ececea; --mute:#9a9a9e; --rule:#323235;
+      --hot:#ececea; --hot-ink:#121213; --good:#7fc28b; --bad:#ef8a80; --soft:#1e1e20;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#0e0e0f; --card:#161617; --ink:#ececea; --mute:#9a9a9e; --rule:#323235;
+    --hot:#ececea; --hot-ink:#121213; --good:#7fc28b; --bad:#ef8a80; --soft:#1e1e20;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif; padding:24px 16px; }
+  .sheet { max-width:1200px; margin:0 auto; background:var(--card); border:1px solid var(--rule); padding:36px 48px 22px; }
+  .png body { padding:0; } .png .sheet { border:0; width:1200px; }
+  .kicker { font:12px/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .tag { border:1px solid var(--ink); color:var(--ink); padding:2px 7px; border-radius:3px; }
+  h1 { font-size:42px; line-height:1.04; letter-spacing:-.02em; margin:12px 0 16px; max-width:32ch; }
+  .hero { border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); padding:12px 0 8px; margin:0; }
+  svg { display:block; width:100%; height:auto; }
+  svg text { fill:var(--ink); font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; }
+  svg .m { fill:var(--mute); }
+  svg .inv { fill:var(--hot-ink); }
+  svg .line { stroke:var(--ink); fill:none; }
+  svg .box { fill:var(--card); stroke:var(--ink); }
+  svg .solid { fill:var(--hot); }
+  svg .softbox { fill:var(--soft); stroke:var(--ink); }
+  svg .dash { stroke-dasharray:6 4; }
+  svg .bad { fill:var(--bad); } svg .good { fill:var(--good); }
+  .cap { font-size:13.5px; color:var(--mute); margin:6px 0 0; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 40px; margin-top:16px; }
+  section h2 { font-size:19px; line-height:1.25; margin:0 0 6px; }
+  section h2 .n { font:600 12px ui-monospace, Menlo, monospace; color:var(--mute); margin-right:6px; vertical-align:2px; }
+  section p, section li { margin:0 0 4px; font-size:15px; }
+  section ul { margin:4px 0 0; padding-left:18px; }
+  .prop { display:inline-block; font:600 11px ui-monospace, Menlo, monospace; letter-spacing:.06em; text-transform:uppercase; border:1px dashed var(--ink); padding:1px 6px; border-radius:3px; margin-left:6px; vertical-align:2px; }
+  .ev li { font-size:14.5px; }
+  .ev q { font-style:normal; }
+  .pg { font:12.5px ui-monospace, Menlo, monospace; color:var(--mute); }
+  .obj { border-top:1px solid var(--rule); padding-top:7px; margin-top:7px; }
+  .obj b { display:block; }
+  .think { font-style:italic; color:var(--mute); }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; }
+  th, td { text-align:left; padding:6px 6px 6px 0; border-top:1px solid var(--rule); vertical-align:top; }
+  th { font:600 11.5px ui-monospace, Menlo, monospace; text-transform:uppercase; letter-spacing:.06em; color:var(--mute); border-top:0; }
+  .ok { color:var(--good); font-weight:600; } .no { color:var(--bad); font-weight:600; }
+  .ask { grid-column:1 / -1; background:var(--soft); border-left:3px solid var(--ink); padding:14px 18px; }
+  .ask h2 { font-size:22px; margin:0; }
+  .ask p { margin:4px 0 0; }
+  footer { margin-top:20px; border-top:1px solid var(--rule); padding-top:10px; font-size:12.5px; color:var(--mute); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  footer .sig { color:var(--ink); font-weight:600; white-space:nowrap; }
+  @media screen and (max-width:760px) {
+    body { padding:0; font-size:15px; }
+    .sheet { border:0; padding:22px 16px; }
+    h1 { font-size:30px; }
+    .grid { grid-template-columns:1fr; gap:18px; }
+    .hero .wide { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .hero .wide svg { min-width:740px; }
+  }
+  .home { font-size:13px; margin:0 0 14px; color:var(--mute); } .home a { color:var(--ink); }
+  .png .home { display:none; }
+  @media print {
+    .home { display:none; }
+    @page { size:A4; margin:7mm; }
+    body { background:#fff; padding:0; }
+    .sheet { border:0; padding:0; width:1200px; zoom:.56; }
+  }
+</style>
+</head>
+<body>
+<article class="sheet">
+  <p class="home"><a href="/">← Ashutosh Shukla</a> · <a href="ue-nic-profile-gap-a4.pdf">A4 PDF</a> · <a href="factcheck.md">Fact check</a></p>
+  <div class="kicker"><span>Proposal · AI cluster operations · UE Spec 1.1, Ch. 7</span><span class="tag">Proposal, not a product</span></div>
+  <h1>UEC 1.1 points NIC management at a profile nobody has published</h1>
+
+  <!-- V3: hero -->
+  <figure class="hero" aria-label="One cable, two directions">
+    <div class="wide"><svg viewBox="0 32 1096 226" role="img" aria-label="NIC to switch: the switch holds the evidence. Switch to NIC: the NIC holds the evidence, and no published profile reads it.">
+      <rect class="box" x="0" y="40" width="250" height="190" rx="8" stroke-width="2"/>
+      <text x="125" y="78" font-size="24" font-weight="700" text-anchor="middle">NIC</text>
+      <text class="m" x="125" y="102" font-size="14" text-anchor="middle">server, behind its BMC</text>
+      <rect class="solid" x="24" y="168" width="202" height="44" rx="6"/>
+      <text class="inv" x="125" y="188" font-size="14" font-weight="700" text-anchor="middle">evidence sits here</text>
+      <text class="inv" x="125" y="205" font-size="13" text-anchor="middle">no published profile reads it</text>
+
+      <rect class="box" x="846" y="40" width="250" height="190" rx="8" stroke-width="2"/>
+      <text x="971" y="78" font-size="24" font-weight="700" text-anchor="middle">Switch</text>
+      <text class="m" x="971" y="102" font-size="14" text-anchor="middle">YANG over gNMI</text>
+      <rect class="softbox" x="870" y="120" width="202" height="40" rx="6" stroke-width="1.2"/>
+      <text x="971" y="145" font-size="14" font-weight="700" text-anchor="middle">evidence sits here</text>
+      <rect class="softbox" x="870" y="172" width="202" height="40" rx="6" stroke-width="1.2"/>
+      <text x="971" y="197" font-size="13.5" text-anchor="middle">knows only "I resent"</text>
+
+      <!-- cable -->
+      <rect x="250" y="126" width="596" height="18" rx="9" class="softbox" stroke-width="1.5"/>
+      <!-- direction 1 -->
+      <path class="line" d="M262 104 H826" stroke-width="2.5" marker-end="url(#ah)"/>
+      <text x="548" y="92" font-size="16" text-anchor="middle"><tspan font-weight="700">NIC → switch.</tspan> The switch receives the damaged frame.</text>
+      <!-- direction 2 -->
+      <path class="line" d="M834 166 H270" stroke-width="2.5" marker-end="url(#ah)"/>
+      <text x="548" y="196" font-size="16" text-anchor="middle"><tspan font-weight="700">Switch → NIC.</tspan> The NIC receives the damaged frame.</text>
+      <text class="m" x="548" y="218" font-size="14" text-anchor="middle">The switch knows it resent the frame, not which part failed.</text>
+      <circle class="bad" cx="548" cy="135" r="9"/>
+      <text class="m" x="548" y="246" font-size="12.5" text-anchor="middle">damaged frame on one link · LLR = resend a damaged frame across one link only</text>
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--ink)"/></marker></defs>
+    </svg></div>
+    <figcaption class="cap">V3 · One cable, two directions. The receiver keeps the damage report, and nobody reads the receiver's notebook.</figcaption>
+  </figure>
+
+  <div class="grid">
+    <section>
+      <h2><span class="n">1</span>What can't an operator see today?</h2>
+      <p>A link had trouble, but where: cable, NIC receiver, or switch transmitter? The NIC's receive-side counters know. No published Redfish profile I could find asks the BMC for them.</p>
+    </section>
+    <section>
+      <h2><span class="n">2</span>What changed on 12 October 2026?</h2>
+      <p>UE Specification 1.1 came out. It says NIC management "shall" extend the OCP NIC profile into a UE NIC profile. I could not find that profile published.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">3</span>What would close the gap? <span class="prop">Proposal</span></h2>
+      <p>Publish the UE NIC profile: the OCP NIC profile plus LLR, CBFC and FEC counters, checked with the open-source Redfish Interop Validator.</p>
+      <p class="pg">CBFC = sender needs buffer credits before sending. FEC = error correction built into the link.</p>
+    </section>
+    <section>
+      <h2><span class="n">4</span>Who gains, and how?</h2>
+      <ul>
+        <li><b>Operators:</b> find the faulty part, not just the link.</li>
+        <li><b>NIC and BMC vendors:</b> one target instead of OEM fields.</li>
+        <li><b>Tool builders:</b> one parser for every vendor.</li>
+      </ul>
+    </section>
+
+    <!-- V1 -->
+    <section aria-label="Two management stacks">
+      <svg viewBox="0 0 520 226" role="img" aria-label="Server stack: Redfish, HTTPS, Redfish model, NC-SI PLDM SPDM, marked pointer only. Switch stack: OpenConfig, gNMI, YANG, SAI, marked new UE objects.">
+        <text x="125" y="20" font-size="16" font-weight="700" text-anchor="middle">Server (BMC)</text>
+        <text x="395" y="20" font-size="16" font-weight="700" text-anchor="middle">Switch</text>
+        <g font-size="14">
+          <rect class="box" x="10" y="30" width="230" height="30" rx="5"/><text x="125" y="50" text-anchor="middle">Redfish</text>
+          <rect class="box" x="10" y="64" width="230" height="30" rx="5"/><text x="125" y="84" text-anchor="middle">HTTPS</text>
+          <rect class="box" x="10" y="98" width="230" height="30" rx="5"/><text x="125" y="118" text-anchor="middle">Redfish model</text>
+          <rect class="box" x="10" y="132" width="230" height="30" rx="5"/><text x="125" y="152" text-anchor="middle">NC-SI · PLDM · SPDM</text>
+          <rect class="box" x="280" y="30" width="230" height="30" rx="5"/><text x="395" y="50" text-anchor="middle">OpenConfig</text>
+          <rect class="box" x="280" y="64" width="230" height="30" rx="5"/><text x="395" y="84" text-anchor="middle">gNMI</text>
+          <rect class="box" x="280" y="98" width="230" height="30" rx="5"/><text x="395" y="118" text-anchor="middle">YANG</text>
+          <rect class="solid" x="280" y="132" width="230" height="30" rx="5"/><text class="inv" x="395" y="152" text-anchor="middle" font-weight="700">SAI</text>
+        </g>
+        <rect class="box dash" x="10" y="170" width="230" height="46" rx="5" stroke-width="1.5"/>
+        <text x="125" y="190" font-size="14" font-weight="700" text-anchor="middle">pointer only (7.4)</text>
+        <text class="m" x="125" y="207" font-size="12.5" text-anchor="middle">"extend the OCP NIC profile"</text>
+        <rect class="solid" x="280" y="170" width="230" height="46" rx="5"/>
+        <text class="inv" x="395" y="190" font-size="14" font-weight="700" text-anchor="middle">new UE objects (7.6)</text>
+        <text class="inv" x="395" y="207" font-size="12.5" text-anchor="middle">LLR, CBFC, CSIG</text>
+      </svg>
+      <p class="pg" style="margin:4px 0 0">CSIG = packet tag recording worst congestion on path.</p>
+      <p class="cap">V1 · Fig 7-1, redrawn. The switch side gets new objects; the NIC side gets a pointer.</p>
+    </section>
+
+    <!-- V2 -->
+    <section aria-label="Coverage table">
+      <table>
+        <thead><tr><th>Counter or task</th><th>OCP NIC profile v1.0.0</th></tr></thead>
+        <tbody>
+          <tr><td>Config + firmware</td><td class="ok">✓ asked</td></tr>
+          <tr><td>Port bytes and errors</td><td class="ok">✓ asked</td></tr>
+          <tr><td>FEC counters</td><td class="no">✗ not asked</td></tr>
+          <tr><td>LLR counters</td><td class="no">✗ not asked</td></tr>
+          <tr><td>CBFC credits</td><td class="no">✗ not asked</td></tr>
+          <tr><td>Link-down events</td><td class="no">✗ not asked</td></tr>
+        </tbody>
+      </table>
+      <p class="cap">V2 · What a BMC is asked for today. PortMetrics covers RX/TX bytes and errors only.</p>
+    </section>
+
+    <section class="ev">
+      <h2><span class="n">5</span>Where does this come from?</h2>
+      <ul>
+        <li><q>initial focus</q>: link layer and PHY. <span class="pg">§7.1, p752</span></li>
+        <li><q>UE NIC endpoint manageability shall be prescribed by extending the OCP Ethernet NIC profile.</q> <span class="pg">§7.4, p756</span></li>
+        <li>Table 7-1: 16 tasks, all Mandatory; none for LLR, CBFC or CSIG. <span class="pg">p756</span></li>
+        <li>Switch: Port LLR profile; CBFC virtual channel, credit profile, credit pool; CSIG. <span class="pg">§7.6, p759–760</span></li>
+        <li>OCP NIC profile v1.0.0, PortMetrics: RX/TX bytes and errors.</li>
+        <li>OCP neocloud workstream lists NIC and fabric counters as a gap.</li>
+      </ul>
+    </section>
+    <section>
+      <h2><span class="n">6</span>What will people object to?</h2>
+      <div class="obj"><b>"Just run ethtool on the host."</b><span class="think">I think</span> in bare-metal GPU clouds the tenant owns the OS; operators cannot install agents. The BMC path is the operator's, and works with the OS down <span class="pg">(p755)</span>.</div>
+      <div class="obj"><b>"The switch already counts its replays."</b>It knows it resent frames, not which part failed.</div>
+      <div class="obj"><b>"Vendors expose this in OEM fields."</b>OEM fields differ by vendor, so every fleet tool needs special cases. <span class="think">I have not checked specific vendors.</span></div>
+    </section>
+
+    <section class="ask">
+      <h2><span class="n">7</span>Which counter do you wish your BMC showed today?</h2>
+      <p>Reply with one. I am collecting them.</p>
+    </section>
+  </div>
+
+  <footer>
+    <span><b>Sources:</b> UE Specification 1.1 (UEC, released 12 Oct 2026): §7.1 p752; §7.2 p752–753; §7.4 p755–756; Table 7-1 p756; §7.6 p759–760 · OCP Ethernet NIC profile v1.0.0 (PortMetrics) · OCP neocloud workstream.</span>
+    <span class="sig">Ashutosh Shukla · Vancouver, learning in public · 25 Oct 2026</span>
+  </footer>
+</article>
+<script>if(location.hash==="#png")document.documentElement.classList.add("png")</script>
+</body>
+</html>

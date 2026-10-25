@@ -37,7 +37,7 @@
     const ang = (i) => (-90 + i * 72) * Math.PI / 180;
     const pt = (i, r = R) => [cx + r * Math.cos(ang(i)), cy + r * Math.sin(ang(i))];
     const defs = s("defs"), marker = s("marker", { id: "ah", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto" });
-    marker.append(s("path", { d: "M0 0 L10 5 L0 10 z", fill: "#B87333" }));
+    marker.append(s("path", { d: "M0 0 L10 5 L0 10 z", class: "arrowhead" }));
     defs.append(marker); svg.append(defs);
     E.stages.forEach((_, i) => {
       const a0 = ang(i) + 0.33, a1 = ang(i + 1) - 0.33;
@@ -47,7 +47,7 @@
       svg.append(s("line", { class: "spoke", x1: x, y1: y, x2: pt(i, R - 34)[0], y2: pt(i, R - 34)[1] }));
     });
     const lp = pt(4.5, R + 24);
-    svg.append(s("text", { x: lp[0], y: lp[1], "text-anchor": "middle", fill: "#9C9184", "font-size": 12, "font-style": "italic" }, "learn, publish, repeat"));
+    svg.append(s("text", { x: lp[0], y: lp[1], "text-anchor": "middle", class: "learn", "font-size": 12 }, "learn, publish, repeat"));
     const core = s("g", { class: "core" });
     core.append(s("circle", { cx, cy, r: 62 }));
     core.append(s("text", { x: cx, y: cy - 6, "text-anchor": "middle" }, "CONSTRAINT"));
@@ -116,7 +116,7 @@
     } }, label)));
     const deep = E.layers.map((ly) => [ly.label, E.units.filter((u) => u.layers[ly.id] === "hands").length]).sort((a, b) => b[1] - a[1]);
     panel.replaceChildren(h("p", { class: "label" }, "Reading the map"), h("h3", {}, `Breadth: ${E.layers.filter((ly) => E.units.some((u) => u.layers[ly.id])).length} of ${E.layers.length} layers`),
-      h("p", {}, "Each dot is one evidence unit. Gold = built or owned it. Outline = decided, negotiated or researched it. Click any cell."),
+      h("p", {}, "Each dot is one evidence unit. Solid = built or owned it. Outlined = decided, negotiated or researched it. Click any cell."),
       h("p", { class: "sub" }, "Deepest hands-on layers"),
       h("ul", { class: "unitlist" }, deep.slice(0, 4).map(([l, n]) => h("li", {}, h("button", { type: "button", disabled: true }, h("span", {}, l), h("span", { class: "meta" }, `${n} hands-on`))))),
       h("p", { class: "note" }, "AI infrastructure has no hands-on dot yet. That is where the lab is."));
@@ -131,7 +131,7 @@
     const svg = $("#path-svg"), panel = $("#path-panel"), years = $("#years"), chain = $("#chain");
     const X0 = 2010, X1 = 2027, L = 120, W = 980, x = (y) => L + ((y - X0) / (X1 - X0)) * (W - L);
     for (let y = X0; y <= 2026; y += 2) {
-      svg.append(s("line", { x1: x(y), y1: 20, x2: x(y), y2: 330, stroke: "rgba(184,115,51,.12)" }));
+      svg.append(s("line", { x1: x(y), y1: 20, x2: x(y), y2: 330, class: "gridline" }));
       const g = s("g", { class: "axis" }); g.append(s("text", { x: x(y), y: 14, "text-anchor": "middle" }, y)); svg.append(g);
     }
     // role bands, greedy rows
@@ -251,6 +251,15 @@
     $("#creds").append(...E.credentials.map((c) => h("span", {}, c)));
   }
 
+  const tbtn = document.getElementById("theme");
+  if (tbtn) {
+    const root = document.documentElement;
+    const cur = () => root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const label = () => { tbtn.textContent = cur() === "dark" ? "Light" : "Dark"; tbtn.setAttribute("aria-label", `Switch to ${tbtn.textContent.toLowerCase()} theme`); };
+    try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+    label();
+    tbtn.addEventListener("click", () => { root.dataset.theme = cur() === "dark" ? "light" : "dark"; try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {} label(); });
+  }
   renderLoop(); renderMap(); renderPath(); renderCases(); renderCalls(); renderStack(); renderShelf();
   document.documentElement.classList.add("js");
 })();

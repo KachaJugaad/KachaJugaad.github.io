@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UE NIC Brief Fact Check</title>
+<meta name="description" content="Every factual sentence in the UE NIC profile brief, traced to its source and graded.">
+<meta property="og:title" content="Fact check: UEC 1.1 points NIC management at a profile nobody has published">
+<meta property="og:description" content="21 sentences, each traced to a spec page or marked as inference.">
+<meta property="og:image" content="https://kachajugaad.github.io/briefs/ue-nic-profile/ue-nic-profile-gap.png">
+<link rel="icon" href="/favicon.svg">
+<style>
+  :root { --bg:#f6f5f1; --card:#fff; --ink:#151515; --mute:#5c5c60; --rule:#d5d4cf; --soft:#eeede8;
+          --spec:#151515; --sup:#7a7a80; --def:#b9b8b2; --mine:#a3322a; --inf:#c98a2b; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+          --bg:#0e0e0f; --card:#161617; --ink:#ececea; --mute:#9a9a9e; --rule:#323235; --soft:#1e1e20;
+          --spec:#ececea; --sup:#9a9a9e; --def:#55555a; --mine:#ef8a80; --inf:#e5b25e; } }
+  :root[data-theme="dark"] { --bg:#0e0e0f; --card:#161617; --ink:#ececea; --mute:#9a9a9e; --rule:#323235; --soft:#1e1e20;
+          --spec:#ececea; --sup:#9a9a9e; --def:#55555a; --mine:#ef8a80; --inf:#e5b25e; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; padding:24px 16px; }
+  .sheet { max-width:920px; margin:0 auto; background:var(--card); border:1px solid var(--rule); padding:36px 44px 28px; }
+  .home { font-size:13px; color:var(--mute); margin:0 0 16px; } .home a { color:var(--ink); }
+  .step { font:600 11px ui-monospace, Menlo, monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin:34px 0 6px; }
+  h1 { font-size:34px; line-height:1.08; letter-spacing:-.015em; margin:4px 0 10px; }
+  h2 { font-size:22px; line-height:1.2; margin:0 0 10px; }
+  p { margin:0 0 10px; }
+  .lead { font-size:18px; }
+  .model { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:10px; align-items:stretch; }
+  .mbox { border:1.5px solid var(--ink); border-radius:6px; padding:12px 14px; }
+  .mbox b { display:block; font-size:16px; margin-bottom:4px; }
+  .mbox span { color:var(--mute); font-size:14px; }
+  .arrow { align-self:center; font-size:22px; color:var(--mute); }
+  svg { display:block; width:100%; height:auto; }
+  .legend { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:13.5px; color:var(--mute); margin-top:8px; }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:6px; vertical-align:-1px; }
+  .cap { font-size:13.5px; color:var(--mute); margin-top:6px; }
+  dl { display:grid; grid-template-columns:150px 1fr; gap:8px 18px; margin:0; }
+  dt { font-weight:700; } dd { margin:0; color:var(--ink); }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; }
+  th, td { text-align:left; vertical-align:top; padding:7px 8px 7px 0; border-top:1px solid var(--rule); }
+  th { font:600 11px ui-monospace, Menlo, monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); border-top:0; }
+  td.n { font:12px ui-monospace, Menlo, monospace; color:var(--mute); width:28px; }
+  .chip { display:inline-block; font:600 10.5px ui-monospace, Menlo, monospace; letter-spacing:.04em; text-transform:uppercase; padding:2px 6px; border-radius:3px; white-space:nowrap; }
+  .c-spec { background:var(--spec); color:var(--card); }
+  .c-sup { border:1px solid var(--sup); color:var(--sup); }
+  .c-def { background:var(--def); color:var(--ink); }
+  .c-mine { border:1px solid var(--mine); color:var(--mine); }
+  .c-inf { border:1px dashed var(--inf); color:var(--inf); }
+  .src { font:12.5px ui-monospace, Menlo, monospace; color:var(--mute); }
+  .quote { border-left:3px solid var(--ink); background:var(--soft); padding:12px 16px; font-size:17px; margin:8px 0 12px; }
+  .trace { display:grid; grid-template-columns:28px 1fr; gap:6px 10px; font-size:15px; }
+  .trace .k { font:600 12px ui-monospace, Menlo, monospace; color:var(--mute); padding-top:2px; }
+  ul { margin:0; padding-left:20px; } li { margin-bottom:6px; }
+  footer { margin-top:30px; border-top:1px solid var(--rule); padding-top:10px; font-size:13px; color:var(--mute); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  footer b { color:var(--ink); }
+  @media (max-width:700px) {
+    body { padding:0; } .sheet { border:0; padding:22px 16px; }
+    h1 { font-size:27px; } .model { grid-template-columns:1fr; } .arrow { transform:rotate(90deg); justify-self:center; }
+    dl { grid-template-columns:1fr; } dd { margin-bottom:6px; }
+    .tablewrap { overflow-x:auto; }
+  }
+</style>
+</head>
+<body>
+<article class="sheet">
+  <p class="home"><a href="/">← Ashutosh Shukla</a> · <a href="./">Back to the brief</a> · <a href="ue-nic-profile-gap-a4.pdf">A4 PDF</a></p>
+
+  <p class="step">Hook</p>
+  <h1>Don't trust the brief. Check it.</h1>
+  <p class="lead">The brief makes 21 factual statements. Each one is listed below with where it came from, so you can find the page and judge it yourself.</p>
+
+  <p class="step">Executive model</p>
+  <h2>Every sentence goes through three steps</h2>
+  <div class="model">
+    <div class="mbox"><b>Claim</b><span>One sentence from the brief, word for word.</span></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="mbox"><b>Source</b><span>A spec page, a fact I was given, or my own reasoning.</span></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="mbox"><b>Grade</b><span>How far you can lean on it. Inference is labelled "I think" on the brief.</span></div>
+  </div>
+
+  <p class="step">Visual map</p>
+  <h2>Where the 21 statements come from</h2>
+  <svg viewBox="0 0 840 72" role="img" aria-label="21 cells: 10 from spec pages, 2 supplied facts, 5 definitions or logic, 2 my search or addition, 2 inferences.">
+    <g id="cells"></g>
+  </svg>
+  <div class="legend">
+    <span><i style="background:var(--spec)"></i>Spec page · 10</span>
+    <span><i style="border:1.5px solid var(--sup)"></i>Supplied fact, no page · 2</span>
+    <span><i style="background:var(--def)"></i>Definition or link logic · 5</span>
+    <span><i style="border:1.5px solid var(--mine)"></i>My search or addition · 2</span>
+    <span><i style="border:1.5px dashed var(--inf)"></i>Inference, marked on the brief · 2</span>
+  </div>
+  <p class="cap">Each cell is one statement, in the order of the table below. Ten of them rest on a spec page you can open.</p>
+
+  <p class="step">Key concepts</p>
+  <h2>Eight terms, one line each</h2>
+  <dl>
+    <dt>UE Spec 1.1</dt><dd>Ultra Ethernet Specification 1.1, released 12 Oct 2026.</dd>
+    <dt>BMC</dt><dd>The server's management chip; works with the OS down.</dd>
+    <dt>Redfish</dt><dd>The REST interface a BMC exposes over HTTPS.</dd>
+    <dt>OCP NIC profile</dt><dd>OCP's list of what a BMC must report about a NIC.</dd>
+    <dt>UE NIC profile</dt><dd>The extension UE 1.1 says "shall" exist; I could not find it published.</dd>
+    <dt>LLR</dt><dd>Resend a damaged frame across one link only.</dd>
+    <dt>CBFC</dt><dd>Sender needs buffer credits before sending.</dd>
+    <dt>FEC</dt><dd>Error correction built into the link.</dd>
+  </dl>
+
+  <p class="step">Evidence</p>
+  <h2>All 21 statements, with their source</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>#</th><th>Statement on the brief</th><th>Source</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>UE Specification 1.1 came out on 12 October 2026.</td><td class="src">Release notes, p763</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">2</td><td>It says NIC management "shall" extend the OCP NIC profile into a UE NIC profile.</td><td class="src">§7.4, p756</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">3</td><td>"UE NIC endpoint manageability shall be prescribed by extending the OCP Ethernet NIC profile."</td><td class="src">§7.4, p756 (exact quote)</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">4</td><td>I could not find that profile published.</td><td class="src">My search; worded as "could not find", not "does not exist"</td><td><span class="chip c-mine">Mine</span></td></tr>
+      <tr><td class="n">5</td><td>"initial focus": link layer and PHY.</td><td class="src">§7.1, p752</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">6</td><td>Table 7-1: 16 tasks, all Mandatory; none for LLR, CBFC or CSIG.</td><td class="src">Table 7-1, p756</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">7</td><td>Switch side: Port LLR profile; CBFC virtual channel, credit profile, credit pool; CSIG.</td><td class="src">§7.6, p759–760</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">8</td><td>Server stack: Redfish / HTTPS / Redfish model / NC-SI·PLDM·SPDM. Switch stack: OpenConfig / gNMI / YANG / SAI.</td><td class="src">§7.2, Fig 7-1, p752–753</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">9</td><td>NIC side "pointer only (7.4)"; switch side "new UE objects (7.6)".</td><td class="src">§7.4 p756; §7.6 p759–760</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">10</td><td>The OCP NIC profile asks for config and firmware.</td><td class="src">Table 7-1, p756</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">11</td><td>OCP NIC profile v1.0.0 PortMetrics covers RX/TX bytes and errors only; FEC, LLR, CBFC and link-down are not asked.</td><td class="src">OCP NIC profile v1.0.0 — no page number; verify against the source</td><td><span class="chip c-sup">Supplied</span></td></tr>
+      <tr><td class="n">12</td><td>OCP's neocloud workstream lists NIC and fabric counters as a gap.</td><td class="src">OCP neocloud workstream — no page number; verify against the source</td><td><span class="chip c-sup">Supplied</span></td></tr>
+      <tr><td class="n">13</td><td>The BMC path works with the OS down.</td><td class="src">§7.4, p755</td><td><span class="chip c-spec">Spec</span></td></tr>
+      <tr><td class="n">14</td><td>LLR = resend a damaged frame across one link only.</td><td class="src">Definition; consistent with §5.1</td><td><span class="chip c-def">Definition</span></td></tr>
+      <tr><td class="n">15</td><td>CBFC = sender needs buffer credits before sending.</td><td class="src">Definition; consistent with §5.2</td><td><span class="chip c-def">Definition</span></td></tr>
+      <tr><td class="n">16</td><td>CSIG = packet tag recording worst congestion on path.</td><td class="src">Definition; consistent with §4.2</td><td><span class="chip c-def">Definition</span></td></tr>
+      <tr><td class="n">17</td><td>FEC = error correction built into the link.</td><td class="src">My plain-word definition</td><td><span class="chip c-mine">Mine</span></td></tr>
+      <tr><td class="n">18</td><td>NIC→switch: the switch holds the evidence. Switch→NIC: the NIC holds it, and the switch knows only that it resent.</td><td class="src">Link-direction logic; consistent with LLR being per link (§5.1)</td><td><span class="chip c-def">Logic</span></td></tr>
+      <tr><td class="n">19</td><td>In bare-metal GPU clouds the tenant owns the OS; operators cannot install agents.</td><td class="src">Marked "I think" on the brief</td><td><span class="chip c-inf">Inference</span></td></tr>
+      <tr><td class="n">20</td><td>OEM fields differ by vendor, so every fleet tool needs special cases.</td><td class="src">Marked "I have not checked specific vendors"</td><td><span class="chip c-inf">Inference</span></td></tr>
+      <tr><td class="n">21</td><td>The switch knows it resent frames, not which part failed.</td><td class="src">Follows from #18</td><td><span class="chip c-def">Logic</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="step">Deep dive</p>
+  <h2>How the checking was done, and where it stops</h2>
+  <ul>
+    <li><b>Read in full:</b> Chapter 7 of UE Spec 1.1, pages 752–760, including all six figures. Page numbers are the spec's printed numbers, which match the PDF.</li>
+    <li><b>"Could not find it published"</b> means I searched and found nothing. It does not mean the UE NIC profile cannot exist outside the 764-page spec; the release notes point to separate management documents.</li>
+    <li><b>Not re-checked here:</b> statements #11 and #12 come from OCP documents without page numbers. Check them against the source before quoting.</li>
+    <li><b>Kept off the page on purpose:</b> vendor names, customers, prices and performance numbers.</li>
+  </ul>
+
+  <p class="step">Example</p>
+  <h2>One statement, traced end to end</h2>
+  <div class="quote">"UE NIC endpoint manageability shall be prescribed by extending the OCP Ethernet NIC profile."</div>
+  <div class="trace">
+    <span class="k">1</span><span>Open UE Spec 1.1 at printed page 756, section 7.4, "Redfish for UE Endpoint Manageability".</span>
+    <span class="k">2</span><span>The sentence appears there word for word. "Shall" makes it a requirement, not a suggestion.</span>
+    <span class="k">3</span><span>Table 7-1 sits just below it: 16 tasks, all Mandatory. None mentions LLR, CBFC or CSIG.</span>
+    <span class="k">4</span><span>So the spec points at a UE NIC profile but lists only the OCP baseline. That gap is the brief's whole argument.</span>
+  </div>
+
+  <p class="step">Takeaways</p>
+  <h2>What to take from this</h2>
+  <ul>
+    <li>10 of 21 statements rest directly on a spec page you can open.</li>
+    <li>The argument does not depend on the inferences: #19 and #20 explain objections, not the gap itself.</li>
+    <li>If the UE NIC profile turns up published, statements #2–#4 change, and I will update the brief.</li>
+  </ul>
+
+  <p class="step">Sources</p>
+  <ul class="src">
+    <li>Ultra Ethernet Specification 1.1, Ultra Ethernet Consortium, released 12 Oct 2026: §4.2; §5.1; §5.2; §7.1 p752; §7.2 and Fig 7-1 p752–753; §7.4 p755–756; Table 7-1 p756; §7.6 p759–760; release notes p763.</li>
+    <li>OCP Ethernet NIC Redfish profile v1.0.0 (PortMetrics).</li>
+    <li>OCP neocloud workstream.</li>
+  </ul>
+
+  <footer><b>Ashutosh Shukla</b><span>Vancouver, learning in public · 25 Oct 2026</span></footer>
+</article>
+<script>
+  // Visual map: one cell per statement, typed in table order.
+  const types = ["spec","spec","spec","mine","spec","spec","spec","spec","spec","spec","sup","sup","spec","def","def","def","mine","def","inf","inf","def"];
+  const style = { spec:"fill:var(--spec)", sup:"fill:none;stroke:var(--sup);stroke-width:2", def:"fill:var(--def)", mine:"fill:none;stroke:var(--mine);stroke-width:2", inf:"fill:none;stroke:var(--inf);stroke-width:2;stroke-dasharray:4 3" };
+  const g = document.getElementById("cells"); const w = 36, gap = 4;
+  types.forEach((t, i) => {
+    const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    r.setAttribute("x", i * (w + gap) + 1); r.setAttribute("y", 8); r.setAttribute("width", w - 2); r.setAttribute("height", 56); r.setAttribute("rx", 3);
+    r.setAttribute("style", style[t]); g.appendChild(r);
+    const tx = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    tx.setAttribute("x", i * (w + gap) + w / 2); tx.setAttribute("y", 41); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("font-size", "11");
+    tx.setAttribute("font-family", "ui-monospace, Menlo, monospace");
+    tx.setAttribute("style", t === "spec" ? "fill:var(--card)" : "fill:var(--ink)"); tx.textContent = i + 1; g.appendChild(tx);
+  });
+</script>
+</body>
+</html>

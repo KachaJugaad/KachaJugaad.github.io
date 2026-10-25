@@ -1,31 +1,11 @@
-/* Palette: 01 Technical Editorial (light, default) · dark derived from 02 · restraint from 03.
-   Two meanings only: --ev (teal/cyan) = evidence, built, hands-on · --sig (amber) = constraint, selection, "you are here".
-   Every text pair passes WCAG AA; teal vs amber stay ΔE > 75 under deutan, protan and tritan simulation. */
-:root{
-  --bg:#F3F1EA;--bg2:#ECE9E0;--panel:#FBFAF6;--deep:#101820;
-  --ink:#101820;--text:#2A333D;--muted:#5A6470;--faint:#A8A396;
-  --rule:#D6D1C4;--rule2:#BDB6A6;
-  --ev:#0F5C63;--ev-soft:rgba(15,92,99,.10);--on-ev:#F3F1EA;
-  --sig:#E8A838;--sig-text:#8A5A00;--sig-soft:rgba(232,168,56,.22);--on-sig:#101820;
-  --navbg:rgba(243,241,234,.92);--core-text:#E8A838;
+/* Palette: Ink & Vermilion — washi paper, sumi ink, indigo = evidence, vermilion = constraint and selection.
+   Bright vermilion for strokes and large marks; --sig-text for small text (5.4:1); --sig-fill behind button text (5.8:1 light, 5.75:1 dark).
+   Indigo vs vermilion stay ΔE 79 (light) / 77 (dark) apart under deutan, protan and tritan simulation; every text pair passes WCAG AA. */
+:root{--bg:#F4EFE4;--bg2:#ECE6D8;--panel:#FAF7F0;--deep:#17171C;--ink:#17171C;--text:#34343C;--muted:#63636E;--faint:#ABA79B;--rule:#D9D2C2;--rule2:#C1B9A6;--ev:#2B3A78;--ev-soft:rgba(43,58,120,.09);--on-ev:#F4EFE4;--sig:#D8401E;--sig-text:#B2330F;--sig-soft:rgba(216,64,30,.12);--sig-fill:#B2330F;--on-sig:#FAF7F0;--navbg:rgba(244,239,228,.92);--core:#F0613A;color-scheme:light;
   --display:"Playfair Display",Georgia,serif;--serif:"Source Serif 4",Georgia,serif;
-  --sans:"DM Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0B0F1A;--bg2:#0F1520;--panel:#131B27;--deep:#05070C;
-  --ink:#F0EEE9;--text:#C9CED6;--muted:#8C96A3;--faint:#4A5462;
-  --rule:#27313F;--rule2:#3A4658;
-  --ev:#5FD4E8;--ev-soft:rgba(95,212,232,.12);--on-ev:#0B0F1A;
-  --sig:#E8A838;--sig-text:#E8A838;--sig-soft:rgba(232,168,56,.16);--on-sig:#101820;
-  --navbg:rgba(11,15,26,.92);color-scheme:dark;}}
-:root[data-theme="dark"]{
-  --bg:#0B0F1A;--bg2:#0F1520;--panel:#131B27;--deep:#05070C;
-  --ink:#F0EEE9;--text:#C9CED6;--muted:#8C96A3;--faint:#4A5462;
-  --rule:#27313F;--rule2:#3A4658;
-  --ev:#5FD4E8;--ev-soft:rgba(95,212,232,.12);--on-ev:#0B0F1A;
-  --sig:#E8A838;--sig-text:#E8A838;--sig-soft:rgba(232,168,56,.16);--on-sig:#101820;
-  --navbg:rgba(11,15,26,.92);color-scheme:dark;}
+  --sans:"DM Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121218;--bg2:#16161D;--panel:#1C1C25;--deep:#09090D;--ink:#F1ECE2;--text:#CBC6BC;--muted:#9590A0;--faint:#4F4C5A;--rule:#2A2A35;--rule2:#3C3B4A;--ev:#9FB0F0;--ev-soft:rgba(159,176,240,.12);--on-ev:#121218;--sig:#F0613A;--sig-text:#F0613A;--sig-soft:rgba(240,97,58,.15);--sig-fill:#F0613A;--on-sig:#121218;--navbg:rgba(18,18,24,.92);--core:#F0613A;color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#121218;--bg2:#16161D;--panel:#1C1C25;--deep:#09090D;--ink:#F1ECE2;--text:#CBC6BC;--muted:#9590A0;--faint:#4F4C5A;--rule:#2A2A35;--rule2:#3C3B4A;--ev:#9FB0F0;--ev-soft:rgba(159,176,240,.12);--on-ev:#121218;--sig:#F0613A;--sig-text:#F0613A;--sig-soft:rgba(240,97,58,.15);--sig-fill:#F0613A;--on-sig:#121218;--navbg:rgba(18,18,24,.92);--core:#F0613A;color-scheme:dark;}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
@@ -283,3 +263,56 @@ section.sec.alt{background:var(--bg2)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fig .th-d{display:block}:root:not([data-theme="light"]) .fig .th-l{display:none}}
 :root[data-theme="dark"] .fig .th-d{display:block}
 :root[data-theme="dark"] .fig .th-l{display:none}
+/* the shift: 80/20 -> 90/10 */
+.shift{max-width:46em;margin:4px 0 6px}
+.shift-lead{font-size:clamp(18px,2.1vw,21px);line-height:1.5;color:var(--ink);margin:0 0 16px}
+.shift-lead b{color:var(--ink)}
+.shift b.sig,.shift-close b.sig{color:var(--sig-text)}
+.bars{display:grid;gap:8px;margin:0 0 16px;max-width:620px}
+.bar{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:12px}
+.bl{font:500 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.track{display:flex;height:28px;border-radius:4px;overflow:hidden;border:1px solid var(--rule2)}
+.track span{display:flex;align-items:center;padding:0 8px;font:600 11.5px var(--sans);white-space:nowrap;overflow:hidden}
+.routine{background:var(--bg2);color:var(--muted)}
+.messy{background:var(--sig);color:var(--on-sig);justify-content:flex-start}
+.shift-proof{font-size:16.5px;line-height:1.6;color:var(--text);margin:0 0 10px}
+.shift-proof b{color:var(--ink)}
+.shift-close{font-size:16.5px;line-height:1.6;color:var(--text);margin:0}
+.shift-close b{color:var(--ev)}
+.note-model{font:12px var(--mono);color:var(--muted);margin:10px 0 18px}
+@media (max-width:560px){.bar{grid-template-columns:1fr}.bl{margin-bottom:-4px}}
+.oneliner{font:600 clamp(20px,2.6vw,27px)/1.35 var(--display);color:var(--ink);margin:0 0 14px;max-width:30em}
+.oneliner b.sig{color:var(--sig-text)}
+/* Ink & Vermilion: fills and small text use the accessible shades */
+.btn.primary{background:var(--sig-fill);border-color:var(--sig-fill);color:var(--on-sig)}
+.years button[aria-pressed="true"]{background:var(--sig-fill);border-color:var(--sig-fill);color:var(--on-sig)}
+.lens button[aria-pressed="true"]{color:var(--sig-text)}
+.proofs a:hover{color:var(--sig-text)}
+.loopsvg .core text{fill:var(--core)}
+.loopsvg .core circle{stroke:var(--core)}
+.chain em{color:var(--muted)}
+/* Kindle-style reading: three themes + highlights with margin notes */
+:root{--hl:rgba(216,64,30,.17)}
+:root[data-theme="sepia"]{--bg:#F8EED8;--bg2:#F0E4C9;--panel:#FBF4E4;--deep:#2A2119;--ink:#3B2F23;--text:#4E4033;--muted:#6E5E4C;--faint:#B9A98C;
+  --rule:#E0D2B3;--rule2:#CDBB97;--ev:#2B3A78;--ev-soft:rgba(43,58,120,.09);--on-ev:#F8EED8;--sig:#D8401E;--sig-text:#A8300E;--sig-soft:rgba(216,64,30,.12);
+  --sig-fill:#A8300E;--on-sig:#FBF4E4;--navbg:rgba(248,238,216,.93);--core:#F0613A;--hl:rgba(232,140,40,.26);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-theme="sepia"]){--hl:rgba(240,97,58,.24)}}
+:root[data-theme="dark"]{--hl:rgba(240,97,58,.24)}
+mark.hl{background:linear-gradient(to bottom,transparent 52%,var(--hl) 52%,var(--hl) 94%,transparent 94%);color:inherit;padding:0 .08em;position:relative;cursor:help;
+  border-bottom:1px dotted var(--sig-text);border-radius:2px;outline-offset:3px}
+mark.hl .note{position:absolute;left:0;top:calc(100% + 8px);width:min(320px,78vw);z-index:30;background:var(--panel);border:1px solid var(--rule2);border-left:3px solid var(--sig);
+  border-radius:4px;padding:10px 13px 11px;font:400 14.5px/1.5 var(--serif);color:var(--text);letter-spacing:0;text-transform:none;text-align:left;white-space:normal;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility .15s}
+mark.hl .note::before{content:"Note";display:block;font:600 10px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--sig-text);margin-bottom:4px}
+mark.hl:hover .note,mark.hl:focus .note,mark.hl:focus-within .note{opacity:1;visibility:visible;transform:none}
+.oneliner mark.hl,.answer mark.hl{font-weight:inherit}
+.reader{display:flex;border:1px solid var(--rule2);border-radius:16px;overflow:hidden;flex:none}
+.reader button{font:500 10.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:5px 9px}
+.reader button+button{border-left:1px solid var(--rule2)}
+.reader button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){.reader button{padding:5px 7px;font-size:10px}}
+@media (max-width:560px){.brand .role{display:none}.pathpanel .unitlist{columns:1}nav.top .wrap{gap:8px}}
+/* notes leave layout when closed; bottom sheet on phones */
+mark.hl .note{display:none}
+mark.hl:hover .note,mark.hl:focus .note,mark.hl:focus-within .note{display:block}
+@media (max-width:560px){mark.hl .note{position:fixed;left:16px;right:16px;bottom:16px;top:auto;width:auto;transform:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}}

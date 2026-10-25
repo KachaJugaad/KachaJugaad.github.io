@@ -26,7 +26,7 @@ window.EVIDENCE = {
     { org: "Mavenir · T-Mobile Digits", role: "Product Manager / Product Owner", from: 2019, to: 2024.1 },
     { org: "UBC Sauder", role: "MBA, Tech & Analytics", from: 2024, to: 2026 },
     { org: "YVR", role: "Product Manager", from: 2025.4, to: 2026.05 },
-    { org: "Independent", role: "Builder & researcher", from: 2025.5, to: 2026.9 },
+    { org: "Independent", role: "Building the AI Factory lab", from: 2025.5, to: 2026.9 },
   ],
   units: [
     { id: "cisco", title: "Video streaming that had to outlive its hardware", org: "Cisco", years: [2010, 2014], kind: "role", conf: "R1",
@@ -165,7 +165,7 @@ window.EVIDENCE = {
       stages: ["build", "spread"], layers: { ai: "hands", software: "hands" },
       metrics: [{ v: "<8 s", label: "detection verdict", conf: "P" }, { v: "2", label: "platforms", conf: "P" }],
       proof: [{ label: "Live site", href: "https://realengine.ca" }] },
-    { id: "ailab", title: "Reading the AI-fabric specs, and writing down the gap", org: "Independent · AI factory lab", years: [2026, 2026], kind: "research", conf: "P",
+    { id: "ailab", title: "Reading the AI-fabric specs, and writing down the gap", org: "Independent · Building the AI Factory lab", years: [2026, 2026], kind: "research", conf: "P",
       problem: "AI factories run on new network standards most product people never read.",
       decision: "Read UE 1.1, OCP NIC Core and ESUN line by line; claim only what a page supports.",
       system: "Two live models (UET packet spraying, GPUDirect RDMA); a proposal for the unpublished UE NIC profile; a fact check.",

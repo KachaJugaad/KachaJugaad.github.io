@@ -251,18 +251,21 @@
     $("#creds").append(...E.credentials.map((c) => h("span", {}, c)));
   }
 
-  const tbtn = document.getElementById("theme");
-  if (tbtn) {
+  const reader = document.querySelector(".reader");
+  if (reader) {
     const root = document.documentElement;
-    const cur = () => root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const label = () => {
-      tbtn.textContent = cur() === "dark" ? "Light" : "Dark"; tbtn.setAttribute("aria-label", `Switch to ${tbtn.textContent.toLowerCase()} theme`);
+    const sys = () => (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const cur = () => root.dataset.theme || sys();
+    const sync = () => {
+      reader.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.t === cur())));
       document.querySelectorAll("a.fig[data-light]").forEach((a) => (a.href = cur() === "dark" ? a.dataset.dark : a.dataset.light));
     };
-    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", label);
-    try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
-    label();
-    tbtn.addEventListener("click", () => { root.dataset.theme = cur() === "dark" ? "light" : "dark"; try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {} label(); });
+    reader.addEventListener("click", (e) => {
+      const t = e.target.closest("button")?.dataset.t; if (!t) return;
+      root.dataset.theme = t; try { localStorage.setItem("theme", t); } catch (err) {} sync();
+    });
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", sync);
+    sync();
   }
   renderLoop(); renderMap(); renderPath(); renderCases(); renderCalls(); renderStack(); renderShelf();
   document.documentElement.classList.add("js");

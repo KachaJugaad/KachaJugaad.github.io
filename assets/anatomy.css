@@ -1,7 +1,7 @@
 /* Palette: Ink & Vermilion — washi paper, sumi ink, indigo = evidence, vermilion = constraint and selection.
    Bright vermilion for strokes and large marks; --sig-text for small text (5.4:1); --sig-fill behind button text (5.8:1 light, 5.75:1 dark).
    Indigo vs vermilion stay ΔE 79 (light) / 77 (dark) apart under deutan, protan and tritan simulation; every text pair passes WCAG AA. */
-:root{--bg:#F4EFE4;--bg2:#ECE6D8;--panel:#FAF7F0;--deep:#17171C;--ink:#17171C;--text:#34343C;--muted:#63636E;--faint:#ABA79B;--rule:#D9D2C2;--rule2:#C1B9A6;--ev:#2B3A78;--ev-soft:rgba(43,58,120,.09);--on-ev:#F4EFE4;--sig:#D8401E;--sig-text:#B2330F;--sig-soft:rgba(216,64,30,.12);--sig-fill:#B2330F;--on-sig:#FAF7F0;--navbg:rgba(244,239,228,.92);--core:#F0613A;color-scheme:light;
+:root{--bg:#FCF9F2;--bg2:#F7F2E7;--panel:#FFFDF8;--deep:#17171C;--ink:#17171C;--text:#34343C;--muted:#63636E;--faint:#B5AFA2;--rule:#E8E1D2;--rule2:#D4CBB7;--ev:#2B3A78;--ev-soft:rgba(43,58,120,.08);--on-ev:#FCF9F2;--sig:#D8401E;--sig-text:#B2330F;--sig-soft:rgba(216,64,30,.11);--sig-fill:#B2330F;--on-sig:#FFFDF8;--navbg:rgba(252,249,242,.93);--core:#F0613A;color-scheme:light;
   --display:"Playfair Display",Georgia,serif;--serif:"Source Serif 4",Georgia,serif;
   --sans:"DM Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121218;--bg2:#16161D;--panel:#1C1C25;--deep:#09090D;--ink:#F1ECE2;--text:#CBC6BC;--muted:#9590A0;--faint:#4F4C5A;--rule:#2A2A35;--rule2:#3C3B4A;--ev:#9FB0F0;--ev-soft:rgba(159,176,240,.12);--on-ev:#121218;--sig:#F0613A;--sig-text:#F0613A;--sig-soft:rgba(240,97,58,.15);--sig-fill:#F0613A;--on-sig:#121218;--navbg:rgba(18,18,24,.92);--core:#F0613A;color-scheme:dark;}}

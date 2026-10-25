@@ -255,7 +255,11 @@
   if (tbtn) {
     const root = document.documentElement;
     const cur = () => root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const label = () => { tbtn.textContent = cur() === "dark" ? "Light" : "Dark"; tbtn.setAttribute("aria-label", `Switch to ${tbtn.textContent.toLowerCase()} theme`); };
+    const label = () => {
+      tbtn.textContent = cur() === "dark" ? "Light" : "Dark"; tbtn.setAttribute("aria-label", `Switch to ${tbtn.textContent.toLowerCase()} theme`);
+      document.querySelectorAll("a.fig[data-light]").forEach((a) => (a.href = cur() === "dark" ? a.dataset.dark : a.dataset.light));
+    };
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", label);
     try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
     label();
     tbtn.addEventListener("click", () => { root.dataset.theme = cur() === "dark" ? "light" : "dark"; try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {} label(); });

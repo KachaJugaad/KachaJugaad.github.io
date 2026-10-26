@@ -72,8 +72,8 @@
       return '<svg viewBox="0 0 ' + W + ' 86" role="img" aria-label="' + esc(m.rows.map(function (r) { return r.label + " " + r.v + m.unit + " " + m.what; }).join("; ")) + '">' + s + "</svg>";
     }
     if (m.kind === "gain") { // baseline = 100; the gain is drawn on the same scale; the side condition stays in words
-      var gx = function (v) { return (v / (100 + m.max)) * 190; };
-      s += '<text class="m-t" x="0" y="15">before</text><rect class="m-track" x="56" y="3" width="190" height="16" rx="3"/><rect class="m-before m-grow" x="56" y="3" width="' + gx(100) + '" height="16" rx="3"/><text class="m-v" x="' + (62 + gx(100)) + '" y="16">base</text>';
+      var gx = function (v) { return (v / (100 + m.max)) * 150; };
+      s += '<text class="m-t" x="0" y="15">before</text><rect class="m-track" x="56" y="3" width="190" height="16" rx="3"/><rect class="m-before m-grow" x="56" y="3" width="' + gx(100) + '" height="16" rx="3"/><text class="m-v" x="' + (62 + gx(100)) + '" y="16">starting revenue</text>';
       s += '<g class="m-step" style="transition-delay:.8s"><text class="m-t" x="0" y="45" style="fill:var(--ink)">after</text><rect class="m-track" x="56" y="33" width="190" height="16" rx="3"/><rect class="m-after" x="56" y="33" width="' + gx(100 + m.v) + '" height="16" rx="3"/><rect class="m-box" x="56" y="33" width="' + gx(100 + m.v) + '" height="16" rx="3"/><text class="m-v" x="' + (62 + gx(100 + m.v)) + '" y="46">+' + m.v + m.unit + "</text></g>";
       return '<svg viewBox="0 0 ' + W + ' 54" role="img" aria-label="' + esc(m.what + ": +" + m.v + m.unit + " over the base") + '">' + s + "</svg>";
     }

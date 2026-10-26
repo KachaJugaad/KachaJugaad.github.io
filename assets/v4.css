@@ -192,7 +192,7 @@ h3 .conf{flex:0 0 auto;align-self:center}
 /* anatomy figures + tiles */
 .figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .fig{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
-.fig img{display:block;width:100%;aspect-ratio:12/5;object-fit:cover;object-position:50% 20%;background:var(--bg2)}
+.fig img{display:block;width:100%;aspect-ratio:12/5;object-fit:cover;object-position:50% 14%;background:var(--bg2)}
 .fig .th-d{display:none}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-theme="sepia"]) .fig .th-d{display:block}:root:not([data-theme="light"]):not([data-theme="sepia"]) .fig .th-l{display:none}}
 :root[data-theme="dark"] .fig .th-d{display:block}:root[data-theme="dark"] .fig .th-l{display:none}

@@ -126,7 +126,7 @@
       var choices = [0, 1, 2].filter(function (i) { return i !== S.cons; });
       S.cons = choices[(S.scen + choices.length) % choices.length];
     }
-    S.open = [S.cons]; S.cleared = false; S.lastInput = S.t; S.clearedAt = 0;
+    S.open = [S.cons]; S.woke = []; S.cleared = false; S.lastInput = S.t; S.clearedAt = 0;
     nodes.forEach(function (n, k) { if (n.kind === "mid") n.rate = k - 4 === S.cons ? 0.9 : 0; });
     emit();
   }
@@ -137,8 +137,8 @@
     if (S.cleared) return;
     S.cleared = true; S.clearedAt = S.t; S.flash = 1;
     if (byUser) S.lastInput = S.t;
-    var extra = S.cons === 1 ? (S.scen % 2 ? 0 : 2) : 1; // open a neighbouring path
-    S.open = [S.cons, extra];
+    S.woke = [0, 1, 2].filter(function (i) { return i !== S.cons; }); // the idle paths go to work
+    S.open = [S.cons].concat(S.woke);
     nodes.forEach(function (n, k) { if (n.kind === "mid" && S.open.indexOf(k - 4) >= 0) n.rate = 4.2; });
     emit();
     if (!running) draw();
@@ -260,9 +260,18 @@
     }
     label("data", nodes[0].x, nodes[0].y - 1.6, "left", C.ev);
     label("people who act", nodes[8].x, nodes[8].y - 2.6, "right", C.ink);
-    nodes.forEach(function (n, k) { if (n.kind === "mid" && S.open.indexOf(k - 4) < 0) label("idle", n.x, n.y, "center", C.muted); });
-    label(S.cleared ? "flowing" : "stuck · " + sc.label, cn.x - cn.w - 1, cn.y - cn.r - 2.3, "left", S.cleared ? C.ev : C.ink);
-    label(S.cleared ? "the call" : "", M.x - M.w - 1, M.y - M.r - 2.3, "left", C["sig-text"]);
+    nodes.forEach(function (n, k) {
+      if (n.kind !== "mid") return;
+      if (S.open.indexOf(k - 4) < 0) label("idle", n.x, n.y, "center", C.muted);
+      else if (S.cleared && S.woke && S.woke.indexOf(k - 4) >= 0) label("now working", n.x - n.w - 1, n.y - n.r - 2.3, "left", C.ev);
+    });
+    var roomy = cols >= 70;
+    if (S.cleared && roomy) { ctx.globalAlpha = 0.6; label("was stuck · " + sc.label, cn.x - cn.w - 1, cn.y - cn.r - 2.3, "left", C.muted); ctx.globalAlpha = 1; }
+    else if (!S.cleared) label("stuck · " + sc.label, cn.x - cn.w - 1, cn.y - cn.r - 2.3, "left", C.ink);
+    if (S.cleared) {
+      label("the call", M.x - M.w - 1, M.y - M.r - 2.3, "left", C["sig-text"]);
+      if (roomy) label(sc.what + " " + (sc.before ? sc.before + " → " : "") + sc.after, M.x - M.w - 1, M.y + M.r + 2.4, "left", C["sig-text"]);
+    }
     if (S.flash) { ctx.strokeStyle = C.sig; ctx.globalAlpha = S.flash; ctx.lineWidth = 1.5; var rr = (1 - S.flash) * 6 + 2; ctx.strokeRect((M.x - M.w - 1 - rr) * cw, (M.y - M.r - 1 - rr * 0.7) * ch, (2 * M.w + 3 + 2 * rr) * cw, (2 * M.r + 3 + rr * 1.4) * ch); ctx.globalAlpha = 1; }
   }
 

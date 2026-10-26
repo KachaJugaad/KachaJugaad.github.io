@@ -29,6 +29,8 @@
         num.hidden = true; decide.disabled = false; decide.textContent = "Make the call";
       }
     }
+    var eg = document.getElementById("eg"), y = unit("yvr");
+    if (eg && y && y.sim) eg.innerHTML = "At Vancouver Airport: " + esc(y.sim.what) + " " + esc(y.sim.before) + " → <b>" + esc(y.sim.after) + "</b>, with no new budget. " + chip(y.sim.conf);
     var since = document.getElementById("since"); if (since && E.since) since.textContent = (new Date().getFullYear() - E.since) + " years building platforms";
     var wait = setInterval(function () {
       if (!window.SIM) return; clearInterval(wait);
@@ -63,7 +65,7 @@
         var x = 60 + i * 110, h = (r.v / m.max) * H;
         if (r.v > 0) s += '<g class="m-step" style="transition-delay:' + (i * 1) + 's"><rect class="m-after m-rise" x="' + x + '" y="' + (base - h) + '" width="56" height="' + h + '" rx="3"/><rect class="m-box" x="' + x + '" y="' + (base - h) + '" width="56" height="' + h + '" rx="3"/></g>';
         else s += '<line class="m-zero m-step" style="transition-delay:' + (i * 1) + 's" x1="' + x + '" x2="' + (x + 56) + '" y1="' + (base - 1) + '" y2="' + (base - 1) + '"/>';
-        s += '<text class="m-v m-step" style="transition-delay:' + (i * 1) + 's" x="' + (x + 28) + '" y="' + (base - h - 6) + '" text-anchor="middle">' + r.v.toFixed(1) + m.unit + '</text><text class="m-t" x="' + (x + 28) + '" y="' + (base + 15) + '" text-anchor="middle">' + r.label + "</text>";
+        s += '<text class="m-v m-step" style="transition-delay:' + (i * 1) + 's" x="' + (x + 28) + '" y="' + (base - h - 6) + '" text-anchor="middle">' + (r.v % 1 ? r.v.toFixed(1) : r.v) + m.unit + '</text><text class="m-t" x="' + (x + 28) + '" y="' + (base + 15) + '" text-anchor="middle">' + r.label + "</text>";
       });
       s = '<line x1="40" x2="250" y1="' + base + '" y2="' + base + '" stroke="var(--rule2)"/>' + s;
       return '<svg viewBox="0 0 ' + W + ' 86" role="img" aria-label="' + esc(m.rows.map(function (r) { return r.label + " " + r.v + m.unit + " " + m.what; }).join("; ")) + '">' + s + "</svg>";
@@ -96,7 +98,7 @@
     }
     if (m.kind === "slopes") return a("<b>More time on stability, and releases got faster.</b>", 2.2);
     if (m.kind === "absolute") { var rel = ((m.without - m.with) / m.without * 100).toFixed(1); return a("Error rate, lower is better.", 0) + a("<b>" + rel + "% fewer errors: small, real, drawn to scale.</b> " + esc(m.other) + ". Simulated: " + esc(m.note) + ".", 1.4); }
-    if (m.kind === "compare") return a("Fewer errors with the forecast on.", 0.4) + a(esc(m.note) + ".", 1.4);
+    if (m.kind === "compare") return a(esc(m.rows[0].label[0].toUpperCase() + m.rows[0].label.slice(1)) + " up " + m.rows[0].v + m.unit + ". " + esc(m.rows[1].label[0].toUpperCase() + m.rows[1].label.slice(1)) + " flat.", 0.4) + a("<b>More money, no new work for ops.</b>", 1.4);
     return "";
   }
   function featured() {
@@ -153,6 +155,7 @@
       return '<li><span class="no">' + (i + 1) + '</span><span class="nm">' + esc(s.label) + '</span><span class="ln">' + esc(s.line) + "</span>" +
         (u ? '<a class="ex" href="#all" data-open="' + u.id + '">e.g. ' + esc(short(u.org)) + "</a>" : "") + "</li>";
     }).join("");
+    if (E.weekOne && $("#weekone")) $("#weekone").innerHTML = "<p>" + esc(E.weekOne.intro) + "</p><ol>" + E.weekOne.asks.map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ol>";
     $("#plan").innerHTML = E.plan90.steps.map(function (p) { return "<li><b>" + esc(p.when) + "</b>" + esc(p.what) + "</li>"; }).join("");
   }
   function openCase(id) {
@@ -170,7 +173,7 @@
       { href: "lab/gpudirect-rdma/", light: "lab/gpudirect-rdma/light.html", img: "lab/gpudirect-rdma", t: "GPU to GPU, no detour", p: "Data can skip the computer\u2019s main memory on its way between two GPUs. Fewer stops, less waiting.", alt: "A machine showing a tensor moving from GPU to GPU across a rack" },
     ];
     $("#figs").innerHTML = FIG.map(function (f) {
-      return '<a class="fig" href="' + f.href + '" data-dark="' + f.href + '" data-light="' + f.light + '"><img class="th-l" src="' + f.img + '/thumb-light.png" alt="' + esc(f.alt) + '" loading="lazy"><img class="th-d" src="' + f.img + '/thumb.png" alt="' + esc(f.alt) + '" loading="lazy"><div><small>learning · not built in a job yet</small><b>' + esc(f.t) + "</b><p>" + esc(f.p) + "</p></div></a>";
+      return '<a class="fig" href="' + f.href + '" data-dark="' + f.href + '" data-light="' + f.light + '"><img class="th-l" src="' + f.img + '/thumb-light.png" alt="' + esc(f.alt) + '" loading="lazy"><img class="th-d" src="' + f.img + '/thumb.png" alt="' + esc(f.alt) + '" loading="lazy"><div><small>learning · not yet built in a job</small><b>' + esc(f.t) + "</b><p>" + esc(f.p) + "</p></div></a>";
     }).join("");
     var T = [["weatherran", "TelcoEdge"], ["anomedge", "AEdge"], ["camara", "camara-dev"], ["realengine", "realEngine"]];
     $("#tiles").innerHTML = T.map(function (t) {

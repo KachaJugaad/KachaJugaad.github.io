@@ -216,7 +216,7 @@ window.EVIDENCE = {
   E.since = 2010;
   E.person = {
     name: "Ashutosh Shukla",
-    title: "Product leader · ex-Principal Engineer · Vancouver",
+    title: "In product since 2018 · ex-Principal Engineer · Vancouver",
     line: "I find the decision that's missing between the data and the people who act on it.",
     email: "", /* TODO(ashutosh): the public email address to show as text */
     links: [
@@ -252,8 +252,16 @@ window.EVIDENCE = {
     sim: { label: "contract penalties", what: "weeks per release", before: "12", after: "9", conf: "R",
       call: "Ship when it's ready, not when the calendar says." },
   });
-  Object.assign(by("weatherran"), {
+  Object.assign(by("plg"), {
     featured: 3,
+    headline: "Simpler contracts. 30% more revenue.",
+    biz: "About 30% more revenue, with no extra load on operations.",
+    built: "Simpler, versioned API contracts and self-serve partner docs.",
+    plainLimit: "No extra load on operations",
+    meter: { kind: "compare", rows: [{ label: "revenue", v: 30 }, { label: "ops load", v: 0 }], max: 34, unit: "%", what: "added", conf: "R" },
+    check: "Fewer custom deals made more money, not less.",
+  });
+  Object.assign(by("weatherran"), {
     headline: "Radios that read the weather first.",
     biz: "Error rate down 5.3% on the prairie, in simulation.",
     built: "An add-on for cell-tower software (an O-RAN xApp) that reads Government of Canada forecasts.",
@@ -270,6 +278,10 @@ window.EVIDENCE = {
     call: "Build an open sandbox instead of another feature." };
   by("cisco").sim = { label: "64 MB of memory", what: "built to last", before: "", after: "6 years", conf: "R1",
     call: "Design every choice to outlast the hardware." };
+  E.weekOne = { draft: false, intro: "Week one at an AI-infrastructure company, I'd ask your engineers:", asks: [
+    "Where do training jobs wait on the network, and who sees it first?",
+    "Which link counters exist that nobody reads?",
+    "Who decides when a job is retried, and on what signal?" ] };
   E.loopExamples = { sense: "yvr", decide: "tmobile", build: "cisco", run: "rakuten", spread: "plg" };
   E.plan90 = { draft: true, steps: [
     { when: "Days 1–30", what: "Sit with your customers and the people who use the data. Map where work waits." },

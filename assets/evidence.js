@@ -190,7 +190,7 @@ window.EVIDENCE = {
     { unit: "weatherran", tension: "The Arctic test showed no improvement.", call: "Published 0.0% next to the 5.3% prairie result.", cost: "A weaker-looking headline.", result: "A result people can trust." },
     { unit: "plg", tension: "Partners wanted custom deals; operations could not take more load.", call: "Simplified the API contracts and made integration self-serve.", cost: "Saying no to bespoke partner requests.", result: "About 30% incremental revenue, zero added ops load." },
     { unit: "camara", tension: "Developers were blocked by procurement, not by technology.", call: "Built a sandbox instead of another feature.", cost: "Building something no carrier asked for.", result: "First API call in 90 seconds." },
-    { unit: "mba", tension: "A principal-engineer track with a clear path up.", call: "Moved into product and did an MBA.", cost: "Restarting mid-career.", result: "Engineering depth with commercial language." },
+    { unit: "mba", tension: "A principal-engineer track with a clear path up.", call: "Left that track for product full-time, then did an MBA to lead it.", cost: "Giving up a safe senior engineering path.", result: "Engineering depth with commercial language." },
   ],
   aiStack: [
     { id: "agents", label: "Agents & applications", status: "built", units: ["realengine", "anomedge"], note: "Built AI applications end to end: media detection and edge diagnostics." },
@@ -258,7 +258,8 @@ window.EVIDENCE = {
     biz: "About 30% more revenue, with no extra load on operations.",
     built: "Simpler, versioned API contracts and self-serve partner docs.",
     plainLimit: "No extra load on operations",
-    meter: { kind: "compare", rows: [{ label: "revenue", v: 30 }, { label: "ops load", v: 0 }], max: 34, unit: "%", what: "added", conf: "R" },
+    meter: { kind: "gain", v: 30, max: 40, unit: "%", what: "Incremental revenue from partners", side: "Operations load: no increase.", conf: "R" },
+    /* TODO(ashutosh): the revenue base for the +30% (e.g. partner revenue in $), and how ops load was tracked */
     check: "Fewer custom deals made more money, not less.",
   });
   Object.assign(by("weatherran"), {

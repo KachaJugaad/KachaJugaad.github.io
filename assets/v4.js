@@ -23,7 +23,7 @@
       if (st.cleared) {
         stateEl.innerHTML = "<span>The call: </span>" + esc(sc.call);
         num.innerHTML = esc(sc.what[0].toUpperCase() + sc.what.slice(1)) + ": " + (sc.before ? esc(sc.before) + " → " : "") + "<em>" + esc(sc.after) + "</em> " + chip(sc.conf);
-        num.hidden = false; decide.disabled = true; decide.textContent = "Call made ✓";
+        num.hidden = sc.id === "yvr"; decide.disabled = true; decide.textContent = "Call made ✓";
       } else {
         stateEl.textContent = "Work piles up at one stuck point. Other paths sit idle.";
         num.hidden = true; decide.disabled = false; decide.textContent = "Make the call";
@@ -31,6 +31,7 @@
     }
     var eg = document.getElementById("eg"), y = unit("yvr");
     if (eg && y && y.sim) eg.innerHTML = "At Vancouver Airport: " + esc(y.sim.what) + " " + esc(y.sim.before) + " → <b>" + esc(y.sim.after) + "</b>, with no new budget. " + chip(y.sim.conf);
+    window.__egScen = y && y.sim;
     var since = document.getElementById("since"); if (since && E.since) since.textContent = (new Date().getFullYear() - E.since) + " years building platforms";
     var wait = setInterval(function () {
       if (!window.SIM) return; clearInterval(wait);
@@ -70,6 +71,12 @@
       s = '<line x1="40" x2="250" y1="' + base + '" y2="' + base + '" stroke="var(--rule2)"/>' + s;
       return '<svg viewBox="0 0 ' + W + ' 86" role="img" aria-label="' + esc(m.rows.map(function (r) { return r.label + " " + r.v + m.unit + " " + m.what; }).join("; ")) + '">' + s + "</svg>";
     }
+    if (m.kind === "gain") { // baseline = 100; the gain is drawn on the same scale; the side condition stays in words
+      var gx = function (v) { return (v / (100 + m.max)) * 190; };
+      s += '<text class="m-t" x="0" y="15">before</text><rect class="m-track" x="56" y="3" width="190" height="16" rx="3"/><rect class="m-before m-grow" x="56" y="3" width="' + gx(100) + '" height="16" rx="3"/><text class="m-v" x="' + (62 + gx(100)) + '" y="16">base</text>';
+      s += '<g class="m-step" style="transition-delay:.8s"><text class="m-t" x="0" y="45" style="fill:var(--ink)">after</text><rect class="m-track" x="56" y="33" width="190" height="16" rx="3"/><rect class="m-after" x="56" y="33" width="' + gx(100 + m.v) + '" height="16" rx="3"/><rect class="m-box" x="56" y="33" width="' + gx(100 + m.v) + '" height="16" rx="3"/><text class="m-v" x="' + (62 + gx(100 + m.v)) + '" y="46">+' + m.v + m.unit + "</text></g>";
+      return '<svg viewBox="0 0 ' + W + ' 54" role="img" aria-label="' + esc(m.what + ": +" + m.v + m.unit + " over the base") + '">' + s + "</svg>";
+    }
     if (m.kind === "slopes") { // two small before → after panels; the arrow says which way is good
       m.rows.forEach(function (r, i) {
         var x = i * 145, top = 36, h = 40, hi = Math.max(r.from, r.to) * 1.1, Y = function (v) { return top + h - (v / hi) * h; };
@@ -98,7 +105,7 @@
     }
     if (m.kind === "slopes") return a("<b>More time on stability, and releases got faster.</b>", 2.2);
     if (m.kind === "absolute") { var rel = ((m.without - m.with) / m.without * 100).toFixed(1); return a("Error rate, lower is better.", 0) + a("<b>" + rel + "% fewer errors: small, real, drawn to scale.</b> " + esc(m.other) + ". Simulated: " + esc(m.note) + ".", 1.4); }
-    if (m.kind === "compare") return a(esc(m.rows[0].label[0].toUpperCase() + m.rows[0].label.slice(1)) + " up " + m.rows[0].v + m.unit + ". " + esc(m.rows[1].label[0].toUpperCase() + m.rows[1].label.slice(1)) + " flat.", 0.4) + a("<b>More money, no new work for ops.</b>", 1.4);
+    if (m.kind === "gain") return a(esc(m.what) + ".", 0.4) + a("<b>" + esc(m.side) + "</b>", 1.4);
     return "";
   }
   function featured() {

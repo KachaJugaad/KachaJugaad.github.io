@@ -190,7 +190,7 @@ Every number below carries its source: résumé, site or public (a page you can 
 - The Arctic test showed no improvement. Call: Published 0.0% next to the 5.3% prairie result. Cost: A weaker-looking headline.
 - Partners wanted custom deals; operations could not take more load. Call: Simplified the API contracts and made integration self-serve. Cost: Saying no to bespoke partner requests.
 - Developers were blocked by procurement, not by technology. Call: Built a sandbox instead of another feature. Cost: Building something no carrier asked for.
-- A principal-engineer track with a clear path up. Call: Moved into product and did an MBA. Cost: Restarting mid-career.
+- A principal-engineer track with a clear path up. Call: Left that track for product full-time, then did an MBA to lead it. Cost: Giving up a safe senior engineering path.
 
 ## Credentials
 

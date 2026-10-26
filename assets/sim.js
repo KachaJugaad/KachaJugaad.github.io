@@ -239,7 +239,7 @@
         put("┌", x0, y0); put("┐", x1, y0); put("└", x0, y1); put("┘", x1, y1);
         for (xx = x0 + 1; xx < x1; xx++) { put("─", xx, y0); put("─", xx, y1); }
         for (yy = y0 + 1; yy < y1; yy++) { put("│", x0, yy); put("│", x1, yy); }
-        for (yy = y0 + 1; yy < y1; yy++) for (xx = x0 + 1; xx < x1; xx++) put(isC && !S.cleared ? "▒" : open ? ((xx + yy) % 2 ? "·" : " ") : " ", xx, yy);
+        for (yy = y0 + 1; yy < y1; yy++) for (xx = x0 + 1; xx < x1; xx++) put(isC && !S.cleared ? "▒" : isC ? " " : open ? ((xx + yy) % 2 ? "·" : " ") : " ", xx, yy);
         ctx.globalAlpha = 1;
       }
     });
@@ -266,7 +266,7 @@
       else if (S.cleared && S.woke && S.woke.indexOf(k - 4) >= 0) label("now working", n.x - n.w - 1, n.y - n.r - 2.3, "left", C.ev);
     });
     var roomy = cols >= 70;
-    if (S.cleared && roomy) { ctx.globalAlpha = 0.6; label("was stuck · " + sc.label, cn.x - cn.w - 1, cn.y - cn.r - 2.3, "left", C.muted); ctx.globalAlpha = 1; }
+    if (S.cleared) label("was stuck", cn.x, cn.y, "center", C.muted);
     else if (!S.cleared) label("stuck · " + sc.label, cn.x - cn.w - 1, cn.y - cn.r - 2.3, "left", C.ink);
     if (S.cleared) {
       label("the call", M.x - M.w - 1, M.y - M.r - 2.3, "left", C["sig-text"]);

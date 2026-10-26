@@ -1,0 +1,204 @@
+# Ashutosh Shukla
+
+> Product leader · ex-Principal Engineer · Vancouver. I find the decision that's missing between the data and the people who act on it.
+
+Every number below carries its source: résumé, site or public (a page you can open).
+
+## Links
+
+- [LinkedIn](https://linkedin.com/in/ashutoshukla)
+- [GitHub](https://github.com/KachaJugaad)
+- [Substack](https://ashutoshukla.substack.com)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+- [Detailed page: map and timeline](https://kachajugaad.github.io/v2/)
+
+## Cases
+
+### Video streaming that had to outlive its hardware
+
+- Cisco, 2010–2014
+- Limit: 64 MB RAM · 6-year hardware lifecycle
+- Problem: Real-time video on 64 MB of RAM, on hardware expected to ship for six years.
+- Decision: Design every software choice to survive years without a hardware redesign.
+- Result: Shipped and held for the product's lifecycle.
+- 64 MB RAM budget (source: résumé)
+- 6 yr hardware lifecycle (source: résumé)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Carrier platform parts that partners could extend
+
+- Mavenir, 2014–2018
+- Limit: Carrier-grade production
+- Problem: Carrier networks needed IMS, RCS and SIP components that other teams and partners could build on.
+- Decision: Put extensibility patterns in early, even when shipping a single feature would have been faster.
+- Result: Extensibility patterns used by partner integrations.
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Millions of sessions, zero tolerance for failure
+
+- Mavenir · Rakuten Link, 2018–2021
+- Limit: Zero tolerance for failure
+- Problem: Programs shipped without acceptance criteria; problems surfaced in customer validation, the most expensive place to find them.
+- Decision: Define SLOs and invest in telemetry before features; manage performance against cost and operability.
+- Result: 99.99% uptime; integration failures down 20%; 30% engineering capacity freed.
+- 99.99% uptime (source: résumé)
+- −20% integration failures (source: résumé)
+- +30% engineering capacity freed (source: résumé)
+- −20% support tickets (source: site)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### From shipping by calendar to shipping by readiness
+
+- Mavenir · T-Mobile Digits, 2019–2024
+- Limit: SLA penalties trending to $2M/quarter
+- Problem: SLA penalties were trending toward $2M a quarter on a 1M-user, API-first platform whose release calendar was the strategy.
+- Decision: Rebalance investment from 90/10 to 50/50 feature-to-stability, and ship by readiness signals instead of dates.
+- Result: Stability targets met in six months; the quality record won Rakuten as a customer. Time-to-market 12 → 9 weeks.
+- 1M+ users on the platform (source: résumé)
+- −25% release cycle, 12→9 weeks (source: résumé)
+- $2M+ SLA exposure avoided (source: résumé)
+- −15% downtime (source: site)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Simpler API contracts, 30% more revenue
+
+- Mavenir · T-Mobile Digits, 2019–2024
+- Limit: Zero added ops load
+- Problem: Enterprise and SMB segments were underserved; partner integrations needed hand-holding.
+- Decision: Simplify the API contracts and make partner integration self-serve, instead of customising per partner.
+- Result: About 30% incremental revenue with zero added operational load.
+- +30% incremental revenue (source: résumé)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Data-sharing contracts with Samsung, Apple and Amazon
+
+- Mavenir · T-Mobile Digits, 2019–2024
+- Problem: The platform needed API data-sharing agreements across 40+ device types.
+- Decision: Negotiate the contracts directly; present the trade-offs to the C-suite in QBRs.
+- Result: Agreements across 40+ device types.
+- 40+ device types (source: résumé)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Principal Engineer to product manager, deliberately
+
+- UBC Sauder, 2024–2026
+- Problem: Engineering depth without the commercial language to argue for it.
+- Decision: Leave a principal-engineer track; do an MBA in tech and analytics.
+- Result: MBA, UBC Sauder (Tech & Analytics).
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### 0-to-1 decision support in a domain he'd never worked in
+
+- Vancouver Airport Authority, 2025–2026
+- Limit: No new headcount, systems or budget
+- Problem: Operators ran multi-million-dollar asset allocation at peak on gut instinct. The data existed; no decision layer did.
+- Decision: Go airside before writing a spec; define KPIs before the first sprint; ship with no new headcount, systems or budget.
+- Result: Idle time cut 50% (20% → 10%); about $500K downtime prevented; delivered in 7 months.
+- −50% fleet idle time (source: résumé)
+- $500K downtime prevented (source: résumé)
+- 15+ operators interviewed (source: résumé)
+- 99% continuity at peak (source: site)
+- [Résumé](https://kachajugaad.github.io/Ashutosh_Shukla_Resume.pdf)
+
+### Radios that read the weather forecast
+
+- Independent · TelcoEdge, 2026
+- Limit: Sovereign data only
+- Problem: Rural 5G drops calls in bad weather because towers react after the signal fails.
+- Decision: Pre-adjust radio settings from Government of Canada forecasts; sovereign data only, no API keys or US endpoints.
+- Result: Error rate 13.02% → 12.33% on the prairie (a 5.3% relative drop, simulated); 332 tests passing.
+- 5.3% fewer errors, prairie (simulated) (source: public)
+- 332 tests passing (source: public)
+- 0.0% Arctic result, published (source: public)
+- [Live dashboard](https://kachajugaad.github.io/TelcoEdge/)
+- [Essay](https://ashutoshukla.substack.com/p/your-cell-signal-drops-every-time)
+
+### Will my next call drop? A map that knows the weather
+
+- Independent · TelcoEdge, 2026
+- Limit: Zero carrier dependencies
+- Problem: Canadians have no carrier-independent way to know if a call will drop.
+- Decision: Fuse public tower and weather data; no carrier agreement needed.
+- Result: Every Canadian postal code; six weather scenarios.
+- 32,756 tower sites indexed (source: public)
+- 6 weather scenarios (source: public)
+- [Live tool](https://kachajugaad.github.io/TelcoEdge/signal-forecast/)
+
+### Edge AI that degrades gracefully, offline
+
+- Independent · AEdge, 2026
+- Limit: Offline, deterministic latency
+- Problem: Fleet vehicles fail expensively; drivers find out after the damage.
+- Decision: Three-tier inference (deep learning → statistical ML → expert rules) with a designed fallback, instead of one fragile model.
+- Result: <100 ms signal-to-alert (p99); 145 tests; 2nd place, ProductBC Build-a-thon 2026.
+- <100 ms signal to alert, p99 (source: public)
+- 145 tests passing (source: public)
+- 2nd ProductBC Build-a-thon 2026 (source: public)
+- [Live site](https://kachajugaad.github.io/AEdge/)
+- [ProductBC](https://www.linkedin.com/posts/productbc_thats-a-wrap-to-our-6-week-productbc-build-a-thon-activity-7444590918839640065-xPJ6)
+
+### Carrier APIs without a procurement agreement
+
+- Independent · camara-dev, 2026
+- Limit: Procurement wall
+- Problem: Canadian developers couldn't test carrier APIs without signing a procurement agreement.
+- Decision: Remove the obstacle instead of adding a feature: an open sandbox with carrier simulation profiles.
+- Result: First API call in 90 seconds; 53 tests.
+- 90 s to first API call (source: public)
+- 53 tests passing (source: public)
+- [GitHub](https://github.com/KachaJugaad/camara-dev)
+- [Essay](https://ashutoshukla.substack.com/p/the-network-already-knows-nobody)
+
+### Is this real? Honest confidence, not false certainty
+
+- Independent · realEngine, 2026
+- Limit: Privacy: 60-second deletion
+- Problem: People can't tell whether media is AI-generated.
+- Decision: Show probability-based confidence instead of a yes/no verdict; delete files within 60 seconds.
+- Result: Verdict in under 8 seconds on two platforms.
+- <8 s detection verdict (source: public)
+- 2 platforms (source: public)
+- [Live site](https://realengine.ca)
+
+### Reading the AI-fabric specs, and writing down the gap
+
+- Independent · Building AI Factory, 2026
+- Limit: Only claims a spec page supports
+- Problem: AI factories run on new network standards most product people never read.
+- Decision: Read UE 1.1, OCP NIC Core and ESUN line by line; claim only what a page supports.
+- Result: 2 interactive figures, 1 brief, 1 fact check, 1 A4 poster.
+- 2 live models (source: public)
+- 21 statements fact-checked (source: public)
+- [Fig 2 · UET spraying](https://kachajugaad.github.io/lab/uet-spray/)
+- [Fig 1 · GPUDirect](https://kachajugaad.github.io/lab/gpudirect-rdma/)
+- [Brief](https://kachajugaad.github.io/briefs/ue-nic-profile/)
+- [Fact check](https://kachajugaad.github.io/briefs/ue-nic-profile/factcheck.html)
+
+### Thinking in public
+
+- Substack, 2025–2026
+- Problem: Ideas about AI economics, org language and hiring that nobody was saying plainly.
+- Decision: Publish with numbers, including the inconvenient ones.
+- Result: 11 published essays.
+- 11 essays (source: public)
+- [Substack](https://ashutoshukla.substack.com)
+
+## Hard calls
+
+- Sales wanted features. Engineering thought stability work was process. Call: Moved investment from 90/10 to 50/50 feature-to-stability. Cost: Six months of fewer features, argued to both camps.
+- A new domain, peak-season pressure, and no budget for new staff or systems. Call: Went airside with ground crews before writing a single spec. Cost: Time spent listening before building.
+- The Arctic test showed no improvement. Call: Published 0.0% next to the 5.3% prairie result. Cost: A weaker-looking headline.
+- Partners wanted custom deals; operations could not take more load. Call: Simplified the API contracts and made integration self-serve. Cost: Saying no to bespoke partner requests.
+- Developers were blocked by procurement, not by technology. Call: Built a sandbox instead of another feature. Cost: Building something no carrier asked for.
+- A principal-engineer track with a clear path up. Call: Moved into product and did an MBA. Cost: Restarting mid-career.
+
+## Credentials
+
+- MBA, UBC Sauder (Tech & Analytics)
+- B.Tech Computer Science, NIT Raipur
+- PMP
+- CSPO
+- CSM
+- KCNA
+- AWS Certified
+- Terraform Associate

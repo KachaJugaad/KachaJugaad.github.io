@@ -207,3 +207,74 @@ window.EVIDENCE = {
   ],
   credentials: ["MBA, UBC Sauder (Tech & Analytics)", "B.Tech Computer Science, NIT Raipur", "PMP", "CSPO", "CSM", "KCNA", "AWS Certified", "Terraform Associate"],
 };
+
+/* v4 additions — still the one source of truth. Every number the v4 page shows is read from here.
+   draft: true = placeholder wording for Ashutosh to confirm; the page marks it "draft".
+   sim = the scenario the hero network plays when this constraint forms; before/after come from the unit's own sources. */
+(function (E) {
+  var by = function (id) { return E.units.find(function (u) { return u.id === id; }); };
+  E.since = 2010;
+  E.person = {
+    name: "Ashutosh Shukla",
+    title: "Product leader · ex-Principal Engineer · Vancouver",
+    line: "I find the decision that's missing between the data and the people who act on it.",
+    email: "", /* TODO(ashutosh): the public email address to show as text */
+    links: [
+      { label: "LinkedIn", href: "https://linkedin.com/in/ashutoshukla" },
+      { label: "GitHub", href: "https://github.com/KachaJugaad" },
+      { label: "Substack", href: "https://ashutoshukla.substack.com" },
+      { label: "Résumé", href: "Ashutosh_Shukla_Resume.pdf" },
+    ],
+  };
+  Object.assign(by("yvr"), {
+    featured: 1,
+    headline: "Idle time cut in half. No new budget.",
+    biz: "About $500K of downtime avoided, in 7 months.",
+    built: "A decision tool on the maintenance data they already had (Maximo).",
+    plainLimit: "No new staff, systems or budget",
+    miss: { text: "I moved at my pace, not theirs. Adoption took longer than the build.", conf: "supplied" },
+    meter: { kind: "before-after", rows: [{ label: "before", v: 20 }, { label: "after", v: 10 }], max: 25, unit: "%", what: "of airside fleet hours sat idle", conf: "R" },
+    check: "Same machines, same crews. Half the waiting.",
+    sim: { label: "no new headcount", what: "fleet idle time", before: "20%", after: "10%", conf: "R",
+      call: "Show crews which machines sit idle, from data they already had." }, /* TODO(ashutosh): confirm this wording of the YVR call */
+  });
+  Object.assign(by("tmobile"), {
+    featured: 2,
+    headline: "Shipped when ready, not when the calendar said.",
+    biz: "Stability targets met within six months.",
+    built: "Release gates based on readiness signals, plus API versioning and shared monitoring.",
+    plainLimit: "Contract penalties heading to $2M a quarter",
+    /* TODO(ashutosh): T-Mobile "what I got wrong" line, held back until you write it */
+    meter: { kind: "slopes", rows: [
+      { label: "time on stability", from: 10, to: 50, unit: "%", good: "up" },
+      { label: "weeks per release", from: 12, to: 9, unit: "", good: "down" } ], conf: "R" },
+    check: "More time on stability made releases faster, not slower.",
+    sim: { label: "contract penalties", what: "weeks per release", before: "12", after: "9", conf: "R",
+      call: "Ship when it's ready, not when the calendar says." },
+  });
+  Object.assign(by("weatherran"), {
+    featured: 3,
+    headline: "Radios that read the weather first.",
+    biz: "Error rate down 5.3% on the prairie, in simulation.",
+    built: "An add-on for cell-tower software (an O-RAN xApp) that reads Government of Canada forecasts.",
+    plainLimit: "Canadian public data only",
+    meter: { kind: "absolute", without: 13.02, with: 12.33, unit: "%", what: "error rate on the prairie, simulated", other: "Arctic: no change",
+      note: "4 terrains, 4,000 simulated runs", conf: "P" },
+    check: "It helps where weather changes fast. Not everywhere, and the page says so.",
+    sim: { label: "public data only", what: "error rate (simulated)", before: "13.02%", after: "12.33%", conf: "P",
+      call: "Tune the radios before the storm, from public forecasts." },
+  });
+  by("weatherran").outcome = "Error rate 13.02% → 12.33% on the prairie (a 5.3% relative drop, simulated); 332 tests passing.";
+  by("weatherran").metrics[0].label = "fewer errors, prairie (simulated)";
+  by("camara").sim = { label: "procurement wall", what: "time to first API call", before: "blocked", after: "90 s", conf: "P",
+    call: "Build an open sandbox instead of another feature." };
+  by("cisco").sim = { label: "64 MB of memory", what: "built to last", before: "", after: "6 years", conf: "R1",
+    call: "Design every choice to outlast the hardware." };
+  E.loopExamples = { sense: "yvr", decide: "tmobile", build: "cisco", run: "rakuten", spread: "plg" };
+  E.plan90 = { draft: true, steps: [
+    { when: "Days 1–30", what: "Sit with your customers and the people who use the data. Map where work waits." },
+    { when: "Days 31–60", what: "Pick the one decision worth fixing. Agree the number that proves it moved." },
+    { when: "Days 61–90", what: "Ship the smallest fix inside your real limits. Show the number." } ] };
+  /* Held back on v4 (render nothing): YVR "what changed" line · testimonials · mentored person · NIC brief link until corrected ·
+     AEdge empty demo section · the three theses · the 11-layer AI stack (see /v2/) · the "80% → 90% messy" line. */
+})(window.EVIDENCE);

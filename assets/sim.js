@@ -127,11 +127,11 @@
       S.cons = choices[(S.scen + choices.length) % choices.length];
     }
     S.open = [S.cons]; S.woke = []; S.cleared = false; S.lastInput = S.t; S.clearedAt = 0;
-    nodes.forEach(function (n, k) { if (n.kind === "mid") n.rate = k - 4 === S.cons ? 0.9 : 0; });
+    nodes.forEach(function (n, k) { if (n.kind === "mid") n.rate = k - 4 === S.cons ? 1.3 : 0; });
     emit();
   }
   function restoreRates() {
-    nodes.forEach(function (n, k) { if (n.kind === "mid") n.rate = S.open.indexOf(k - 4) < 0 ? 0 : S.cleared ? 4.2 : 0.9; });
+    nodes.forEach(function (n, k) { if (n.kind === "mid") n.rate = S.open.indexOf(k - 4) < 0 ? 0 : S.cleared ? 4.2 : 1.3; });
   }
   function clear(byUser) {
     if (S.cleared) return;
@@ -183,8 +183,8 @@
     }
     if (S.flash) S.flash = Math.max(0, S.flash - dt * 1.5);
     // idle visitors: clear by itself after 10 s, then a new constraint 10 s after that
-    if (!S.cleared && S.t - S.lastInput > 4.5) clear(false);
-    if (S.cleared && S.t - Math.max(S.clearedAt, S.lastInput) > 9) applyScenario(true);
+    if (!S.cleared && S.t - S.lastInput > 4.5) clear(false);           // lastInput = scenario start or the visitor's last click
+    if (S.cleared && S.t - S.clearedAt > 9) applyScenario(true);
   }
   function remove(e, p) { e.list.splice(e.list.indexOf(p), 1); }
   function handoff(e, p) {
@@ -313,7 +313,7 @@
     });
     new MutationObserver(function () { prerender(); draw(); }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { prerender(); draw(); });
-    canvas.addEventListener("pointermove", function (ev) { S.lastInput = S.t; canvas.style.cursor = hit(ev) && !S.cleared ? "pointer" : ""; });
+    canvas.addEventListener("pointermove", function (ev) { canvas.style.cursor = hit(ev) && !S.cleared ? "pointer" : ""; });
     canvas.addEventListener("click", function (ev) { if (hit(ev)) clear(true); });
   }
 
